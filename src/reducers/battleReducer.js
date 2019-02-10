@@ -1,7 +1,8 @@
-import { GET_BATTLES, SUBMIT_VOTE } from "../actions/types";
+import { GET_BATTLES, SUBMIT_VOTE, GET_TODAYS_BATTLES } from "../actions/types";
 
 const initialState = {
-  battles: null
+  battles: null,
+  todaysBattles: null
 };
 
 export default function(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         battles: action.payload
+      };
+    case GET_TODAYS_BATTLES:
+      return {
+        ...state,
+        todaysBattles: action.payload
       };
     case SUBMIT_VOTE:
       return {

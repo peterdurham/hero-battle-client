@@ -42,14 +42,14 @@ const TrophyCount = props => {
   return (
     <div className="TrophyCount">
       {trophies.length}
-      <span
+      {/* <span
         className="Dashboard__emoji"
         role="img"
         aria-label={"trophy" ? "trophy" : ""}
         aria-hidden={"trophy" ? "false" : "true"}
-      >
-        🏆
-      </span>
+      > */}
+      🏆
+      {/* </span> */}
     </div>
   );
 };

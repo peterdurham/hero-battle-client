@@ -324,17 +324,21 @@ class Suggestions extends Component {
       } else {
         // User is logged in but has no profile
         suggestionsContent = (
-          <div>
-            <p>Welcome {user.name}</p>
-            <p>You have not yet setup a profile, please add some info</p>
-            <Link to="/create-profile">Create Profile</Link>
+          <div className="Dashboard__noprofile">
+            <p className="Dashboard__noprofile--welcome">Welcome {user.name}</p>
+            <p className="Dashboard__noprofile--text">
+              You have not yet setup a profile, please add some info
+            </p>
+            <Link to="/create-profile" className="Dashboard__noprofile--link">
+              Create Profile
+            </Link>
           </div>
         );
       }
     }
 
     return (
-      <div>
+      <div className="Suggestions">
         <div className="Dashboard__nav">
           <Link to="/dashboard/trophies" className="Dashboard__navlink">
             Trophies

@@ -1,11 +1,10 @@
 import axios from "axios";
 
-import { GET_BATTLES } from "./types";
-import { SUBMIT_VOTE } from "./types";
+import { GET_BATTLES, SUBMIT_VOTE, GET_TODAYS_BATTLES } from "./types";
 
-const URL = "https://safe-mesa-80973.herokuapp.com";
-
-// Get Battles
+// const URL = "https://safe-mesa-80973.herokuapp.com";
+const URL = "";
+// Get ALL Battles
 export const getBattles = () => dispatch => {
   axios
     .get(`${URL}/api/battles`)
@@ -18,6 +17,24 @@ export const getBattles = () => dispatch => {
     .catch(err =>
       dispatch({
         type: GET_BATTLES,
+        payload: null
+      })
+    );
+};
+
+// Get Todays Battles
+export const getTodaysBattles = () => dispatch => {
+  axios
+    .get(`${URL}/api/battles/today`)
+    .then(res =>
+      dispatch({
+        type: GET_TODAYS_BATTLES,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_TODAYS_BATTLES,
         payload: null
       })
     );

@@ -7,8 +7,8 @@ import {
   GET_ERRORS
 } from "./types";
 
-const URL = "https://safe-mesa-80973.herokuapp.com";
-
+// const URL = "https://safe-mesa-80973.herokuapp.com";
+const URL = "";
 export const getHeroes = () => dispatch => {
   axios
     .get(`${URL}/api/heroes`)
@@ -61,7 +61,7 @@ export const getSuggestions = () => dispatch => {
 
 export const voteOnSuggestion = (suggestionId, voteType) => dispatch => {
   axios
-    .post(`/api/heroes/suggestions/${suggestionId}`, voteType)
+    .post(`${URL}/api/heroes/suggestions/${suggestionId}`, voteType)
     .then(res => dispatch(getSuggestions()))
     .catch(err =>
       dispatch({

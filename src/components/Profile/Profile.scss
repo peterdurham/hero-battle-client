@@ -3,25 +3,32 @@
   text-align: center;
   color: rgb(240, 240, 240);
   &__header {
-    font-size: 4.8rem;
+    font-size: 3.6rem;
+    margin: 1rem 0;
   }
   &__text {
     font-size: 2rem;
+    margin-bottom: 2rem;
   }
-  &__required {
-    font-size: 1.6rem;
-  }
+
   &__label {
     font-size: 3.2rem;
+    margin: 2rem 0;
   }
   &__avatars {
     display: flex;
-    justify-content: center;
+
+    width: 72.6rem;
+    margin: 0 auto;
+    border: 1px solid $color-grey-5;
+    background-color: $color-grey-2;
+    padding: 1rem;
   }
   &__submit {
-    padding: 1.2rem 2.4rem;
+    padding: 0.7rem 1.4rem;
     font-size: 2.4rem;
     border-radius: 4px;
+    margin-top: 2rem;
   }
   &__selected {
     border: 2px solid $color-red-dark;
@@ -30,6 +37,6 @@
 }
 
 .Avatar {
-  height: 12rem;
-  width: 12rem;
+  height: 10rem;
+  width: 10rem;
 }

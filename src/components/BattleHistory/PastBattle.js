@@ -66,7 +66,9 @@ const PastBattle = ({ battleDetails, auth, battles }) => {
 
   return (
     <div key={battleDetails._id} className="BattleHistory__battle">
-      {trophies.indexOf(battleDetails._id) > -1 && <div>🏆</div>}
+      {trophies.indexOf(battleDetails._id) > -1 && (
+        <div className="BattleHistory__emoji">🏆</div>
+      )}
 
       <div className={"BattleHistory__hero1" + hero1Class}>
         {battleDetails.hero1} {battleDetails.hero1votes.length}

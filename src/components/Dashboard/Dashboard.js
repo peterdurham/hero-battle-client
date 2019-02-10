@@ -53,8 +53,13 @@ class Dashboard extends Component {
           <div className="Dashboard__noprofile">
             <p className="Dashboard__noprofile--welcome">Welcome {user.name}</p>
             <p className="Dashboard__noprofile--text">
-              You have not yet setup a profile, please add some info
+              You have not yet setup a profile,
             </p>
+            <p className="Dashboard__noprofile--text">
+              please add some info to get started
+            </p>
+            <br />
+
             <Link to="/create-profile" className="Dashboard__noprofile--link">
               Create Profile
             </Link>

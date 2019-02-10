@@ -1,4 +1,5 @@
 export const GET_BATTLES = "GET_BATTLES";
+export const GET_TODAYS_BATTLES = "GET_TODAYS_BATTLES";
 export const SUBMIT_VOTE = "SUBMIT_VOTE";
 export const GET_HEROES = "GET_HEROES";
 

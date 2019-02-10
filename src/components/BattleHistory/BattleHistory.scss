@@ -1,7 +1,7 @@
 .BattleHistory {
   width: 80rem;
   margin: 0 auto;
-  background-color: $color-grey-3;
+  background-color: $color-grey-4;
   color: rgb(240, 240, 240);
   text-align: center;
   &__title {
@@ -16,7 +16,13 @@
   &__battle {
     font-size: 2rem;
     display: flex;
-    justify-content: center;
+    width: 50rem;
+    margin: 0 auto;
+    position: relative;
+  }
+  &__emoji {
+    position: absolute;
+    left: -3rem;
   }
   &__hero1 {
     width: 25rem;
@@ -32,15 +38,15 @@
   }
 
   &__videogames {
-    background-color: $color-blue-dark;
+    background-color: $color-foundation-blue;
   }
   &__movies {
-    background-color: $color-green-light;
+    background-color: $color-material-yellow;
   }
   &__superheroes {
-    background-color: $color-blue-light;
+    background-color: $color-foundation-green;
   }
   &__mythology {
-    background-color: $color-green-dark;
+    background-color: $color-foundation-purple;
   }
 }

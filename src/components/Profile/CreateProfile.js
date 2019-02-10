@@ -28,9 +28,7 @@ class CreateProfile extends Component {
       avatar: this.state.avatar
     };
 
-    if (!profileData.avatar) {
-      console.log("please select an avatar");
-    } else {
+    if (profileData.avatar) {
       this.props.createProfile(profileData, this.props.history);
     }
   };
@@ -57,20 +55,18 @@ class CreateProfile extends Component {
     return (
       <div className="CreateProfile">
         <h1 className="CreateProfile__header">Create Your Profile</h1>
-        <p className="CreateProfile__text">
-          Let's get some information to make your profile stand out
-        </p>
-        <small className="CreateProfile__required">* = required fields</small>
+        <p className="CreateProfile__text">Select a unique handle and avatar</p>
+
         <form onSubmit={this.onSubmit}>
+          <div className="CreateProfile__label">Handle:</div>
           <TextFieldGroup
             placeholder="* Profile Handle"
             name="handle"
             value={this.state.handle}
             onChange={this.onChange}
             error={errors.handle}
-            info="A unique handle for your profile URL. Your full name, company name, nickname"
           />
-          <div className="CreateProfile__label">Choose an avatar:</div>
+          <div className="CreateProfile__label">Avatar:</div>
           <div className="CreateProfile__avatars">
             {avatars.map(item => (
               <div

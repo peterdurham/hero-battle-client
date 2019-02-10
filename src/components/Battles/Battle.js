@@ -7,7 +7,14 @@ import "../../assets/scss/main.scss";
 import HeroThumbnail from "../imageComponents/HeroThumbnail";
 import ResultsBar from "./ResultsBar";
 
-const Battle = ({ category, battles, selectHero, heroSelected, auth }) => {
+const Battle = ({
+  category,
+  battles,
+  selectHero,
+  heroSelected,
+  auth,
+  todaysBattles
+}) => {
   const date = new Date();
   const formatted = dateToString(date);
   let battleContent;
@@ -15,11 +22,11 @@ const Battle = ({ category, battles, selectHero, heroSelected, auth }) => {
   let userId = auth.user.id;
   let userVote;
 
-  if (!battles) {
+  if (!todaysBattles) {
     battleContent = <h1>loading...</h1>;
   } else {
-    currentBattle = battles.filter(
-      battle => battle.date === formatted && battle.category === category
+    currentBattle = todaysBattles.filter(
+      battle => battle.category === category
     )[0];
 
     if (currentBattle.hero1votes.indexOf(userId) > -1) {
@@ -107,7 +114,8 @@ Battle.propTypes = {
 };
 const mapStateToProps = state => ({
   battles: state.battle.battles,
-  auth: state.auth
+  auth: state.auth,
+  todaysBattles: state.battle.todaysBattles
 });
 
 export default connect(mapStateToProps)(Battle);

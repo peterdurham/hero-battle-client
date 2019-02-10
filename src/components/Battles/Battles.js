@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
 import Battle from "./Battle";
-import { getBattles, submitVote } from "../../actions/battleActions";
+import {
+  getBattles,
+  submitVote,
+  getTodaysBattles
+} from "../../actions/battleActions";
 
 import BattleRegister from "../auth/BattleRegister";
 import BattleLogin from "../auth/BattleLogin";
@@ -20,18 +24,15 @@ class Battles extends Component {
   };
 
   componentDidMount() {
-    this.props.getBattles();
+    this.props.getTodaysBattles();
   }
 
   selectHero = (heroNumber, category) => {
     let categoryIndex;
 
     const userId = this.props.auth.user.id;
-    const date = new Date();
-    const formatted = dateToString(date);
-    let todaysBattles = this.props.battles.filter(
-      battle => battle.date === formatted
-    );
+
+    const { todaysBattles } = this.props;
     if (
       todaysBattles[0].hero1votes.indexOf(userId) < 0 &&
       todaysBattles[0].hero2votes.indexOf(userId) < 0
@@ -64,21 +65,14 @@ class Battles extends Component {
     let user;
     if (this.props.auth.isAuthenticated) {
       user = this.props.auth.user.id;
-    } else {
-      user = "noauth";
     }
 
     let votes = [...this.state.heroSelected];
     let nullVotes = votes.filter(hero => hero === 0);
-    const date = new Date();
-    const formatted = dateToString(date);
 
     // add     && voted !== formatted      to the if below to enforce 1 vote per day in cache
     if (nullVotes.length === 0 && this.props.auth.isAuthenticated) {
-      let battles = [...this.props.battles].filter(
-        battle => battle.date === formatted
-      );
-      let updatedBattles = battles.map(battle => {
+      let updatedBattles = [...this.props.todaysBattles].map(battle => {
         if (battle.category === "Video Games") {
           if (votes[0] === 1) {
             battle.hero1votes.push(user);
@@ -113,7 +107,7 @@ class Battles extends Component {
 
       this.props.submitVote(updatedBattles, user);
 
-      this.props.getBattles();
+      this.props.getTodaysBattles();
     }
   };
 
@@ -128,27 +122,16 @@ class Battles extends Component {
     const date = new Date();
     const formatted = dateToString(date);
     const { battles, auth } = this.props;
-    let votedToday;
-    // let todaysVotes = [];
-    // let user = this.props.auth.user.id;
+    const { todaysBattles } = this.props;
 
-    if (battles) {
+    let votedToday;
+
+    if (todaysBattles) {
       votedToday =
-        battles
-          .filter(battle => battle.date === formatted)
+        todaysBattles
           .map(item => item.hero1votes.concat(item.hero2votes))
           .reduce((votes, battle) => votes.concat(battle))
           .indexOf(auth.user.id) > -1;
-
-      // todaysVotes = battles
-      //   .filter(battle => battle.date === formatted)
-      //   .map(battle => {
-      //     if (battle.hero1votes.indexOf(user)) {
-      //       return "hero1";
-      //     } else if (battle.hero3votes.indexOf(user)) {
-      //       return "hero2";
-      //     }
-      //   });
     }
 
     return (
@@ -182,8 +165,8 @@ class Battles extends Component {
           />
         </div>
 
-        {battles && this.props.auth.isAuthenticated ? (
-          <div>
+        {todaysBattles && this.props.auth.isAuthenticated ? (
+          <div className="Battles__votesection">
             {votedToday ? (
               <div className="Battles__voted">
                 Thanks for voting! Come back tomorrow for new battles
@@ -199,21 +182,24 @@ class Battles extends Component {
             {!this.state.showLogin && !this.state.showSignup && (
               <div className="Battle__auth">
                 <div
-                  to="/register"
-                  className="Battles__link"
-                  onClick={this.toggleShowSignup}
-                >
-                  Sign up
-                </div>
-                <div
                   to="/Login"
-                  className="Battles__link"
+                  className="Battles__link Battles__login"
                   onClick={this.toggleShowLogin}
                 >
                   Log in
                 </div>
+                <br />
+                <div
+                  to="/register"
+                  className="Battles__link Battles__signup"
+                  onClick={this.toggleShowSignup}
+                >
+                  Sign up
+                </div>
+
                 <div className="Battles__voted--text">
-                  Log in to vote and win trophies
+                  Log in to vote on battles, win trophies, suggest new heroes,
+                  ...
                 </div>
               </div>
             )}
@@ -255,10 +241,11 @@ Battles.propTypes = {
 
 const mapStateToProps = state => ({
   battles: state.battle.battles,
-  auth: state.auth
+  auth: state.auth,
+  todaysBattles: state.battle.todaysBattles
 });
 
 export default connect(
   mapStateToProps,
-  { getBattles, submitVote }
+  { getBattles, submitVote, getTodaysBattles }
 )(Battles);

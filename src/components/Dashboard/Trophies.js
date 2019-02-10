@@ -34,7 +34,9 @@ class Trophies extends Component {
             hero1: battle.hero1,
             hero2: battle.hero2,
             date: battle.date,
-            _id: battle._id
+            _id: battle._id,
+            category: battle.category,
+            winner: battle.winner
           };
 
           if (
@@ -68,7 +70,7 @@ class Trophies extends Component {
         );
 
         trophiesContent = (
-          <div className="Dashboard">
+          <div className="Trophies">
             <table className="Trophies__table">
               <tbody>
                 {trophies.map((battle, index) => {
@@ -78,9 +80,22 @@ class Trophies extends Component {
                       <td className="Trophies__result--date">{battle.date}</td>
                       <td
                         className={
-                          (battle.hero1 === battle.winner && trophies !== null
-                            ? "Trophies__result--winner "
-                            : "Trophies__result--loser ") +
+                          (battle.category === "Video Games" &&
+                          battle.winner === battle.hero1
+                            ? "Trophies__videogames "
+                            : "") +
+                          (battle.category === "Movies" &&
+                          battle.winner === battle.hero1
+                            ? "Trophies__movies "
+                            : "") +
+                          (battle.category === "Superheroes" &&
+                          battle.winner === battle.hero1
+                            ? "Trophies__superheroes "
+                            : "") +
+                          (battle.category === "Mythology" &&
+                          battle.winner === battle.hero1
+                            ? "Trophies__mythology "
+                            : "") +
                           "Trophies__result--hero1"
                         }
                       >
@@ -88,9 +103,22 @@ class Trophies extends Component {
                       </td>
                       <td
                         className={
-                          (battle.hero2 === battle.winner && trophies !== null
-                            ? "Trophies__result--winner "
-                            : "Trophies__result--loser ") +
+                          (battle.category === "Video Games" &&
+                          battle.winner === battle.hero2
+                            ? "Trophies__videogames "
+                            : "") +
+                          (battle.category === "Movies" &&
+                          battle.winner === battle.hero2
+                            ? "Trophies__movies "
+                            : "") +
+                          (battle.category === "Superheroes" &&
+                          battle.winner === battle.hero2
+                            ? "Trophies__superheroes "
+                            : "") +
+                          (battle.category === "Mythology" &&
+                          battle.winner === battle.hero2
+                            ? "Trophies__mythology "
+                            : "") +
                           "Trophies__result--hero2"
                         }
                       >
@@ -106,17 +134,21 @@ class Trophies extends Component {
       } else {
         // User is logged in but has no profile
         trophiesContent = (
-          <div>
-            <p>Welcome {user.name}</p>
-            <p>You have not yet setup a profile, please add some info</p>
-            <Link to="/create-profile">Create Profile</Link>
+          <div className="Dashboard__noprofile">
+            <p className="Dashboard__noprofile--welcome">Welcome {user.name}</p>
+            <p className="Dashboard__noprofile--text">
+              You have not yet setup a profile, please add some info
+            </p>
+            <Link to="/create-profile" className="Dashboard__noprofile--link">
+              Create Profile
+            </Link>
           </div>
         );
       }
     }
 
     return (
-      <div>
+      <div className="Trophies">
         <div className="Dashboard__nav">
           <Link to="/dashboard/trophies" className="Dashboard__navlink">
             Trophies

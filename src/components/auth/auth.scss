@@ -11,6 +11,12 @@
     margin-bottom: 1rem;
   }
   &__submit {
+    background-color: rgb(240, 240, 240);
+    padding: 0.7rem 1.4rem;
+    border: 1px solid $color-grey-3;
+    border-radius: 2px;
+    margin: 1rem 0;
+    cursor: pointer;
   }
 }
 .Login {
@@ -27,5 +33,25 @@
     margin-bottom: 1rem;
   }
   &__submit {
+    background-color: rgb(240, 240, 240);
+    padding: 0.7rem 1.4rem;
+    border: 1px solid $color-grey-3;
+    border-radius: 2px;
+    margin: 1rem 0;
+    cursor: pointer;
   }
+}
+.BattleRegister {
+  width: 37rem;
+  margin: 0 auto;
+  background-color: $color-grey-2;
+  padding: 1rem 3rem;
+  border-radius: 2px;
+}
+.BattleLogin {
+  width: 37rem;
+  margin: 0 auto;
+  background-color: $color-grey-2;
+  padding: 1rem 3rem;
+  border-radius: 2px;
 }
