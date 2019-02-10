@@ -1,0 +1,16 @@
+@import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import "./mixins";
+@import "./base";
+
+@import "./variables";
+
+@import "../../App.scss";
+@import "../../components/BattleHistory/BattleHistory.scss";
+@import "../../components/Battles/Battles.scss";
+@import "../../components/Heroes/Heroes.scss";
+@import "../../components/Layout/Layout.scss";
+@import "../../components/Profile/Profile.scss";
+@import "../../components/imageComponents/imageComponents.scss";
+@import "../../components/auth/auth.scss";
+@import "../../components/Dashboard/Dashboard.scss";
+@import "../../components/common/common.scss";

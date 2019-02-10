@@ -1,0 +1,46 @@
+.BattleHistory {
+  width: 80rem;
+  margin: 0 auto;
+  background-color: $color-grey-3;
+  color: rgb(240, 240, 240);
+  text-align: center;
+  &__title {
+    font-size: 4rem;
+  }
+  &__label {
+    font-size: 2.4rem;
+    margin: 1rem 0;
+  }
+  &__day {
+  }
+  &__battle {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  &__hero1 {
+    width: 25rem;
+    border: 1px solid black;
+    border-radius: 2px;
+    margin-right: 0.5rem;
+  }
+  &__hero2 {
+    width: 25rem;
+    border: 1px solid black;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+  }
+
+  &__videogames {
+    background-color: $color-blue-dark;
+  }
+  &__movies {
+    background-color: $color-green-light;
+  }
+  &__superheroes {
+    background-color: $color-blue-light;
+  }
+  &__mythology {
+    background-color: $color-green-dark;
+  }
+}

@@ -1,0 +1,31 @@
+.Register {
+  text-align: center;
+  color: rgb(250, 250, 250);
+  height: 100vh;
+  &__header {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  &__text {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  &__submit {
+  }
+}
+.Login {
+  height: 100vh;
+  text-align: center;
+  color: rgb(250, 250, 250);
+
+  &__header {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  &__text {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  &__submit {
+  }
+}
