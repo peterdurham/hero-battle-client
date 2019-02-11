@@ -1,3 +1,45 @@
+.Sidebar {
+  width: 30rem;
+  padding: 0 2rem;
+  &__header {
+    font-size: 3rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    width: 30rem;
+    font-weight: bold;
+    padding-right: 8rem;
+  }
+  &__text {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    padding-right: 4rem;
+  }
+  &__buttons {
+    padding-right: 4rem;
+  }
+  &__back {
+    background-color: white;
+    color: $color-grey-5;
+    border: 1px solid $color-grey-5;
+    &--icon {
+      margin-right: 0.7rem;
+    }
+  }
+
+  &__auth {
+    width: 30rem;
+
+    text-align: center;
+    margin-top: 1rem;
+    padding-right: 4rem;
+  }
+  &__login {
+    margin-right: 1.2rem;
+  }
+  &__register {
+  }
+}
+
 .Navbar {
   display: flex;
   justify-content: space-between;

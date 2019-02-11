@@ -1,8 +1,8 @@
 @import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import "./mixins";
-@import "./base";
-
 @import "./variables";
+@import "./base";
+@import "./animations";
 
 @import "../../App.scss";
 @import "../../components/BattleHistory/BattleHistory.scss";

@@ -40,9 +40,9 @@ export const getTodaysBattles = () => dispatch => {
     );
 };
 
-export const submitVote = (updatedBattles, user) => dispatch => {
+export const submitVote = (updatedBattle, user) => dispatch => {
   axios
-    .post(`${URL}/api/battles/votes/${user}`, updatedBattles)
+    .post(`${URL}/api/battles/votes/${user}`, updatedBattle)
     .then(res =>
       dispatch({
         type: SUBMIT_VOTE

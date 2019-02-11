@@ -43,6 +43,8 @@ class Register extends Component {
     };
 
     this.props.registerUser(newUser, this.props.history);
+    this.props.toggleShow("Register");
+    this.props.toggleShow("Login");
   }
 
   render() {

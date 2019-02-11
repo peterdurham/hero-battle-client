@@ -22,7 +22,7 @@ import CreateProfile from "./components/Profile/CreateProfile";
 import Trophies from "./components/Dashboard/Trophies";
 import Suggestions from "./components/Dashboard/Suggestions";
 import Brackets from "./components/Dashboard/Brackets";
-import Chat from "./components/Chat/Chat";
+import Sidebar from "./components/Layout/Sidebar";
 
 import "./assets/scss/main.scss";
 
@@ -59,8 +59,8 @@ class App extends Component {
               <Route path="/heroes" render={props => <Heroes {...props} />} />
               <Route path="/history" render={props => <BattleHistory />} />
               <Route path="/profile" render={props => <Profile {...props} />} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
+              {/* <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} /> */}
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
@@ -92,7 +92,8 @@ class App extends Component {
                   component={Brackets}
                 />
               </Switch>
-              <Chat />
+
+              <Sidebar />
             </div>
           </div>
         </Router>

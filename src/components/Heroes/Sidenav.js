@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../../assets/scss/main.scss";
 
-class Sidebar extends Component {
+class Sidenav extends Component {
   render() {
     const {
       selectCategory,
       heroes,
-      sidebarCategory,
+      sidenavCategory,
       formattedHeroes,
       selectView,
       viewSelected
@@ -55,7 +55,7 @@ class Sidebar extends Component {
     //   );
     // }
 
-    if (heroes.length > 0 && sidebarCategory === "Video Games") {
+    if (heroes.length > 0 && sidenavCategory === "Video Games") {
       vgLinks = (
         <div>
           {formattedHeroes
@@ -68,13 +68,13 @@ class Sidebar extends Component {
                   onClick={() => selectView(hero.name)}
                   className={
                     (viewSelected === hero.name
-                      ? "Sidebar__hero--selected "
-                      : "") + "Sidebar__label"
+                      ? "Sidenav__hero--selected "
+                      : "") + "Sidenav__label"
                   }
                 >
                   <Link
                     to={`/heroes/${formatted}`}
-                    className="Sidebar__hero--link"
+                    className="Sidenav__hero--link"
                   >
                     {hero.name}
                   </Link>
@@ -85,7 +85,7 @@ class Sidebar extends Component {
       );
     }
 
-    if (heroes.length > 0 && sidebarCategory === "Movies") {
+    if (heroes.length > 0 && sidenavCategory === "Movies") {
       movieLinks = (
         <div>
           {formattedHeroes
@@ -98,13 +98,13 @@ class Sidebar extends Component {
                   onClick={() => selectView(hero.name)}
                   className={
                     (viewSelected === hero.name
-                      ? "Sidebar__hero--selected "
-                      : "") + "Sidebar__label"
+                      ? "Sidenav__hero--selected "
+                      : "") + "Sidenav__label"
                   }
                 >
                   <Link
                     to={`/heroes/${formatted}`}
-                    className="Sidebar__hero--link"
+                    className="Sidenav__hero--link"
                   >
                     {hero.name}
                   </Link>
@@ -114,7 +114,7 @@ class Sidebar extends Component {
         </div>
       );
     }
-    if (heroes.length > 0 && sidebarCategory === "Superheroes") {
+    if (heroes.length > 0 && sidenavCategory === "Superheroes") {
       superheroLinks = (
         <div>
           {formattedHeroes
@@ -127,13 +127,13 @@ class Sidebar extends Component {
                   onClick={() => selectView(hero.name)}
                   className={
                     (viewSelected === hero.name
-                      ? "Sidebar__hero--selected "
-                      : "") + "Sidebar__label"
+                      ? "Sidenav__hero--selected "
+                      : "") + "Sidenav__label"
                   }
                 >
                   <Link
                     to={`/heroes/${formatted}`}
-                    className="Sidebar__hero--link"
+                    className="Sidenav__hero--link"
                   >
                     {hero.name}
                   </Link>
@@ -144,7 +144,7 @@ class Sidebar extends Component {
       );
     }
 
-    if (heroes.length > 0 && sidebarCategory === "Mythology") {
+    if (heroes.length > 0 && sidenavCategory === "Mythology") {
       mythologyLinks = (
         <div>
           {formattedHeroes
@@ -157,13 +157,13 @@ class Sidebar extends Component {
                   onClick={() => selectView(hero.name)}
                   className={
                     (viewSelected === hero.name
-                      ? "Sidebar__hero--selected "
-                      : "") + "Sidebar__label"
+                      ? "Sidenav__hero--selected "
+                      : "") + "Sidenav__label"
                   }
                 >
                   <Link
                     to={`/heroes/${formatted}`}
-                    className="Sidebar__hero--link"
+                    className="Sidenav__hero--link"
                   >
                     {hero.name}
                   </Link>
@@ -175,18 +175,18 @@ class Sidebar extends Component {
     }
 
     return (
-      <div className="Sidebar">
-        <div className="Sidebar__title">Heroes</div>
+      <div className="Sidenav">
+        <div className="Sidenav__title">Heroes</div>
         <div
           onClick={() => selectCategory("Video Games")}
-          className="Sidebar__label"
+          className="Sidenav__label"
         >
           <Link
             to="/heroes/videogames"
             className={
-              (sidebarCategory === "Video Games"
-                ? "Sidebar__link--selected "
-                : "") + "Sidebar__link"
+              (sidenavCategory === "Video Games"
+                ? "Sidenav__link--selected "
+                : "") + "Sidenav__link"
             }
           >
             Video Games ({vgHeroes.length})
@@ -195,13 +195,13 @@ class Sidebar extends Component {
         {vgLinks}
         <div
           onClick={() => selectCategory("Movies")}
-          className="Sidebar__label"
+          className="Sidenav__label"
         >
           <Link
             to="heroes/movies"
             className={
-              (sidebarCategory === "Movies" ? "Sidebar__link--selected " : "") +
-              "Sidebar__link"
+              (sidenavCategory === "Movies" ? "Sidenav__link--selected " : "") +
+              "Sidenav__link"
             }
           >
             Movies ({movieHeroes.length})
@@ -210,14 +210,14 @@ class Sidebar extends Component {
         {movieLinks}
         <div
           onClick={() => selectCategory("Superheroes")}
-          className="Sidebar__label"
+          className="Sidenav__label"
         >
           <Link
             to="heroes/superheroes"
             className={
-              (sidebarCategory === "Superheroes"
-                ? "Sidebar__link--selected "
-                : "") + "Sidebar__link"
+              (sidenavCategory === "Superheroes"
+                ? "Sidenav__link--selected "
+                : "") + "Sidenav__link"
             }
           >
             Superheroes ({superheroes.length})
@@ -226,14 +226,14 @@ class Sidebar extends Component {
         {superheroLinks}
         <div
           onClick={() => selectCategory("Mythology")}
-          className="Sidebar__label"
+          className="Sidenav__label"
         >
           <Link
             to="heroes/mythology"
             className={
-              (sidebarCategory === "Mythology"
-                ? "Sidebar__link--selected "
-                : "") + "Sidebar__link"
+              (sidenavCategory === "Mythology"
+                ? "Sidenav__link--selected "
+                : "") + "Sidenav__link"
             }
           >
             Mythology ({mythologyHeroes.length})
@@ -244,8 +244,8 @@ class Sidebar extends Component {
     );
   }
 }
-Sidebar.propTypes = {
+Sidenav.propTypes = {
   heroes: PropTypes.array.isRequired
 };
 
-export default Sidebar;
+export default Sidenav;

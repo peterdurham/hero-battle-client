@@ -81,22 +81,7 @@ class Navbar extends Component {
               </div>
             </div>
           ) : (
-            <div>
-              <NavLink
-                to="/login"
-                className="Navbar__link"
-                activeClassName="Navbar__selected"
-              >
-                Log in
-              </NavLink>
-              <NavLink
-                to="/register"
-                className="Navbar__link Navbar__register"
-                activeClassName="Navbar__selected"
-              >
-                Sign up
-              </NavLink>
-            </div>
+            <div>Hero battle</div>
           )}
         </div>
       </div>

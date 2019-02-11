@@ -105,9 +105,14 @@ class Battles extends Component {
         return battle;
       });
 
-      this.props.submitVote(updatedBattles, user);
+      this.props.submitVote(updatedBattles[0], user);
+      this.props.submitVote(updatedBattles[1], user);
+      this.props.submitVote(updatedBattles[2], user);
+      this.props.submitVote(updatedBattles[3], user);
 
-      this.props.getTodaysBattles();
+      setTimeout(() => {
+        this.props.getTodaysBattles();
+      }, 400);
     }
   };
 
@@ -175,53 +180,12 @@ class Battles extends Component {
             )}
           </div>
         ) : (
-          <div className="BattleNew__voted">
+          <div className="Battles__voted">
             {!this.state.showLogin && !this.state.showSignup && (
-              <div className="BattleNew__auth">
-                <div
-                  to="/Login"
-                  className="Battles__link Battles__login"
-                  onClick={this.toggleShowLogin}
-                >
-                  Log in
-                </div>
-                <br />
-                <div
-                  to="/register"
-                  className="Battles__link Battles__signup"
-                  onClick={this.toggleShowSignup}
-                >
-                  Sign up
-                </div>
-
-                <div className="Battles__voted--text">
-                  Log in to vote on battles, win trophies, suggest new heroes,
-                  ...
-                </div>
+              <div className="Battles__voted--text">
+                Log in to vote on battles, win trophies, suggest new heroes, ...
               </div>
             )}
-          </div>
-        )}
-        {this.state.showSignup && (
-          <div className="Battles__BattleRegister">
-            <BattleRegister
-              toggleShowLogin={this.toggleShowLogin}
-              toggleShowSignup={this.toggleShowSignup}
-            />
-            <div className="Battles__return" onClick={this.toggleShowSignup}>
-              back
-            </div>
-          </div>
-        )}
-        {this.state.showLogin && (
-          <div className="Battles__BattleLogin">
-            <BattleLogin
-              toggleShowLogin={this.toggleShowLogin}
-              toggleShowSignup={this.toggleShowSignup}
-            />
-            <div className="Battles__return" onClick={this.toggleShowLogin}>
-              back
-            </div>
           </div>
         )}
       </div>

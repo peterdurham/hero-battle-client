@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import io from "socket.io-client";
 import "../../assets/scss/main.scss";
+
+import { getCurrentProfile } from "../../actions/profileActions";
+
 class Chat extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +36,11 @@ class Chat extends Component {
       this.setState({ message: "" });
     };
   }
+
+  componentDidMount() {
+    this.props.getCurrentProfile();
+  }
+
   render() {
     return (
       <div className="Chat">
@@ -76,4 +85,12 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  profile: state.profile
+});
+
+export default connect(
+  mapStateToProps,
+  { getCurrentProfile }
+)(Chat);

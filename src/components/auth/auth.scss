@@ -3,7 +3,7 @@
   color: $color-black;
   height: 100vh;
   &__header {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
   }
   &__text {
@@ -20,12 +20,13 @@
   }
 }
 .Login {
-  height: 100vh;
+  height: 30vh;
   text-align: center;
   color: $color-black;
-
+  width: 25rem;
+  margin: 0 auto;
   &__header {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
   }
   &__text {

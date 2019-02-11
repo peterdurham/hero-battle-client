@@ -74,7 +74,7 @@
 }
 
 .Battle {
-  width: 900px;
+  width: 90rem;
   padding: 1rem 0;
   border: 1px solid black;
 
@@ -85,6 +85,10 @@
 
   &__category {
     position: absolute;
+    font-size: 2rem;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-weight: bold;
   }
   &__heroes {
     display: flex;
@@ -98,22 +102,25 @@
   &__hero {
     border: 1px solid $color-grey-2;
     border-radius: 4px;
-    padding: 0rem;
+
     background-color: white;
-    box-shadow: 2px 0.3rem 0.6rem $color-grey-3;
+    // box-shadow: 2px 0.3rem 0.6rem $color-grey-3;
     text-align: center;
     padding: 1rem 0;
   }
   &__hero1details {
-    width: 30rem;
-    text-align: right;
-    margin-right: 1rem;
+    width: 25.9rem;
+    text-align: center;
+    padding-right: 1rem;
+    padding-top: 3rem;
+  }
+  &__hero1votes {
   }
   &__hero1image {
-    width: 15rem;
+    width: 14rem;
   }
   &__hero2image {
-    width: 15rem;
+    width: 14rem;
   }
   &__versus {
     padding: 4rem 1rem;
@@ -122,15 +129,16 @@
     }
   }
   &__hero2details {
-    width: 30rem;
-    text-align: left;
-    margin-left: 1rem;
+    width: 25.9rem;
+    text-align: center;
+    padding-left: 1rem;
+    padding-top: 3rem;
   }
 
   &__hero2 {
   }
   &__selected {
-    border: 3px solid #c23030;
+    border: 4px solid #c23030;
   }
   &__results {
     display: flex;
@@ -139,12 +147,19 @@
     font-size: 20px;
     margin-top: 1rem;
   }
-  &__hero1votes {
-    margin-left: 12rem;
+  &__hero1results {
+    width: 20rem;
+    margin: 0.5rem auto;
+    font-size: 1.6rem;
   }
-  &__hero2votes {
+  &__hero2results {
+    width: 20rem;
+    margin: 0.5rem auto;
+    font-size: 1.6rem;
   }
-
+  &__votes {
+    margin-top: 1rem;
+  }
   &__voted {
     text-align: center;
     color: $color-black;
@@ -174,15 +189,15 @@
 .ResultsBar {
   position: relative;
   height: 25px;
-  width: 160px;
+  width: 20rem;
   border-radius: 1.6rem;
   border: 1px solid #333;
+  animation: expandWidth 0.7s ease-in-out;
 
   &__progress {
     background: $color-red-dark;
     height: 100%;
     border-radius: inherit;
-    text-align: center;
     color: white;
     font-size: 2rem;
   }

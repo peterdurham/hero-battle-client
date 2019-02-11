@@ -7,11 +7,11 @@ import { getHeroes } from "../../actions/heroActions";
 
 import HeroDetails from "./HeroDetails";
 import HeroPreview from "./HeroPreview";
-import Sidebar from "./Sidebar";
+import Sidenav from "./Sidenav";
 
 class Heroes extends Component {
   state = {
-    sidebarCategory: null,
+    sidenavCategory: null,
     viewSelected: null,
     heroes: []
   };
@@ -20,8 +20,8 @@ class Heroes extends Component {
     this.props.getHeroes();
   }
   selectCategory = category => {
-    if (category !== this.state.sidebarCategory) {
-      this.setState({ sidebarCategory: category });
+    if (category !== this.state.sidenavCategory) {
+      this.setState({ sidenavCategory: category });
       if (category === "All") {
         this.props.history.push("/heroes/all");
       } else if (category === "Video Games") {
@@ -34,8 +34,8 @@ class Heroes extends Component {
         this.props.history.push("/heroes/mythology");
       }
     } else {
-      this.setState({ sidebarCategory: null });
-      if (this.state.sidebarCategory !== "All") {
+      this.setState({ sidenavCategory: null });
+      if (this.state.sidenavCategory !== "All") {
         this.props.history.push("/heroes/all");
       }
     }
@@ -46,7 +46,7 @@ class Heroes extends Component {
   };
 
   render() {
-    let { sidebarCategory } = this.state;
+    let { sidenavCategory } = this.state;
     const { heroes } = this.props;
 
     let formattedHeroes;
@@ -60,12 +60,12 @@ class Heroes extends Component {
     return (
       <div className="Heroes">
         <div className="Heroes__container">
-          <div className="Sidebar">
+          <div className="Sidenav">
             {heroes.length > 0 && (
-              <Sidebar
+              <Sidenav
                 selectCategory={this.selectCategory}
                 heroes={heroes}
-                sidebarCategory={sidebarCategory}
+                sidenavCategory={sidenavCategory}
                 formattedHeroes={formattedHeroes}
                 selectView={this.selectView}
                 viewSelected={this.state.viewSelected}

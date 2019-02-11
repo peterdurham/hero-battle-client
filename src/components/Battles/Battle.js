@@ -57,12 +57,14 @@ const Battle = ({
           <div className="Battle__heroName">{currentBattle.hero1}</div>
 
           {userVote === "hero1" || userVote === "hero2" ? (
-            <div className="Battle__hero1votes">
+            <div className="Battle__hero1results">
               <ResultsBar
                 percentage={hero1percentage}
                 category={categoryFormatted}
               />{" "}
-              {currentBattle.hero1votes.length} votes
+              <div className="Battle__votes">
+                {currentBattle.hero1votes.length} votes
+              </div>
             </div>
           ) : null}
         </div>
@@ -97,12 +99,14 @@ const Battle = ({
         <div className="Battle__hero2details">
           <div className="Battle__heroName">{currentBattle.hero2}</div>
           {userVote === "hero1" || userVote === "hero2" ? (
-            <div className="Battle__hero2votes">
+            <div className="Battle__hero2results">
               <ResultsBar
                 percentage={hero2percentage}
                 category={categoryFormatted}
-              />{" "}
-              {currentBattle.hero2votes.length} votes
+              />
+              <div className="Battle__votes">
+                {currentBattle.hero2votes.length} votes
+              </div>
             </div>
           ) : null}
         </div>
