@@ -91,15 +91,16 @@ class Suggestions extends Component {
                 onChange={this.onChange}
                 options={options}
                 error={errors.category}
-                info="Please select a category"
+                info=""
               />
+              <br />
               <TextFieldGroup
                 placeholder="Hero Name"
                 name="heroName"
                 value={this.state.heroName}
                 onChange={this.onChange}
                 error={errors.heroName}
-                info="Suggest a hero to add"
+                info=""
               />
               <input
                 type="submit"
@@ -351,7 +352,7 @@ class Suggestions extends Component {
           </Link>
         </div>
         <div>{profileContent}</div>
-        <div className="Dashboard__title">Suggestions</div>
+        <div className="Dashboard__title">Hero Suggestions</div>
         <div>{suggestionsContent}</div>
       </div>
     );

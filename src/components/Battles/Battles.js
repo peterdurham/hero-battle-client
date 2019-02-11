@@ -136,34 +136,31 @@ class Battles extends Component {
 
     return (
       <div className="Battles">
-        <div className="Battles__top">
-          <Battle
-            category="Video Games"
-            selectHero={this.selectHero}
-            heroSelected={this.state.heroSelected[0]}
-            dateVoted={this.state.dateVoted}
-          />
-          <Battle
-            category="Movies"
-            selectHero={this.selectHero}
-            heroSelected={this.state.heroSelected[1]}
-            dateVoted={this.state.dateVoted}
-          />
-        </div>
-        <div className="Battles__bottom">
-          <Battle
-            category="Superheroes"
-            selectHero={this.selectHero}
-            heroSelected={this.state.heroSelected[2]}
-            dateVoted={this.state.dateVoted}
-          />
-          <Battle
-            category="Mythology"
-            selectHero={this.selectHero}
-            heroSelected={this.state.heroSelected[3]}
-            dateVoted={this.state.dateVoted}
-          />
-        </div>
+        <Battle
+          category="Video Games"
+          selectHero={this.selectHero}
+          heroSelected={this.state.heroSelected[0]}
+          dateVoted={this.state.dateVoted}
+        />
+        <Battle
+          category="Movies"
+          selectHero={this.selectHero}
+          heroSelected={this.state.heroSelected[1]}
+          dateVoted={this.state.dateVoted}
+        />
+
+        <Battle
+          category="Superheroes"
+          selectHero={this.selectHero}
+          heroSelected={this.state.heroSelected[2]}
+          dateVoted={this.state.dateVoted}
+        />
+        <Battle
+          category="Mythology"
+          selectHero={this.selectHero}
+          heroSelected={this.state.heroSelected[3]}
+          dateVoted={this.state.dateVoted}
+        />
 
         {todaysBattles && this.props.auth.isAuthenticated ? (
           <div className="Battles__votesection">
@@ -178,9 +175,9 @@ class Battles extends Component {
             )}
           </div>
         ) : (
-          <div className="Battle__voted">
+          <div className="BattleNew__voted">
             {!this.state.showLogin && !this.state.showSignup && (
-              <div className="Battle__auth">
+              <div className="BattleNew__auth">
                 <div
                   to="/Login"
                   className="Battles__link Battles__login"

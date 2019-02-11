@@ -76,7 +76,9 @@ class Trophies extends Component {
                 {trophies.map((battle, index) => {
                   return (
                     <tr key={index} className="Trophies__result">
-                      <Emoji symbol="🏆" />
+                      <div className="Trophies__icon">
+                        <Emoji symbol="🏆" />
+                      </div>
                       <td className="Trophies__result--date">{battle.date}</td>
                       <td
                         className={
@@ -96,7 +98,7 @@ class Trophies extends Component {
                           battle.winner === battle.hero1
                             ? "Trophies__mythology "
                             : "") +
-                          "Trophies__result--hero1"
+                          "Trophies__result--hero1 Trophies__result--hero"
                         }
                       >
                         {battle.hero1}
@@ -119,7 +121,7 @@ class Trophies extends Component {
                           battle.winner === battle.hero2
                             ? "Trophies__mythology "
                             : "") +
-                          "Trophies__result--hero2"
+                          "Trophies__result--hero2 Trophies__result--hero"
                         }
                       >
                         {battle.hero2}

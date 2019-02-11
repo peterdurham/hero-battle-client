@@ -22,6 +22,7 @@ import CreateProfile from "./components/Profile/CreateProfile";
 import Trophies from "./components/Dashboard/Trophies";
 import Suggestions from "./components/Dashboard/Suggestions";
 import Brackets from "./components/Dashboard/Brackets";
+import Chat from "./components/Chat/Chat";
 
 import "./assets/scss/main.scss";
 
@@ -53,44 +54,46 @@ class App extends Component {
         <Router>
           <div className="HeroBattle">
             <Navbar />
-
-            <Route exact path="/" render={props => <Battles />} />
-            <Route path="/heroes" render={props => <Heroes {...props} />} />
-            <Route path="/history" render={props => <BattleHistory />} />
-            <Route path="/profile" render={props => <Profile {...props} />} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            </Switch>
-            <Switch>
-              <PrivateRoute
-                exact
-                path="/create-profile"
-                component={CreateProfile}
-              />
-            </Switch>
-            <Switch>
-              <PrivateRoute
-                exact
-                path="/dashboard/trophies"
-                component={Trophies}
-              />
-            </Switch>
-            <Switch>
-              <PrivateRoute
-                exact
-                path="/dashboard/suggestions"
-                component={Suggestions}
-              />
-            </Switch>
-            <Switch>
-              <PrivateRoute
-                exact
-                path="/dashboard/brackets"
-                component={Brackets}
-              />
-            </Switch>
+            <div className="main">
+              <Route exact path="/" render={props => <Battles />} />
+              <Route path="/heroes" render={props => <Heroes {...props} />} />
+              <Route path="/history" render={props => <BattleHistory />} />
+              <Route path="/profile" render={props => <Profile {...props} />} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/create-profile"
+                  component={CreateProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/dashboard/trophies"
+                  component={Trophies}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/dashboard/suggestions"
+                  component={Suggestions}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/dashboard/brackets"
+                  component={Brackets}
+                />
+              </Switch>
+              <Chat />
+            </div>
           </div>
         </Router>
       </Provider>

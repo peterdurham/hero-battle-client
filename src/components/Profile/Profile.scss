@@ -1,7 +1,7 @@
 .CreateProfile {
   height: 100vh;
   text-align: center;
-  color: rgb(240, 240, 240);
+  color: $color-black;
   &__header {
     font-size: 3.6rem;
     margin: 1rem 0;
@@ -21,7 +21,7 @@
     width: 72.6rem;
     margin: 0 auto;
     border: 1px solid $color-grey-5;
-    background-color: $color-grey-2;
+    background-color: white;
     padding: 1rem;
   }
   &__submit {

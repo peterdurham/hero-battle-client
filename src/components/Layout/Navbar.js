@@ -18,83 +18,87 @@ class Navbar extends Component {
 
     return (
       <div className="Navbar">
-        <NavLink
-          exact
-          to="/"
-          className="Navbar__link"
-          activeClassName="Navbar__selected"
-        >
-          Battles
-        </NavLink>
-        <NavLink
-          to="/heroes"
-          className="Navbar__link"
-          activeClassName="Navbar__selected"
-        >
-          Heroes
-        </NavLink>
-        <NavLink
-          to="/history"
-          className="Navbar__link"
-          activeClassName="Navbar__selected"
-        >
-          Battle History
-        </NavLink>
-        {auth.isAuthenticated ? (
-          <div>
-            <div className="Navbar__dropdown">
-              <NavLink
-                to="/dashboard"
-                className="Navbar__dropdown--link"
-                activeClassName="Navbar__selected"
-              >
-                Profile<span className="Navigation__icon">&#9660;</span>
-              </NavLink>
-              <div className="dropdown-content">
-                <Link to="/dashboard/trophies" className="dropdown-selection">
-                  Trophies
-                </Link>
-
-                <Link
-                  to="/dashboard/suggestions"
-                  className="dropdown-selection"
+        <div className="Navbar__left">
+          <NavLink
+            exact
+            to="/"
+            className="Navbar__link"
+            activeClassName="Navbar__selected"
+          >
+            Battles
+          </NavLink>
+          <NavLink
+            to="/heroes"
+            className="Navbar__link"
+            activeClassName="Navbar__selected"
+          >
+            Heroes
+          </NavLink>
+          <NavLink
+            to="/history"
+            className="Navbar__link"
+            activeClassName="Navbar__selected"
+          >
+            Battle History
+          </NavLink>
+        </div>
+        <div className="Navbar__right">
+          {auth.isAuthenticated ? (
+            <div>
+              <div className="Navbar__dropdown">
+                <NavLink
+                  to="/dashboard"
+                  className="Navbar__dropdown--link"
+                  activeClassName="Navbar__selected"
                 >
-                  Suggestions
-                </Link>
-
-                <Link to="/dashboard/brackets" className="dropdown-selection">
-                  Brackets
-                </Link>
-
-                <div
-                  onClick={this.onLogoutClick.bind(this)}
-                  className="Navbar__hoverlink"
-                >
-                  <Link to="/" className="dropdown-selection">
-                    Logout
+                  Profile<span className="Navigation__icon">&#9660;</span>
+                </NavLink>
+                <div className="dropdown-content">
+                  <Link to="/dashboard/trophies" className="dropdown-selection">
+                    Trophies
                   </Link>
+
+                  <Link
+                    to="/dashboard/suggestions"
+                    className="dropdown-selection"
+                  >
+                    Suggestions
+                  </Link>
+
+                  <Link to="/dashboard/brackets" className="dropdown-selection">
+                    Brackets
+                  </Link>
+
+                  <div
+                    onClick={this.onLogoutClick.bind(this)}
+                    className="Navbar__hoverlink"
+                  >
+                    <Link to="/" className="dropdown-selection">
+                      Logout
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div>
-            <NavLink
-              to="/login"
-              className="Navbar__link"
-              activeClassName="Navbar__selected"
-            >
-              Log in
-            </NavLink>
-            <NavLink
-              to="/register"
-              className="Navbar__link Navbar__register"
-              activeClassName="Navbar__selected"
-            >
-              Sign up
-            </NavLink>
-          </div>
-        )}
+          ) : (
+            <div>
+              <NavLink
+                to="/login"
+                className="Navbar__link"
+                activeClassName="Navbar__selected"
+              >
+                Log in
+              </NavLink>
+              <NavLink
+                to="/register"
+                className="Navbar__link Navbar__register"
+                activeClassName="Navbar__selected"
+              >
+                Sign up
+              </NavLink>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

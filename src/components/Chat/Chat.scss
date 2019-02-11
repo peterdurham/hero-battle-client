@@ -1,0 +1,44 @@
+.Chat {
+  width: 30rem;
+
+  &__header {
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
+  &__messages {
+    height: 68rem;
+    margin: 1rem;
+  }
+  &__message {
+    display: flex;
+    margin-bottom: 1rem;
+    &--author {
+      font-size: 1.6rem;
+      color: $color-red-dark;
+    }
+    &--content {
+      font-size: 1.6rem;
+    }
+  }
+  &__welcome {
+    font-size: 1.6rem;
+    color: $color-grey-5;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: row;
+  }
+  &__input {
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 2rem;
+    padding-left: 1rem;
+    width: 23.3rem;
+  }
+  &__submit {
+    background-color: $color-grey-6;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgb(200, 200, 200);
+  }
+}

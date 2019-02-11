@@ -1,9 +1,9 @@
 .Heroes {
   min-height: 100vh;
   &__container {
-    background-color: $color-grey-3;
+    background-color: white;
     display: flex;
-    width: 100rem;
+    width: 90rem;
     min-height: 100vh;
     margin: 0 auto;
   }
@@ -13,18 +13,18 @@
   width: 24rem;
   display: flex;
   flex-direction: column;
-  background-color: $color-grey-2;
+  background-color: white;
   &__title {
     font-size: 4.5rem;
     text-align: center;
-    color: rgb(240, 240, 240);
+    color: $color-black;
     padding: 1rem 0;
   }
   &__link {
     text-decoration: none;
-    color: white;
+    color: $color-black;
     font-size: 2.5rem;
-    background-color: $color-grey-3;
+    background-color: white;
     border: 1px solid rgb(240, 240, 240);
     margin-bottom: 0.5rem;
     border-radius: 4px;
@@ -32,17 +32,17 @@
     display: block;
 
     &--selected {
-      background-color: $color-red-dark;
+      background-color: orangered;
     }
   }
   &__hero {
     &--selected {
-      background-color: $color-grey-3;
+      background-color: white;
     }
     &--link {
       text-decoration: none;
       font-size: 2.2rem;
-      color: rgb(210, 210, 210);
+      color: $color-black;
       border-bottom: 1px solid rgb(80, 80, 80);
       padding: 0.2rem 2rem;
       display: block;
@@ -60,14 +60,14 @@
   &__label {
     font-size: 3.6rem;
     margin-bottom: 1rem;
-    color: rgb(240, 240, 240);
+    color: $color-black;
   }
   &__all {
     font-size: 4.8rem;
     text-align: center;
     margin-top: 1rem;
 
-    color: rgb(240, 240, 240);
+    color: $color-black;
   }
   &__heroes {
     display: flex;
@@ -76,8 +76,9 @@
 
   &__card {
     border: 1px solid $color-grey-3;
-    background-color: $color-grey-5;
-    width: 15rem;
+    background-color: white;
+    width: 12rem;
+    height: 20rem;
     border-radius: 4px;
     margin-right: 2rem;
     margin-bottom: 2rem;
@@ -85,7 +86,7 @@
     padding: 1rem 0;
     text-decoration: none;
     font-size: 1.6rem;
-    color: $color-grey-lightest;
+    color: $color-black;
     box-shadow: 1px 4px 8px $color-grey-2;
   }
 }
@@ -95,8 +96,8 @@
   padding: 2rem 4rem;
   border-radius: 4px;
   border: 3px solid $color-grey-2;
-  background-color: $color-grey-4;
-  color: rgb(240, 240, 240);
+  background-color: white;
+  color: $color-black;
   &__name {
     font-size: 4rem;
   }

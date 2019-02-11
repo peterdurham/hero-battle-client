@@ -4,25 +4,24 @@
   &__title {
     font-size: 4rem;
     text-align: center;
-    color: rgb(250, 250, 250);
+    color: $color-black;
     margin: 1rem 0;
   }
   &__profile {
     margin: 0 auto;
     width: 600px;
     max-width: 600px;
-    color: rgb(250, 250, 250);
+    color: $color-black;
     overflow: hidden;
-    border: 1px solid rgb(250, 250, 250);
+    border: 1px solid $color-black;
     border-radius: 4px;
     display: flex;
 
     &--content {
-      padding: 1rem;
     }
     &--message {
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin-top: 1rem;
     }
     &--info {
       display: flex;
@@ -35,11 +34,11 @@
   &__nav {
     display: flex;
     justify-content: center;
-    color: rgb(250, 250, 250);
+    color: $color-black;
     font-size: 3rem;
   }
   &__navlink {
-    color: rgb(240, 240, 240);
+    color: $color-black;
     text-decoration: none;
     padding: 1rem 2rem;
   }
@@ -49,7 +48,7 @@
   &__noprofile {
     padding-bottom: 3rem;
     text-align: center;
-    color: rgb(240, 240, 240);
+    color: $color-black;
     &--welcome {
       font-size: 3rem;
       margin: 2rem 0;
@@ -60,15 +59,12 @@
     }
     &--link {
       text-decoration: none;
-      color: rgb(240, 240, 240);
-      border: 4px solid $color-blue-dark;
+      color: $color-black;
+      border: 2px solid rgb(180, 180, 180);
+      background-color: $color-grey-6;
       padding: 1rem 1.6rem;
       font-size: 2rem;
       border-radius: 2px;
-    }
-    &--link:hover {
-      background-color: $color-blue-dark;
-      transition: all 0.3s;
     }
   }
 }
@@ -79,20 +75,27 @@
 
 .Trophies {
   height: 100vh;
-  color: rgb(240, 240, 240);
+  color: $color-black;
+  width: 90rem;
 
   &__result {
     font-size: 2rem;
     text-align: center;
+
     &--date {
-      background-color: $color-grey-5;
       width: 12rem;
       padding: 1rem;
+    }
+    &--hero {
+      padding: 0 1rem;
     }
     &--hero1 {
     }
     &--hero2 {
     }
+  }
+  &__icon {
+    line-height: 4.4rem;
   }
   &__table {
     margin: 0 auto;
@@ -118,15 +121,17 @@
 
 .Suggestions {
   height: 100vh;
+  width: 90rem;
 
   &__form {
     width: 40rem;
     margin: 0 auto;
+    text-align: center;
   }
   &__display {
     display: flex;
     justify-content: center;
-    color: rgb(240, 240, 240);
+    color: $color-black;
     font-size: 2.4rem;
   }
 
@@ -143,6 +148,8 @@
   &__icon {
     height: 20px;
     font-size: 20px;
+    color: rgba($color-grey-5, 0.64);
+    cursor: pointer;
   }
   &__voting {
     display: flex;
@@ -155,22 +162,22 @@
   }
 
   &__hero {
-    border: 1px solid black;
-    width: 25rem;
-    background-color: $color-grey-1;
+    border: 1px solid $color-black;
+    width: 20rem;
+    background-color: white;
     padding: 0.5rem 1rem;
     display: flex;
 
-    height: 76px;
+    height: 72px;
     border-radius: 2px;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 0 1rem;
+    margin-bottom: 1rem;
     &--upvote {
       height: 20px;
     }
     &--votes {
-      font-size: 2rem;
-      height: 2.4rem;
+      font-size: 1.6rem;
+      height: 2rem;
       text-align: center;
     }
     &--downvote {
@@ -178,26 +185,27 @@
     }
     &--name {
       font-size: 2rem;
-      line-height: 7rem;
-      margin-left: 1rem;
+      line-height: 6rem;
+      margin-left: 2rem;
       overflow-wrap: normal;
       overflow: hidden;
     }
   }
   &__upvote--selected {
-    color: orange;
+    color: #ffb300;
   }
   &__downvote--selected {
-    color: blue;
+    color: rgb(41, 122, 198);
   }
   &__submit {
-    padding: 1.2rem 2.4rem;
-    font-size: 2.4rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 2rem;
     border-radius: 4px;
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
 }
 
 .Brackets {
   height: 100vh;
+  width: 90rem;
 }

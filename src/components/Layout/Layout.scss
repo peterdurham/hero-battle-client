@@ -1,23 +1,34 @@
 .Navbar {
   display: flex;
-  justify-content: center;
-  background-color: $color-grey-1;
-  height: 7rem;
-  line-height: 7rem;
+  justify-content: space-between;
+  background-color: white;
+  color: $color-black;
+  height: 4.2rem;
+  line-height: 4.2rem;
+  padding: 0 20rem;
+  &__left {
+  }
+  &__right {
+  }
   &__link {
     text-decoration: none;
     font-size: 3rem;
-    color: $color-grey-lightest;
+
     padding: 0 2rem;
+    color: black;
   }
   &__dropdown {
     text-decoration: none;
     font-size: 3rem;
-    color: $color-grey-lightest;
+    color: $color-black;
     padding: 0 2rem;
     &--link {
-      color: white;
       text-decoration: none;
+    }
+
+    &--link:link,
+    &--link:visited {
+      color: $color-black;
     }
   }
 
