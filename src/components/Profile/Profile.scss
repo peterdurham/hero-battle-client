@@ -1,9 +1,9 @@
 .CreateProfile {
-  height: 100vh;
   text-align: center;
   color: $color-black;
+  width: 30rem;
   &__header {
-    font-size: 3.6rem;
+    font-size: 3rem;
     margin: 1rem 0;
   }
   &__text {
@@ -12,17 +12,20 @@
   }
 
   &__label {
-    font-size: 3.2rem;
+    font-size: 2.4rem;
     margin: 2rem 0;
   }
   &__avatars {
     display: flex;
-
-    width: 72.6rem;
+    flex-wrap: wrap;
+    width: 30rem;
     margin: 0 auto;
     border: 1px solid $color-grey-5;
     background-color: white;
     padding: 1rem;
+  }
+  &__avatar {
+    border: 2px solid white;
   }
   &__submit {
     padding: 0.7rem 1.4rem;
@@ -34,9 +37,13 @@
     border: 2px solid $color-red-dark;
     border-radius: 4px;
   }
+
+  &__back--icon {
+    margin-right: 0.8rem;
+  }
 }
 
 .Avatar {
-  height: 10rem;
-  width: 10rem;
+  height: 8.8rem;
+  width: 8.8rem;
 }

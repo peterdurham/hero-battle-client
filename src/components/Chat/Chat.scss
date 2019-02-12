@@ -23,6 +23,10 @@
   &__welcome {
     font-size: 1.6rem;
     color: $color-grey-5;
+    margin-bottom: 1rem;
+    &--handle {
+      color: $color-black;
+    }
   }
 
   &__inputs {
@@ -37,8 +41,8 @@
     width: 23.3rem;
   }
   &__submit {
-    background-color: $color-grey-6;
-    padding: 0.6rem 1.2rem;
     border: 1px solid rgb(200, 200, 200);
+    border-radius: 4px;
+    margin-left: 1rem;
   }
 }

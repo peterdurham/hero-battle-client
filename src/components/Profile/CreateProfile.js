@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import TextFieldGroup from "../common/TextFieldGroup";
 
-import { createProfile } from "../../actions/profileActions";
+import { createProfile, getCurrentProfile } from "../../actions/profileActions";
 import Avatar from "../Profile/Avatar";
 import "../../assets/scss/main.scss";
 class CreateProfile extends Component {
@@ -29,7 +29,12 @@ class CreateProfile extends Component {
     };
 
     if (profileData.avatar) {
-      this.props.createProfile(profileData, this.props.history);
+      this.props.createProfile(profileData);
+      this.props.toggleComponent();
+
+      setTimeout(() => {
+        this.props.getCurrentProfile();
+      }, 10);
     }
   };
 
@@ -46,19 +51,21 @@ class CreateProfile extends Component {
     const avatars = [
       "Elf",
       "Princess",
-      "Assassin",
-      "Superhero",
       "Swordsman",
+      "Superhero",
       "Thug",
+      "Assassin",
       "Wizard"
     ];
     return (
       <div className="CreateProfile">
         <h1 className="CreateProfile__header">Create Your Profile</h1>
-        <p className="CreateProfile__text">Select a unique handle and avatar</p>
+        <p className="CreateProfile__text">
+          Select a unique handle and avatar for access to chat, trophies,
+          suggestions and more
+        </p>
 
         <form onSubmit={this.onSubmit}>
-          <div className="CreateProfile__label">Handle:</div>
           <TextFieldGroup
             placeholder="* Profile Handle"
             name="handle"
@@ -73,7 +80,9 @@ class CreateProfile extends Component {
                 key={item}
                 onClick={() => this.selectAvatar(item)}
                 className={
-                  item === this.state.avatar ? "CreateProfile__selected " : ""
+                  (item === this.state.avatar
+                    ? "CreateProfile__selected "
+                    : "") + "CreateProfile__avatar"
                 }
               >
                 <Avatar name={item} />
@@ -104,5 +113,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createProfile }
+  { createProfile, getCurrentProfile }
 )(withRouter(CreateProfile));

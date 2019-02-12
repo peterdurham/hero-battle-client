@@ -49,10 +49,14 @@ export const getProfileByHandle = handle => dispatch => {
 };
 
 // Create Profile
-export const createProfile = (profileData, history) => dispatch => {
+export const createProfile = profileData => dispatch => {
   axios
     .post(`${URL}/api/profile`, profileData)
-    .then(res => history.push("/dashboard"))
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES
+      })
+    )
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

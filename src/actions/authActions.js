@@ -7,10 +7,10 @@ import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 // const URL = "https://safe-mesa-80973.herokuapp.com";
 const URL = "";
 // register user
-export const registerUser = (userData, history) => dispatch => {
+export const registerUser = userData => dispatch => {
   axios
     .post(`${URL}/api/users/register`, userData)
-    .then(res => history.push("/"))
+
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

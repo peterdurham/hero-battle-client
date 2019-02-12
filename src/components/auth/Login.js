@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { loginUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 
@@ -18,15 +19,15 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
-    }
+    // if (this.props.auth.isAuthenticated) {
+    //   this.props.history.push("/");
+    // }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/");
-    }
+    // if (nextProps.auth.isAuthenticated) {
+    //   this.props.history.push("/");
+    // }
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -40,6 +41,7 @@ class Login extends Component {
       password: this.state.password
     };
     this.props.loginUser(userData);
+    // this.props.toggleShow("Login");
   }
 
   onChange(e) {
@@ -97,4 +99,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { loginUser }
-)(Login);
+)(withRouter(Login));

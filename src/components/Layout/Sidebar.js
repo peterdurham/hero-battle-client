@@ -30,7 +30,7 @@ class Sidebar extends Component {
         {auth.isAuthenticated ? (
           <Chat />
         ) : (
-          <div>
+          <div className="Sidebar__noauth">
             {!showLogin && !showRegister && (
               <div className="Sidebar__auth">
                 <div className="Sidebar__header">Welcome to Hero Battle!</div>
