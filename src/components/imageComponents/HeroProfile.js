@@ -110,7 +110,7 @@ const HeroProfile = ({ hero }) => {
     case "Cloud Strife":
       image = <img src={CloudStrife} alt="Cloud" className="Profile" />;
       break;
-    case "SolidSnake":
+    case "Solid Snake":
       image = <img src={SolidSnake} alt="SolidSnake" className="Profile" />;
       break;
     case "Nathan Drake":

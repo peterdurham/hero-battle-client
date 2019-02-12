@@ -123,7 +123,6 @@ class HeroPreview extends Component {
       if (category === "All") {
         heroDisplay = (
           <div>
-            <div className="HeroPreview__all">All Heroes</div>
             {vgDisplay} {moviesDisplay} {superDisplay} {mythologyDisplay}
           </div>
         );

@@ -28,7 +28,7 @@ class Navbar extends Component {
             Battles
           </NavLink>
           <NavLink
-            to="/heroes"
+            to="/heroes/all"
             className="Navbar__link"
             activeClassName="Navbar__selected"
           >

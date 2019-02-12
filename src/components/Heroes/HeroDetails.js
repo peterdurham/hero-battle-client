@@ -38,7 +38,9 @@ class HeroDetails extends Component {
             {heroData.from} ({heroData.year})
           </div>
           <HeroProfile hero={heroData.name} />
-          <div className="HeroDetails__category">{heroData.category}</div>
+          <div className="HeroDetails__category">
+            Category: {heroData.category}
+          </div>
           <div className="HeroDetails__description">{heroData.description}</div>
         </div>
       );

@@ -38,13 +38,13 @@
   }
 
   &__videogames {
-    background-color: $color-foundation-blue;
+    background-color: $color-foundation-green;
   }
   &__movies {
-    background-color: $color-material-yellow;
+    background-color: rgba($color-material-yellow, 0.9);
   }
   &__superheroes {
-    background-color: $color-foundation-green;
+    background-color: rgba($color-material-red, 0.9);
   }
   &__mythology {
     background-color: $color-foundation-purple;

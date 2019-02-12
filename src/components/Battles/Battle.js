@@ -52,63 +52,66 @@ const Battle = ({
 
     battleContent = (
       <div className={battleClass}>
-        <div className="Battle__category">{category}</div>
-        <div className="Battle__hero1details">
-          <div className="Battle__heroName">{currentBattle.hero1}</div>
+        <div onClick={() => selectHero(1, category)} className="Battle__hero1">
+          <div className="Battle__category">{category}</div>
+          <div className="Battle__hero1details">
+            <div className="Battle__heroName">{currentBattle.hero1}</div>
 
-          {userVote === "hero1" || userVote === "hero2" ? (
-            <div className="Battle__hero1results">
-              <ResultsBar
-                percentage={hero1percentage}
-                category={categoryFormatted}
-              />{" "}
-              <div className="Battle__votes">
-                {currentBattle.hero1votes.length} votes
+            {userVote === "hero1" || userVote === "hero2" ? (
+              <div className="Battle__hero1results">
+                <ResultsBar
+                  percentage={hero1percentage}
+                  category={categoryFormatted}
+                />{" "}
+                <div className="Battle__votes">
+                  {currentBattle.hero1votes.length} votes
+                </div>
               </div>
+            ) : null}
+          </div>
+          <div className="Battle__hero1image">
+            <div
+              className={
+                (heroSelected === 1 || userVote === "hero1"
+                  ? "Battle__selected "
+                  : "") + "Battle__hero"
+              }
+            >
+              <HeroThumbnail hero={currentBattle.hero1} />
             </div>
-          ) : null}
-        </div>
-        <div className="Battle__hero1image">
-          <div
-            className={
-              (heroSelected === 1 || userVote === "hero1"
-                ? "Battle__selected "
-                : "") + "Battle__hero"
-            }
-            onClick={() => selectHero(1, category)}
-          >
-            <HeroThumbnail hero={currentBattle.hero1} />
           </div>
         </div>
+
         <div className="Battle__versus">
           <img src={Versus} className="Battle__versus--image" alt="versus" />
         </div>
 
-        <div className="Battle__hero2image">
-          <div
-            className={
-              (heroSelected === 2 || userVote === "hero2"
-                ? "Battle__selected "
-                : "") + "Battle__hero"
-            }
-            onClick={() => selectHero(2, category)}
-          >
-            <HeroThumbnail hero={currentBattle.hero2} />
-          </div>
-        </div>
-        <div className="Battle__hero2details">
-          <div className="Battle__heroName">{currentBattle.hero2}</div>
-          {userVote === "hero1" || userVote === "hero2" ? (
-            <div className="Battle__hero2results">
-              <ResultsBar
-                percentage={hero2percentage}
-                category={categoryFormatted}
-              />
-              <div className="Battle__votes">
-                {currentBattle.hero2votes.length} votes
-              </div>
+        <div onClick={() => selectHero(2, category)} className="Battle__hero2">
+          <div className="Battle__hero2image">
+            <div
+              className={
+                (heroSelected === 2 || userVote === "hero2"
+                  ? "Battle__selected "
+                  : "") + "Battle__hero"
+              }
+            >
+              <HeroThumbnail hero={currentBattle.hero2} />
             </div>
-          ) : null}
+          </div>
+          <div className="Battle__hero2details">
+            <div className="Battle__heroName">{currentBattle.hero2}</div>
+            {userVote === "hero1" || userVote === "hero2" ? (
+              <div className="Battle__hero2results">
+                <ResultsBar
+                  percentage={hero2percentage}
+                  category={categoryFormatted}
+                />
+                <div className="Battle__votes">
+                  {currentBattle.hero2votes.length} votes
+                </div>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     );

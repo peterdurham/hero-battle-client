@@ -1,23 +1,37 @@
 .Chat {
   width: 30rem;
 
+  border-left: none;
+  height: 82rem;
   &__header {
     font-size: 2rem;
-    margin-left: 1rem;
+    padding: 0.5rem;
   }
   &__messages {
-    height: 68rem;
+    height: 64.2rem;
     margin: 1rem;
   }
   &__message {
-    display: flex;
     margin-bottom: 1rem;
+    width: 280px;
+
+    &--info {
+      font-size: 1.4rem;
+      color: $color-red-dark;
+      display: inline-block;
+    }
     &--author {
       font-size: 1.6rem;
-      color: $color-red-dark;
+    }
+    &--time {
+      font-size: 1.2rem;
+      color: $color-grey-5;
     }
     &--content {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      width: 280px;
+      word-wrap: break-word;
     }
   }
   &__welcome {
@@ -32,17 +46,30 @@
   &__inputs {
     display: flex;
     flex-direction: row;
+
+    border-top: 1px solid $color-black;
+    border-bottom: 1px solid $color-black;
   }
   &__input {
-    height: 4rem;
-    line-height: 4rem;
-    font-size: 2rem;
     padding-left: 1rem;
     width: 23.3rem;
+    border: none;
+    resize: none;
+    margin: 0 0.5rem;
+    border-radius: 2px;
+    padding: 0.5rem;
+  }
+  &__input:focus {
+    outline: none !important;
+
+    box-shadow: 0 0 5px #719ece;
   }
   &__submit {
-    border: 1px solid rgb(200, 200, 200);
     border-radius: 4px;
-    margin-left: 1rem;
+    margin: 0.5rem 0;
+    margin-right: 0.5rem;
+    background-color: $color-grey-4;
+    color: white;
+    border: none;
   }
 }

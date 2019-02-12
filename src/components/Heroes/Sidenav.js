@@ -57,7 +57,7 @@ class Sidenav extends Component {
 
     if (heroes.length > 0 && sidenavCategory === "Video Games") {
       vgLinks = (
-        <div>
+        <div className="Sidenav__heroes">
           {formattedHeroes
             .filter(item => item.category === "Video Games")
             .map(hero => {
@@ -87,7 +87,7 @@ class Sidenav extends Component {
 
     if (heroes.length > 0 && sidenavCategory === "Movies") {
       movieLinks = (
-        <div>
+        <div className="Sidenav__heroes">
           {formattedHeroes
             .filter(item => item.category === "Movies")
             .map(hero => {
@@ -116,7 +116,7 @@ class Sidenav extends Component {
     }
     if (heroes.length > 0 && sidenavCategory === "Superheroes") {
       superheroLinks = (
-        <div>
+        <div className="Sidenav__heroes">
           {formattedHeroes
             .filter(item => item.category === "Superheroes")
             .map(hero => {
@@ -146,7 +146,7 @@ class Sidenav extends Component {
 
     if (heroes.length > 0 && sidenavCategory === "Mythology") {
       mythologyLinks = (
-        <div>
+        <div className="Sidenav__heroes">
           {formattedHeroes
             .filter(item => item.category === "Mythology")
             .map(hero => {
@@ -176,7 +176,9 @@ class Sidenav extends Component {
 
     return (
       <div className="Sidenav">
-        <div className="Sidenav__title">Heroes</div>
+        <Link className="Sidenav__title" to="/heroes/all">
+          Heroes
+        </Link>
         <div
           onClick={() => selectCategory("Video Games")}
           className="Sidenav__label"
@@ -185,7 +187,7 @@ class Sidenav extends Component {
             to="/heroes/videogames"
             className={
               (sidenavCategory === "Video Games"
-                ? "Sidenav__link--selected "
+                ? "Sidenav__link--selected Sidenav__link--selected--vg "
                 : "") + "Sidenav__link"
             }
           >
@@ -200,8 +202,9 @@ class Sidenav extends Component {
           <Link
             to="heroes/movies"
             className={
-              (sidenavCategory === "Movies" ? "Sidenav__link--selected " : "") +
-              "Sidenav__link"
+              (sidenavCategory === "Movies"
+                ? "Sidenav__link--selected Sidenav__link--selected--movie "
+                : "") + "Sidenav__link"
             }
           >
             Movies ({movieHeroes.length})
@@ -216,7 +219,7 @@ class Sidenav extends Component {
             to="heroes/superheroes"
             className={
               (sidenavCategory === "Superheroes"
-                ? "Sidenav__link--selected "
+                ? "Sidenav__link--selected Sidenav__link--selected--super "
                 : "") + "Sidenav__link"
             }
           >
@@ -232,7 +235,7 @@ class Sidenav extends Component {
             to="heroes/mythology"
             className={
               (sidenavCategory === "Mythology"
-                ? "Sidenav__link--selected "
+                ? "Sidenav__link--selected Sidenav__link--selected--myth  "
                 : "") + "Sidenav__link"
             }
           >

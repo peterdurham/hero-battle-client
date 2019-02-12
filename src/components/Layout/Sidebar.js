@@ -10,16 +10,26 @@ import Register from "../auth/Register";
 class Sidebar extends Component {
   state = {
     showRegister: false,
-    showLogin: false
+    showLogin: false,
+    showCreateProfile: false
   };
+
   toggleShow = component => {
     if (component === "Login") {
       this.setState({ showLogin: !this.state.showLogin });
     } else if (component === "Register") {
       this.setState({ showRegister: !this.state.showRegister });
+    } else if (component === "CreateProfile") {
+      this.setState({ showCreateProfile: !this.state.showCreateProfile });
     }
   };
-  clearToggles = () => this.setState({ showLogin: false, showRegister: false });
+
+  clearToggles = () =>
+    this.setState({
+      showLogin: false,
+      showRegister: false,
+      showCreateProfile: false
+    });
 
   render() {
     const { auth } = this.props;
@@ -28,10 +38,13 @@ class Sidebar extends Component {
     return (
       <div className="Sidebar">
         {auth.isAuthenticated ? (
-          <Chat />
+          <Chat
+            toggleShow={this.toggleShow}
+            showCreateProfile={this.state.showCreateProfile}
+          />
         ) : (
-          <div className="Sidebar__noauth">
-            {!showLogin && !showRegister && (
+          <div className="Sidebar__welcome">
+            {!showLogin && !showRegister && auth.isAuthenticated === false && (
               <div className="Sidebar__auth">
                 <div className="Sidebar__header">Welcome to Hero Battle!</div>
                 <div className="Sidebar__text">
@@ -60,7 +73,13 @@ class Sidebar extends Component {
                 back
               </button>
             )}
-            {showLogin && <Login />}
+            {showLogin && (
+              <Login
+                toggleShow={this.toggleShow}
+                clearToggles={this.clearToggles}
+                setLoading={this.setLoading}
+              />
+            )}
             {showRegister && <Register toggleShow={this.toggleShow} />}
           </div>
         )}

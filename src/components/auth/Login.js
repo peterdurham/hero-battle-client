@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../../actions/authActions";
+import { setProfileLoading } from "../../actions/profileActions";
+
 import TextFieldGroup from "../common/TextFieldGroup";
 
 class Login extends Component {
@@ -40,8 +42,9 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
+    this.props.setProfileLoading();
+
     this.props.loginUser(userData);
-    // this.props.toggleShow("Login");
   }
 
   onChange(e) {
@@ -98,5 +101,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { loginUser, setProfileLoading }
 )(withRouter(Login));

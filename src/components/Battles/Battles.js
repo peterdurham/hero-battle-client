@@ -175,7 +175,7 @@ class Battles extends Component {
               </div>
             ) : (
               <button onClick={this.voteClick} className="Battles__votebutton">
-                Vote
+                Submit Vote
               </button>
             )}
           </div>
@@ -183,7 +183,8 @@ class Battles extends Component {
           <div className="Battles__voted">
             {!this.state.showLogin && !this.state.showSignup && (
               <div className="Battles__voted--text">
-                Log in to vote on battles, win trophies, suggest new heroes, ...
+                Log in to vote on battles, win trophies, add new heroes, and
+                more!
               </div>
             )}
           </div>

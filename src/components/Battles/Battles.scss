@@ -1,9 +1,9 @@
 .Battles {
   width: 900px;
-
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 82rem;
   color: $color-black;
 
   &__top {
@@ -15,10 +15,10 @@
   }
   &__votesection {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
   &__votebutton {
-    padding: 1rem 2rem;
+    padding: 1.5rem 3rem;
     font-size: 2.4rem;
     border-radius: 4px;
   }
@@ -58,8 +58,10 @@
     text-align: center;
     font-size: 2.4rem;
     color: $color-black;
+    margin-top: 1rem;
     &--text {
       font-size: 2rem;
+      margin-top: 1rem;
     }
   }
   &__BattleLogin {
@@ -75,41 +77,45 @@
 
 .Battle {
   width: 90rem;
-  padding: 1rem 0;
-  border: 1px solid black;
-
-  background-color: white;
   position: relative;
   display: flex;
-  margin-bottom: 0.5rem;
-
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid black;
   &__category {
     position: absolute;
     font-size: 2rem;
     top: 0.5rem;
-    left: 0.5rem;
+    left: 1rem;
     font-weight: bold;
   }
-  &__heroes {
+  &__hero1 {
     display: flex;
     justify-content: space-around;
+    width: 40rem;
+  }
+  &__hero2 {
+    display: flex;
+    justify-content: space-around;
+    width: 40rem;
   }
   &__heroName {
-    font-size: 2rem;
+    font-size: 2.4rem;
     margin-top: 0.5rem;
     color: $color-black;
   }
   &__hero {
-    border: 1px solid $color-grey-2;
+    border: 1px solid $color-grey-5;
     border-radius: 4px;
-
-    background-color: white;
-    // box-shadow: 2px 0.3rem 0.6rem $color-grey-3;
     text-align: center;
-    padding: 1rem 0;
+    padding: 0.5rem;
+
+    width: 12.5rem;
+    margin: 0.9rem 0.4rem;
+    box-shadow: 1px 2px 4px $color-grey-5;
   }
   &__hero1details {
-    width: 25.9rem;
+    width: 26rem;
     text-align: center;
     padding-right: 1rem;
     padding-top: 3rem;
@@ -117,19 +123,22 @@
   &__hero1votes {
   }
   &__hero1image {
-    width: 14rem;
+    width: 13.5rem;
+    height: 17.5rem;
   }
   &__hero2image {
-    width: 14rem;
+    width: 13.5rem;
+    height: 17.5rem;
   }
   &__versus {
     padding: 4rem 1rem;
+
     &--image {
       height: 8rem;
     }
   }
   &__hero2details {
-    width: 25.9rem;
+    width: 26rem;
     text-align: center;
     padding-left: 1rem;
     padding-top: 3rem;
@@ -138,7 +147,15 @@
   &__hero2 {
   }
   &__selected {
-    border: 4px solid #c23030;
+    // border: 4px solid #c23030;
+    // border: 4px solid $color-foundation-green;
+    border: 5px solid $color-material-indigo;
+
+    // border: 3px solid $color-test-green-2;
+    margin: 0.4rem;
+  }
+  &__unselected {
+    border: 4px solid purple;
   }
   &__results {
     display: flex;
@@ -203,13 +220,13 @@
   }
 
   &__videogames {
-    background-color: $color-foundation-blue;
+    background-color: $color-foundation-green;
   }
   &__movies {
-    background-color: $color-material-yellow;
+    background-color: rgba($color-material-yellow, 0.9);
   }
   &__superheroes {
-    background-color: $color-foundation-green;
+    background-color: rgba($color-material-red, 0.9);
   }
   &__mythology {
     background-color: $color-foundation-purple;

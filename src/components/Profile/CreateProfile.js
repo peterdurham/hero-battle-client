@@ -30,11 +30,10 @@ class CreateProfile extends Component {
 
     if (profileData.avatar) {
       this.props.createProfile(profileData);
-      this.props.toggleComponent();
 
       setTimeout(() => {
         this.props.getCurrentProfile();
-      }, 10);
+      }, 100);
     }
   };
 

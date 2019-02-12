@@ -4,6 +4,8 @@ import io from "socket.io-client";
 import "../../assets/scss/main.scss";
 import isEmpty from "../../utils/is-empty";
 import { getCurrentProfile } from "../../actions/profileActions";
+import dateToTime from "../../utils/dateToTime";
+
 import CreateProfile from "../Profile/CreateProfile";
 
 class Chat extends Component {
@@ -13,8 +15,7 @@ class Chat extends Component {
     this.state = {
       username: "",
       message: "",
-      messages: [],
-      creatingProfile: false
+      messages: []
     };
 
     this.socket = io("localhost:5000");
@@ -32,11 +33,13 @@ class Chat extends Component {
 
   sendMessage = ev => {
     ev.preventDefault();
-    this.socket.emit("SEND_MESSAGE", {
-      author: this.props.profile.profile.handle,
-      message: this.state.message
-    });
-    this.setState({ message: "" });
+    if (this.state.message) {
+      this.socket.emit("SEND_MESSAGE", {
+        author: this.props.profile.profile.handle,
+        message: this.state.message
+      });
+      this.setState({ message: "" });
+    }
   };
   toggleCreatingProfile = () =>
     this.setState({ creatingProfile: !this.state.creatingProfile });
@@ -47,7 +50,7 @@ class Chat extends Component {
 
   render() {
     const { profile } = this.props;
-    const { creatingProfile } = this.state;
+    const time = dateToTime(new Date());
 
     return (
       <div>
@@ -61,7 +64,6 @@ class Chat extends Component {
               onChange={ev => this.setState({ username: ev.target.value })}
             /> */}
 
-            <br />
             <hr />
             <div className="Chat__messages">
               <div className="Chat__welcome">
@@ -70,11 +72,14 @@ class Chat extends Component {
                   {profile.profile.handle}
                 </span>
               </div>
-              {this.state.messages.map(message => {
+              {this.state.messages.map((message, index) => {
                 return (
-                  <div className="Chat__message">
-                    <div className="Chat__message--author">
-                      {message.author}
+                  <div className="Chat__message" key={index}>
+                    <div className="Chat__message--info">
+                      <span className="Chat__message--author">
+                        {message.author}
+                      </span>{" "}
+                      <span className="Chat__message--time">({time})</span>
                     </div>
                     :
                     <div className="Chat__message--content">
@@ -91,6 +96,7 @@ class Chat extends Component {
                 value={this.state.message}
                 onChange={ev => this.setState({ message: ev.target.value })}
                 className="Chat__input"
+                rows="2"
               />
               <br />
               <button className="Chat__submit" onClick={this.sendMessage}>
@@ -100,7 +106,7 @@ class Chat extends Component {
           </div>
         ) : (
           <div>
-            {creatingProfile ? (
+            {this.props.showCreateProfile ? (
               <div>
                 <button
                   onClick={this.toggleCreatingProfile}
@@ -109,15 +115,19 @@ class Chat extends Component {
                   <i className="fa fa-arrow-left Sidebar__back--icon" />
                   back
                 </button>
-                <CreateProfile toggleComponent={this.toggleCreatingProfile} />
+                <CreateProfile toggleShow={this.props.toggleShow} />
               </div>
             ) : (
-              <button
-                className="Chat__enter"
-                onClick={this.toggleCreatingProfile}
-              >
-                Create Profile
-              </button>
+              <div>
+                {!profile.loading && (
+                  <button
+                    className="Chat__enter"
+                    onClick={() => this.props.toggleShow("CreateProfile")}
+                  >
+                    Create Profile
+                  </button>
+                )}
+              </div>
             )}
           </div>
         )}

@@ -1,7 +1,6 @@
 .Heroes {
   min-height: 100vh;
   &__container {
-    background-color: white;
     display: flex;
     width: 90rem;
     min-height: 100vh;
@@ -13,38 +12,63 @@
   width: 24rem;
   display: flex;
   flex-direction: column;
-  background-color: white;
+
+  height: 82rem;
+  border: 1px solid $color-black;
+  border-right: none;
+
   &__title {
-    font-size: 4.5rem;
+    font-size: 3.6rem;
     text-align: center;
     color: $color-black;
+    text-decoration: none;
     padding: 1rem 0;
   }
   &__link {
     text-decoration: none;
     color: $color-black;
-    font-size: 2.5rem;
+    font-size: 2rem;
     background-color: white;
-    border: 1px solid rgb(240, 240, 240);
+    border: 1px solid $color-grey-5;
+    margin: 0 1rem;
     margin-bottom: 0.5rem;
     border-radius: 4px;
     padding: 0.8rem 1.4rem;
     display: block;
 
     &--selected {
-      background-color: orangered;
+      color: white;
+
+      &--vg {
+        background-color: $color-foundation-green;
+      }
+      &--movie {
+        background-color: rgba($color-material-yellow, 0.9);
+      }
+      &--super {
+        background-color: rgba($color-material-red, 0.9);
+      }
+      &--myth {
+        background-color: $color-foundation-purple;
+      }
     }
+  }
+  &__heroes {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
   }
   &__hero {
     &--selected {
-      background-color: white;
+      background-color: rgb(240, 240, 240);
+      margin-left: 1rem;
+      padding-left: -1rem;
     }
     &--link {
       text-decoration: none;
-      font-size: 2.2rem;
+      font-size: 1.6rem;
       color: $color-black;
-      border-bottom: 1px solid rgb(80, 80, 80);
-      padding: 0.2rem 2rem;
+
+      padding: 0.4rem 2rem;
       display: block;
     }
   }
@@ -55,20 +79,24 @@
 
 .HeroPreview {
   &__display {
-    padding: 2rem 04rem;
+    padding: 1rem;
+    border: 1px solid $color-black;
+    height: 82rem;
   }
   &__label {
-    font-size: 3.6rem;
-    margin-bottom: 1rem;
-    color: $color-black;
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
   }
-  &__all {
-    font-size: 4.8rem;
-    text-align: center;
-    margin-top: 1rem;
-
-    color: $color-black;
-  }
+  // &__all {
+  //   font-size: 2.4rem;
+  //   text-align: left;
+  //   margin-top: 2rem;
+  //   color: $color-black;
+  //   margin-bottom: -1rem;
+  //   border-bottom: 1px solid $color-black;
+  //   display: inline-block;
+  //   margin-left: 2rem;
+  // }
   &__heroes {
     display: flex;
     flex-wrap: wrap;
@@ -77,42 +105,89 @@
   &__card {
     border: 1px solid $color-grey-3;
     background-color: white;
-    width: 12rem;
-    height: 20rem;
+    width: 14.9rem;
+    height: 18.3rem;
     border-radius: 4px;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+    margin: 0 0.5rem;
+    margin-bottom: 1rem;
     text-align: center;
     padding: 1rem 0;
     text-decoration: none;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: $color-black;
-    box-shadow: 1px 4px 8px $color-grey-2;
+    box-shadow: 1px 2px 4px $color-grey-5;
   }
 }
 
 .HeroDetails {
-  margin: 2rem 4rem;
-  padding: 2rem 4rem;
-  border-radius: 4px;
-  border: 3px solid $color-grey-2;
-  background-color: white;
-  color: $color-black;
+  padding: 2rem 3rem;
+
+  border: 1px solid $color-black;
+  height: 82rem;
+
   &__name {
     font-size: 4rem;
+    margin-bottom: 1rem;
   }
   &__from {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
   }
   &__category {
     font-size: 2rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
   &__description {
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin-bottom: 2rem;
   }
   &__section {
+  }
+}
+
+.HeroList {
+  border: 1px solid $color-black;
+  width: 70rem;
+  height: 82rem;
+  padding: 2rem 2rem;
+
+  text-align: center;
+  &__header {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+  &__heroes {
+    display: flex;
+  }
+  &__section {
+    flex-basis: 25%;
+  }
+  &__label {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+    &--vg {
+      color: $color-foundation-green;
+    }
+    &--movie {
+      color: rgba($color-material-yellow, 0.9);
+    }
+    &--super {
+      color: rgba($color-material-red, 0.9);
+    }
+    &--myth {
+      color: $color-foundation-purple;
+    }
+  }
+  &__list {
+  }
+  &__hero {
+    margin-left: 2rem;
+    font-size: 1.4rem;
+    text-align: left;
+  }
+  &__message {
+    margin: 2rem 0;
+    font-size: 1.4rem;
   }
 }

@@ -8,6 +8,7 @@ import { getHeroes } from "../../actions/heroActions";
 import HeroDetails from "./HeroDetails";
 import HeroPreview from "./HeroPreview";
 import Sidenav from "./Sidenav";
+import HeroList from "./HeroList";
 
 class Heroes extends Component {
   state = {
@@ -60,7 +61,7 @@ class Heroes extends Component {
     return (
       <div className="Heroes">
         <div className="Heroes__container">
-          <div className="Sidenav">
+          <div>
             {heroes.length > 0 && (
               <Sidenav
                 selectCategory={this.selectCategory}
@@ -78,7 +79,7 @@ class Heroes extends Component {
             <Route
               path="/heroes/all"
               render={() => (
-                <HeroPreview category="All" selectView={this.selectView} />
+                <HeroList category="All" selectView={this.selectView} />
               )}
             />
             <Route
