@@ -2,7 +2,7 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS } from "./types";
 
 // const URL = "https://safe-mesa-80973.herokuapp.com";
 const URL = "";
@@ -59,4 +59,10 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   // set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
+};
+
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS
+  };
 };

@@ -1,3 +1,9 @@
+#Commentbox {
+  height: 64.2rem;
+  margin: 1rem;
+  overflow-y: scroll;
+}
+
 .Chat {
   width: 30rem;
 
@@ -11,14 +17,16 @@
     text-align: center;
     margin-top: 4rem;
 
-    &--button {
+    &--message {
+      font-size: 1.6rem;
+      margin: 0rem 2rem;
     }
   }
 
   &__messages {
-    height: 64.2rem;
-    margin: 1rem;
-    overflow-y: scroll;
+    // height: 64.2rem;
+    // margin: 1rem;
+    // overflow-y: scroll;
   }
   &__message {
     margin-bottom: 1rem;

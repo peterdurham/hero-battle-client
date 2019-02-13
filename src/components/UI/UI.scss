@@ -1,0 +1,30 @@
+.Backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.Modal {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 30rem;
+  height: 10rem;
+  line-height: 7.5rem;
+  font-size: 2rem;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  padding: 1rem;
+  margin: 0 auto;
+  text-align: center;
+  left: 52%;
+  margin-left: -34rem;
+  top: 33%;
+
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}

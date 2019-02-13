@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import { registerUser, clearErrors } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
+import isEmpty from "../../utils/is-empty";
 
 class Register extends Component {
   constructor() {
@@ -32,6 +33,10 @@ class Register extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+    const { errors } = this.props;
+    if (errors.email || errors.password || errors.password2) {
+      this.props.clearErrors();
+    }
   }
   onSubmit(e) {
     e.preventDefault();
@@ -44,8 +49,13 @@ class Register extends Component {
 
     this.props.registerUser(newUser);
 
-    this.props.toggleShow("Register");
-    this.props.toggleShow("Login");
+    setTimeout(() => {
+      const { errors } = this.props;
+      if (!errors.email && !errors.password && !errors.password2) {
+        this.props.toggleShow("Register");
+        this.props.toggleShow("Login");
+      }
+    }, 1000);
   }
 
   render() {
@@ -105,5 +115,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { registerUser }
+  { registerUser, clearErrors }
 )(withRouter(Register));

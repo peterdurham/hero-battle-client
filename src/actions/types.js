@@ -18,3 +18,4 @@ export const VOTE_ON_SUGGESTION = "VOTE_ON_SUGGESTION";
 
 export const SEND_MESSAGE = "SEND_MESSAGE";
 export const GET_MESSAGES = "GET_MESSAGES";
+export const ADD_MESSAGE = "ADD_MESSAGE";

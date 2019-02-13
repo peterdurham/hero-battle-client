@@ -122,6 +122,11 @@
   &__mythology {
     background-color: $color-foundation-purple;
   }
+  &__none {
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 0.8rem 0;
+  }
 }
 
 .TrophyCount {
@@ -177,11 +182,11 @@
     background-color: white;
     padding: 0.5rem 1rem;
     display: flex;
-
     height: 72px;
     border-radius: 2px;
     margin: 0 1rem;
     margin-bottom: 1rem;
+    align-items: center;
     &--upvote {
       height: 20px;
     }
@@ -195,10 +200,11 @@
     }
     &--name {
       font-size: 2rem;
-      line-height: 6rem;
+
       margin-left: 2rem;
-      overflow-wrap: normal;
-      overflow: hidden;
+      // overflow-wrap: normal;
+      // overflow: hidden;
+      word-wrap: break-word;
     }
   }
   &__upvote--selected {

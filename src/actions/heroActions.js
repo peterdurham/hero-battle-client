@@ -36,8 +36,8 @@ export const suggestHero = hero => dispatch => {
     )
     .catch(err =>
       dispatch({
-        type: ADD_SUGGESTION,
-        payload: null
+        type: GET_ERRORS,
+        payload: err.response.data
       })
     );
 };

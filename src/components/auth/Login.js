@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../../actions/authActions";
-import { setProfileLoading } from "../../actions/profileActions";
+import {
+  setProfileLoading,
+  getCurrentProfile
+} from "../../actions/profileActions";
 
 import TextFieldGroup from "../common/TextFieldGroup";
 
@@ -101,5 +104,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser, setProfileLoading }
+  { loginUser, setProfileLoading, getCurrentProfile }
 )(withRouter(Login));

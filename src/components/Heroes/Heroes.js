@@ -10,6 +10,8 @@ import HeroPreview from "./HeroPreview";
 import Sidenav from "./Sidenav";
 import HeroList from "./HeroList";
 
+import isEmpty from "../../utils/is-empty";
+
 class Heroes extends Component {
   state = {
     sidenavCategory: null,
@@ -51,7 +53,7 @@ class Heroes extends Component {
     const { heroes } = this.props;
 
     let formattedHeroes;
-    if (heroes.length > 0) {
+    if (!isEmpty(heroes)) {
       formattedHeroes = heroes.map(hero => {
         hero.formatted = hero.name.replace(/-|\s/g, "").toLowerCase();
         return hero;
@@ -62,7 +64,7 @@ class Heroes extends Component {
       <div className="Heroes">
         <div className="Heroes__container">
           <div>
-            {heroes.length > 0 && (
+            {!isEmpty(heroes) && (
               <Sidenav
                 selectCategory={this.selectCategory}
                 heroes={heroes}

@@ -65,6 +65,14 @@ class Trophies extends Component {
           <div className="Trophies__content">
             <table className="Trophies__table">
               <tbody>
+                {trophies.length === 0 && (
+                  <div>
+                    <div className="Trophies__none">No trophies yet...</div>
+                    <div className="Trophies__none">
+                      Vote on Battles to win up to 4 trophies per day!
+                    </div>
+                  </div>
+                )}
                 {trophies.map((battle, index) => {
                   return (
                     <tr key={index} className="Trophies__result">

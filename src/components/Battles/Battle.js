@@ -11,7 +11,6 @@ import ResultsBar from "./ResultsBar";
 
 const Battle = ({
   category,
-
   selectHero,
   heroSelected,
   auth,

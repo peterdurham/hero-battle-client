@@ -4,7 +4,12 @@ import io from "socket.io-client";
 import "../../assets/scss/main.scss";
 import isEmpty from "../../utils/is-empty";
 import { getCurrentProfile } from "../../actions/profileActions";
-import { sendMessage, getMessages } from "../../actions/chatActions";
+import { logoutUser } from "../../actions/authActions";
+import {
+  sendMessage,
+  getMessages,
+  addMessage
+} from "../../actions/chatActions";
 import dateToTime from "../../utils/dateToTime";
 
 import CreateProfile from "../Profile/CreateProfile";
@@ -30,34 +35,51 @@ class Chat extends Component {
     const addMessage = data => {
       console.log(data);
 
-      this.setState({ messages: [...this.state.messages, data] });
+      // this.setState({ messages: [...this.state.messages, data] });
 
-      const newMessage = {
-        content: this.state.message,
-        author: this.props.profile.profile.handle,
-        user: this.props.auth.user.id,
-        date: new Date()
-      };
-      this.props.sendMessage(newMessage);
+      this.props.addMessage(data);
+      // setTimeout(() => {
+      //   this.props.getMessages();
+      // }, 300);
 
+      var elem = document.getElementById("Commentbox");
+      elem.scrollTop = elem.scrollHeight;
       console.log(this.state.messages);
     };
   }
 
   componentDidMount() {
     this.props.getCurrentProfile();
+    // THIS SHOULD WORK IF YOU COMPONENTISE
+    // setTimeout(() => {
+    //   var elem = document.getElementById("Commentbox");
+    //   elem.scrollTop = elem.scrollHeight;
+    // }, 500);
+
     this.props.getMessages();
   }
+  componentDidUpdate = (lastProps, lastState) => {
+    // var elem = document.getElementById("Commentbox");
+    // elem.scrollTop = elem.scrollHeight;
+  };
+
+  // componentDidUpdate() {
+  //   var elem = document.getElementById("Commentbox");
+  //   elem.scrollTop = elem.scrollHeight;
+  // }
 
   sendMessage = ev => {
     ev.preventDefault();
+    const newMessage = {
+      content: this.state.message,
+      author: this.props.profile.profile.handle,
+      user: this.props.auth.user.id,
+      date: new Date()
+    };
     if (this.state.message) {
-      this.socket.emit("SEND_MESSAGE", {
-        content: this.state.message,
-        author: this.props.profile.profile.handle,
-        user: this.props.auth.user.id,
-        date: new Date()
-      });
+      this.socket.emit("SEND_MESSAGE", newMessage);
+
+      this.props.sendMessage(newMessage);
 
       this.setState({ message: "" });
     }
@@ -66,7 +88,7 @@ class Chat extends Component {
     this.setState({ creatingProfile: !this.state.creatingProfile });
 
   render() {
-    const { profile, toggleShow } = this.props;
+    const { profile, toggleShow, chat } = this.props;
     const time = dateToTime(new Date());
 
     return (
@@ -82,34 +104,36 @@ class Chat extends Component {
             /> */}
 
             <hr />
-            <div className="Chat__messages">
+            <div id="Commentbox">
               <div className="Chat__welcome">
                 Welcome to the chat{" "}
                 <span className="Chat__welcome--handle">
                   {profile.profile.handle}
                 </span>
               </div>
-
-              {this.state.messages.map((message, index) => {
-                return (
-                  <div className="Chat__message" key={index}>
-                    <div className="Chat__message--info">
-                      <span className="Chat__message--author">
-                        <ChatAvatar
-                          avatar={this.props.profile.profile.avatar}
-                        />
-                        {message.author}
-                      </span>{" "}
-                      <span className="Chat__message--time">({time})</span>
+              <div className="Chat__message">
+                {this.props.messages.map((message, index) => {
+                  return (
+                    <div className="Chat__message" key={index}>
+                      <div className="Chat__message--info">
+                        <span className="Chat__message--author">
+                          <ChatAvatar
+                            avatar={this.props.profile.profile.avatar}
+                          />
+                          {message.author}
+                        </span>{" "}
+                        <span className="Chat__message--time">({time})</span>
+                      </div>
+                      :
+                      <div className="Chat__message--content">
+                        &nbsp;{message.content}
+                      </div>
                     </div>
-                    :
-                    <div className="Chat__message--content">
-                      &nbsp;{message.content}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
+
             <div className="Chat__inputs">
               <textarea
                 type="text"
@@ -141,12 +165,27 @@ class Chat extends Component {
             ) : (
               <div className="Chat__profile">
                 {!profile.loading && (
-                  <button
-                    className="Chat__profile--button"
-                    onClick={() => this.props.toggleShow("CreateProfile")}
-                  >
-                    Create Profile
-                  </button>
+                  <div className="Chat__profile--buttons">
+                    <div className="Chat__profile--message">
+                      Create a profile to join chat, collect trophies, and
+                      suggest new heroes
+                    </div>
+                    <br />
+                    <button
+                      className="Chat__profile--button"
+                      onClick={() => this.props.toggleShow("CreateProfile")}
+                    >
+                      Create Profile
+                    </button>
+                    <br />
+                    <br />
+                    <button
+                      className="Chat__profile--button"
+                      onClick={this.props.logoutUser}
+                    >
+                      Logout
+                    </button>
+                  </div>
                 )}
               </div>
             )}
@@ -164,5 +203,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, sendMessage, getMessages }
+  { getCurrentProfile, sendMessage, getMessages, addMessage, logoutUser }
 )(Chat);

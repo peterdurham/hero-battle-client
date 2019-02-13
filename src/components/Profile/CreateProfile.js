@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import TextFieldGroup from "../common/TextFieldGroup";
 
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
+import { clearErrors } from "../../actions/authActions";
 import Avatar from "../Profile/Avatar";
 import "../../assets/scss/main.scss";
 class CreateProfile extends Component {
@@ -32,13 +33,35 @@ class CreateProfile extends Component {
       this.props.createProfile(profileData);
 
       setTimeout(() => {
-        this.props.getCurrentProfile();
-      }, 350);
+        if (!this.props.errors.handle) {
+          this.props.getCurrentProfile();
+        }
+      }, 1000);
     }
+
+    setTimeout(() => {
+      const { errors } = this.props;
+      if (!errors.email && !errors.password && !errors.password2) {
+        this.props.toggleShow("Register");
+        this.props.toggleShow("Login");
+      }
+    }, 1000);
   };
+
+  // if (profileData.avatar ) {
+  //   this.props.createProfile(profileData);
+
+  //   setTimeout(() => {
+  //     this.props.getCurrentProfile();
+  //   }, 350);
+  // }
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    const { errors, clearErrors } = this.props;
+    if (errors.handle) {
+      clearErrors();
+    }
   };
 
   selectAvatar = avatar => {
@@ -112,5 +135,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createProfile, getCurrentProfile }
+  { createProfile, getCurrentProfile, clearErrors }
 )(withRouter(CreateProfile));

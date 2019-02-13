@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import "../../assets/scss/main.scss";
+import isEmpty from "../../utils/is-empty";
+
+import { getCurrentProfile } from "../../actions/profileActions";
 
 import Chat from "../Chat/Chat";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
+import CreateProfile from "../Profile/CreateProfile";
 
 class Sidebar extends Component {
   state = {
@@ -13,7 +17,9 @@ class Sidebar extends Component {
     showLogin: false,
     showCreateProfile: false
   };
-
+  componentDidMount() {
+    this.props.getCurrentProfile();
+  }
   toggleShow = component => {
     if (component === "Login") {
       this.setState({ showLogin: !this.state.showLogin });
@@ -32,7 +38,7 @@ class Sidebar extends Component {
     });
 
   render() {
-    const { auth } = this.props;
+    const { auth, profile } = this.props;
     const { showLogin, showRegister } = this.state;
 
     return (
@@ -78,6 +84,7 @@ class Sidebar extends Component {
                 toggleShow={this.toggleShow}
                 clearToggles={this.clearToggles}
                 setLoading={this.setLoading}
+                loadLoginProfile={this.loadLoginProfile}
               />
             )}
             {showRegister && <Register toggleShow={this.toggleShow} />}
@@ -88,6 +95,10 @@ class Sidebar extends Component {
   }
 }
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 });
-export default connect(mapStateToProps)(Sidebar);
+export default connect(
+  mapStateToProps,
+  { getCurrentProfile }
+)(Sidebar);

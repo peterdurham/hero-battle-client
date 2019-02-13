@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { SEND_MESSAGE, GET_MESSAGES } from "./types";
+import { SEND_MESSAGE, GET_MESSAGES, ADD_MESSAGE } from "./types";
 
 // const URL = "https://safe-mesa-80973.herokuapp.com";
 const URL = "";
@@ -27,8 +27,7 @@ export const sendMessage = message => dispatch => {
     .post(`${URL}/api/chat`, message)
     .then(res =>
       dispatch({
-        type: SEND_MESSAGE,
-        payload: message
+        type: SEND_MESSAGE
       })
     )
     .catch(err =>
@@ -37,4 +36,11 @@ export const sendMessage = message => dispatch => {
         payload: err.data
       })
     );
+};
+
+export const addMessage = message => {
+  return {
+    type: ADD_MESSAGE,
+    payload: message
+  };
 };

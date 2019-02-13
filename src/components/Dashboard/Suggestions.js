@@ -3,6 +3,7 @@ import "../../assets/scss/main.scss";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCurrentProfile } from "../../actions/profileActions";
+import { clearErrors } from "../../actions/authActions";
 import {
   suggestHero,
   getSuggestions,
@@ -33,6 +34,10 @@ class Suggestions extends Component {
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    const { errors, clearErrors } = this.props;
+    if (errors.heroName || errors.category) {
+      clearErrors();
+    }
   };
 
   onSubmit = e => {
@@ -50,8 +55,14 @@ class Suggestions extends Component {
       this.props.suggestHero(suggestionData);
 
       setTimeout(() => {
-        this.props.getSuggestions();
-      }, 275);
+        if (!this.props.errors.heroName && !this.props.errors.category) {
+          this.props.getSuggestions();
+        }
+      }, 775);
+    } else {
+      let newErrors = { ...this.state.errors };
+      newErrors.category = "Please select a category";
+      this.setState({ errors: newErrors });
     }
 
     // CALL API/SUGGESTIONS route action here
@@ -354,9 +365,16 @@ const mapStateToProps = state => ({
   profile: state.profile,
   auth: state.auth,
   battles: state.battle.battles,
-  suggestions: state.hero.suggestions
+  suggestions: state.hero.suggestions,
+  errors: state.errors
 });
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, suggestHero, getSuggestions, voteOnSuggestion }
+  {
+    getCurrentProfile,
+    suggestHero,
+    getSuggestions,
+    voteOnSuggestion,
+    clearErrors
+  }
 )(Suggestions);

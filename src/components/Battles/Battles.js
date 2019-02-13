@@ -9,8 +9,8 @@ import {
   getTodaysBattles
 } from "../../actions/battleActions";
 
-import BattleRegister from "../auth/BattleRegister";
-import BattleLogin from "../auth/BattleLogin";
+import Modal from "../UI/Modal";
+import Backdrop from "../UI/Backdrop";
 import dateToString from "../../utils/dateToString";
 import "../../assets/scss/main.scss";
 
@@ -20,7 +20,8 @@ class Battles extends Component {
     battles: [],
     dateVoted: null,
     showSignup: false,
-    showLogin: false
+    showLogin: false,
+    showVoteModal: false
   };
 
   componentDidMount() {
@@ -113,6 +114,10 @@ class Battles extends Component {
       setTimeout(() => {
         this.props.getTodaysBattles();
       }, 400);
+    } else {
+      this.toggleShowModal();
+
+      console.log("please select 4 heroes to vote");
     }
   };
 
@@ -121,6 +126,9 @@ class Battles extends Component {
   };
   toggleShowSignup = () => {
     this.setState({ showSignup: !this.state.showSignup });
+  };
+  toggleShowModal = () => {
+    this.setState({ showVoteModal: !this.state.showVoteModal });
   };
 
   render() {
@@ -141,6 +149,13 @@ class Battles extends Component {
 
     return (
       <div className="Battles">
+        <Modal
+          show={this.state.showVoteModal}
+          modalClosed={this.toggleShowModal}
+        >
+          Please select 4 heroes to vote
+        </Modal>
+
         <Battle
           category="Video Games"
           selectHero={this.selectHero}
