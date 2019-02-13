@@ -4,9 +4,12 @@ import io from "socket.io-client";
 import "../../assets/scss/main.scss";
 import isEmpty from "../../utils/is-empty";
 import { getCurrentProfile } from "../../actions/profileActions";
+import { sendMessage, getMessages } from "../../actions/chatActions";
 import dateToTime from "../../utils/dateToTime";
 
 import CreateProfile from "../Profile/CreateProfile";
+
+import ChatAvatar from "./ChatAvatar";
 
 class Chat extends Component {
   constructor(props) {
@@ -26,30 +29,44 @@ class Chat extends Component {
 
     const addMessage = data => {
       console.log(data);
+
       this.setState({ messages: [...this.state.messages, data] });
+
+      const newMessage = {
+        content: this.state.message,
+        author: this.props.profile.profile.handle,
+        user: this.props.auth.user.id,
+        date: new Date()
+      };
+      this.props.sendMessage(newMessage);
+
       console.log(this.state.messages);
     };
+  }
+
+  componentDidMount() {
+    this.props.getCurrentProfile();
+    this.props.getMessages();
   }
 
   sendMessage = ev => {
     ev.preventDefault();
     if (this.state.message) {
       this.socket.emit("SEND_MESSAGE", {
+        content: this.state.message,
         author: this.props.profile.profile.handle,
-        message: this.state.message
+        user: this.props.auth.user.id,
+        date: new Date()
       });
+
       this.setState({ message: "" });
     }
   };
   toggleCreatingProfile = () =>
     this.setState({ creatingProfile: !this.state.creatingProfile });
 
-  componentDidMount() {
-    this.props.getCurrentProfile();
-  }
-
   render() {
-    const { profile } = this.props;
+    const { profile, toggleShow } = this.props;
     const time = dateToTime(new Date());
 
     return (
@@ -72,18 +89,22 @@ class Chat extends Component {
                   {profile.profile.handle}
                 </span>
               </div>
+
               {this.state.messages.map((message, index) => {
                 return (
                   <div className="Chat__message" key={index}>
                     <div className="Chat__message--info">
                       <span className="Chat__message--author">
+                        <ChatAvatar
+                          avatar={this.props.profile.profile.avatar}
+                        />
                         {message.author}
                       </span>{" "}
                       <span className="Chat__message--time">({time})</span>
                     </div>
                     :
                     <div className="Chat__message--content">
-                      &nbsp;{message.message}
+                      &nbsp;{message.content}
                     </div>
                   </div>
                 );
@@ -109,7 +130,7 @@ class Chat extends Component {
             {this.props.showCreateProfile ? (
               <div>
                 <button
-                  onClick={this.toggleCreatingProfile}
+                  onClick={() => toggleShow("CreateProfile")}
                   className="Sidebar__back"
                 >
                   <i className="fa fa-arrow-left Sidebar__back--icon" />
@@ -118,10 +139,10 @@ class Chat extends Component {
                 <CreateProfile toggleShow={this.props.toggleShow} />
               </div>
             ) : (
-              <div>
+              <div className="Chat__profile">
                 {!profile.loading && (
                   <button
-                    className="Chat__enter"
+                    className="Chat__profile--button"
                     onClick={() => this.props.toggleShow("CreateProfile")}
                   >
                     Create Profile
@@ -137,10 +158,11 @@ class Chat extends Component {
 }
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
+  messages: state.chat.messages
 });
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getCurrentProfile, sendMessage, getMessages }
 )(Chat);

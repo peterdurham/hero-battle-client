@@ -5,6 +5,8 @@ import { NavLink, Link } from "react-router-dom";
 import "../../assets/scss/main.scss";
 import { logoutUser } from "../../actions/authActions";
 import { clearCurrentProfile } from "../../actions/profileActions";
+import isEmpty from "../../utils/is-empty";
+import Versus from "../../assets/images/Versus.png";
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -14,7 +16,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { auth } = this.props;
+    const { auth, profile } = this.props;
 
     return (
       <div className="Navbar">
@@ -43,7 +45,7 @@ class Navbar extends Component {
           </NavLink>
         </div>
         <div className="Navbar__right">
-          {auth.isAuthenticated ? (
+          {auth.isAuthenticated && !isEmpty(profile.profile) ? (
             <div>
               <div className="Navbar__dropdown">
                 <NavLink
@@ -62,7 +64,7 @@ class Navbar extends Component {
                     to="/dashboard/suggestions"
                     className="dropdown-selection"
                   >
-                    Suggestions
+                    Add Heroes
                   </Link>
 
                   <Link to="/dashboard/brackets" className="dropdown-selection">
@@ -81,7 +83,10 @@ class Navbar extends Component {
               </div>
             </div>
           ) : (
-            <div>Hero battle</div>
+            <div className="Navbar__logo">
+              <span className="Navbar__logo--text">Hero Battle</span>
+              <img className="Navbar__logo--image" src={Versus} alt="logo" />
+            </div>
           )}
         </div>
       </div>

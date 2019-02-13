@@ -3,11 +3,12 @@
   color: $color-black;
   width: 30rem;
   &__header {
-    font-size: 3rem;
+    font-size: 2.4rem;
     margin: 1rem 0;
   }
   &__text {
-    font-size: 2rem;
+    font-size: 1.6rem;
+    margin: 0 2rem;
     margin-bottom: 2rem;
   }
 
@@ -18,23 +19,30 @@
   &__avatars {
     display: flex;
     flex-wrap: wrap;
-    width: 30rem;
+    width: 28rem;
     margin: 0 auto;
     border: 1px solid $color-grey-5;
     background-color: white;
     padding: 1rem;
+    margin: 0 1rem;
   }
   &__avatar {
     border: 2px solid white;
   }
   &__submit {
-    padding: 0.7rem 1.4rem;
-    font-size: 2.4rem;
-    border-radius: 4px;
-    margin-top: 2rem;
+    // padding: 0.7rem 1.4rem;
+    // font-size: 2.4rem;
+    // border-radius: 4px;
+    // margin-top: 2rem;
+    background-color: $color-grey-6;
+    padding: 0.9rem 1.8rem;
+    border: 1px solid $color-grey-3;
+    border-radius: 2px;
+    margin: 2rem 0;
+    cursor: pointer;
   }
   &__selected {
-    border: 2px solid $color-red-dark;
+    border: 2px solid $color-material-indigo;
     border-radius: 4px;
   }
 
@@ -44,6 +52,6 @@
 }
 
 .Avatar {
-  height: 8.8rem;
-  width: 8.8rem;
+  height: 8.2rem;
+  width: 8.2rem;
 }

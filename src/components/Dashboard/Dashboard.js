@@ -25,8 +25,6 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
 
-    let profileCreated = !isEmpty(this.props.profile.profile);
-
     let dashboardContent;
 
     // .filter(battle => battle.date === formatted)
@@ -40,7 +38,7 @@ class Dashboard extends Component {
       // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
-          <div className="Dashboard">
+          <div className="Dashboard__display">
             <ProfileDisplay
               handle={this.props.profile.profile.handle}
               avatar={this.props.profile.profile.avatar}
@@ -70,21 +68,18 @@ class Dashboard extends Component {
 
     return (
       <div className="Dashboard">
+        {dashboardContent}
         <div className="Dashboard__nav">
           <Link to="/dashboard/trophies" className="Dashboard__navlink">
             Trophies
           </Link>
           <Link to="/dashboard/suggestions" className="Dashboard__navlink">
-            Suggestions
+            Add Heroes
           </Link>
           <Link to="/dashboard/brackets" className="Dashboard__navlink">
             Brackets
           </Link>
         </div>
-
-        {dashboardContent}
-        {/* if profile is empty (not created) dont show dash. this.props.profile.profile should be a {} */}
-        {profileCreated && <h1 className="Dashboard__title">Dashboard</h1>}
       </div>
     );
   }

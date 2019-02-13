@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getCurrentProfile } from "../../actions/profileActions";
 
 import Spinner from "../common/Spinner";
-import ProfileDisplay from "./ProfileDisplay";
+
 import "../../assets/scss/main.scss";
 class Brackets extends Component {
   componentDidMount() {
@@ -16,21 +16,17 @@ class Brackets extends Component {
     const { profile, loading } = this.props.profile;
 
     let bracketsContent;
-    let profileContent;
+
     if (profile === null || loading) {
       bracketsContent = <Spinner />;
     } else {
       // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
-        profileContent = (
-          <ProfileDisplay
-            handle={this.props.profile.profile.handle}
-            avatar={this.props.profile.profile.avatar}
-          />
-        );
         bracketsContent = (
-          <div className="Dashboard">
-            <div>Brackets</div>
+          <div className="Brackets__content">
+            <div className="Brackets__welcome">
+              Bracket competitions coming soon!!!
+            </div>
           </div>
         );
       } else {
@@ -51,17 +47,11 @@ class Brackets extends Component {
     return (
       <div className="Brackets">
         <div className="Dashboard__nav">
-          <Link to="/dashboard/trophies" className="Dashboard__navlink">
-            Trophies
-          </Link>
-          <Link to="/dashboard/suggestions" className="Dashboard__navlink">
-            Suggestions
-          </Link>
-          <Link to="/dashboard/brackets" className="Dashboard__navlink">
-            Brackets
+          <Link to="/dashboard" className="Dashboard__navlink">
+            Back to Profile
           </Link>
         </div>
-        <div>{profileContent}</div>
+
         <div className="Dashboard__title">Brackets</div>
         <div>{bracketsContent}</div>
       </div>

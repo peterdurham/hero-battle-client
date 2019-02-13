@@ -53,7 +53,7 @@ class BattleHistory extends Component {
 
     return (
       <div className="BattleHistory">
-        <div className="BattleHistory__title">Battle History</div>
+        {/* <div className="BattleHistory__title">Battle History</div> */}
         <div className="BattleHistory__label">Yesterday's Battles: </div>
         <div className="BattleHistory__day">
           {battle1.map(battle => (

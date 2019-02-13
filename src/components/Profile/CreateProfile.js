@@ -33,7 +33,7 @@ class CreateProfile extends Component {
 
       setTimeout(() => {
         this.props.getCurrentProfile();
-      }, 100);
+      }, 350);
     }
   };
 
@@ -60,8 +60,8 @@ class CreateProfile extends Component {
       <div className="CreateProfile">
         <h1 className="CreateProfile__header">Create Your Profile</h1>
         <p className="CreateProfile__text">
-          Select a unique handle and avatar for access to chat, trophies,
-          suggestions and more
+          Select a unique handle and avatar for access to chat, trophies, new
+          heroes and more
         </p>
 
         <form onSubmit={this.onSubmit}>

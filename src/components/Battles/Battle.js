@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import dateToString from "../../utils/dateToString";
+
 import PropTypes from "prop-types";
 
 import "../../assets/scss/main.scss";
@@ -11,14 +11,12 @@ import ResultsBar from "./ResultsBar";
 
 const Battle = ({
   category,
-  battles,
+
   selectHero,
   heroSelected,
   auth,
   todaysBattles
 }) => {
-  const date = new Date();
-  const formatted = dateToString(date);
   let battleContent;
   let currentBattle;
   let userId = auth.user.id;
@@ -125,13 +123,11 @@ const Battle = ({
 };
 Battle.propTypes = {
   category: PropTypes.string.isRequired,
-  battles: PropTypes.array,
   selectHero: PropTypes.func.isRequired,
   heroSelected: PropTypes.number.isRequired,
   dateVoted: PropTypes.string
 };
 const mapStateToProps = state => ({
-  battles: state.battle.battles,
   auth: state.auth,
   todaysBattles: state.battle.todaysBattles
 });

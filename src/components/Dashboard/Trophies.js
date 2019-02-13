@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getCurrentProfile } from "../../actions/profileActions";
 import { getBattles } from "../../actions/battleActions";
 import Spinner from "../common/Spinner";
-import ProfileDisplay from "./ProfileDisplay";
+
 import Emoji from "../common/Emoji";
 import dateToString from "../../utils/dateToString";
 import "../../assets/scss/main.scss";
@@ -55,22 +55,14 @@ class Trophies extends Component {
         });
     }
     let trophiesContent;
-    let profileContent;
 
     if (profile === null || loading) {
       trophiesContent = <Spinner />;
     } else {
       // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
-        profileContent = (
-          <ProfileDisplay
-            handle={this.props.profile.profile.handle}
-            avatar={this.props.profile.profile.avatar}
-          />
-        );
-
         trophiesContent = (
-          <div className="Trophies">
+          <div className="Trophies__content">
             <table className="Trophies__table">
               <tbody>
                 {trophies.map((battle, index) => {
@@ -152,17 +144,11 @@ class Trophies extends Component {
     return (
       <div className="Trophies">
         <div className="Dashboard__nav">
-          <Link to="/dashboard/trophies" className="Dashboard__navlink">
-            Trophies
-          </Link>
-          <Link to="/dashboard/suggestions" className="Dashboard__navlink">
-            Suggestions
-          </Link>
-          <Link to="/dashboard/brackets" className="Dashboard__navlink">
-            Brackets
+          <Link to="/dashboard" className="Dashboard__navlink">
+            Back to Profile
           </Link>
         </div>
-        <div>{profileContent}</div>
+
         <div className="Dashboard__title">Trophies</div>
 
         <div>{trophiesContent}</div>

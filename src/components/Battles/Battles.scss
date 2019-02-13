@@ -15,12 +15,13 @@
   }
   &__votesection {
     text-align: center;
-    margin-top: 1.5rem;
+    height: 7.6rem;
   }
   &__votebutton {
-    padding: 1.5rem 3rem;
+    margin: 1.2rem 0;
     font-size: 2.4rem;
     border-radius: 4px;
+    height: 5.2rem;
   }
 
   &__link {
@@ -57,11 +58,10 @@
   &__voted {
     text-align: center;
     font-size: 2.4rem;
-    color: $color-black;
-    margin-top: 1rem;
+    line-height: 7.4rem;
     &--text {
       font-size: 2rem;
-      margin-top: 1rem;
+      line-height: 7.4rem;
     }
   }
   &__BattleLogin {

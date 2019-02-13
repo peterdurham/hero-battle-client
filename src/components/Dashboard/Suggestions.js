@@ -48,6 +48,10 @@ class Suggestions extends Component {
 
     if (this.state.category !== "0" && this.state.category) {
       this.props.suggestHero(suggestionData);
+
+      setTimeout(() => {
+        this.props.getSuggestions();
+      }, 275);
     }
 
     // CALL API/SUGGESTIONS route action here
@@ -75,14 +79,8 @@ class Suggestions extends Component {
     } else {
       // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
-        profileContent = (
-          <ProfileDisplay
-            handle={this.props.profile.profile.handle}
-            avatar={this.props.profile.profile.avatar}
-          />
-        );
         suggestionsContent = (
-          <div className="Suggestions">
+          <div className="Suggestions__content">
             <form onSubmit={this.onSubmit} className="Suggestions__form">
               <SelectListGroup
                 placeholder="Category"
@@ -341,17 +339,11 @@ class Suggestions extends Component {
     return (
       <div className="Suggestions">
         <div className="Dashboard__nav">
-          <Link to="/dashboard/trophies" className="Dashboard__navlink">
-            Trophies
-          </Link>
-          <Link to="/dashboard/suggestions" className="Dashboard__navlink">
-            Suggestions
-          </Link>
-          <Link to="/dashboard/brackets" className="Dashboard__navlink">
-            Brackets
+          <Link to="/dashboard" className="Dashboard__navlink">
+            Back to Profile
           </Link>
         </div>
-        <div>{profileContent}</div>
+
         <div className="Dashboard__title">Hero Suggestions</div>
         <div>{suggestionsContent}</div>
       </div>

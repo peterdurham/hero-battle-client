@@ -1,8 +1,8 @@
 .BattleHistory {
+  border: 1px solid $color-black;
   width: 90rem;
-
-  background-color: white;
-  color: $color-black;
+  height: 82rem;
+  overflow-y: scroll;
   text-align: center;
   &__title {
     font-size: 4rem;

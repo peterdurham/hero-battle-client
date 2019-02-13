@@ -7,9 +7,18 @@
     font-size: 2rem;
     padding: 0.5rem;
   }
+  &__profile {
+    text-align: center;
+    margin-top: 4rem;
+
+    &--button {
+    }
+  }
+
   &__messages {
     height: 64.2rem;
     margin: 1rem;
+    overflow-y: scroll;
   }
   &__message {
     margin-bottom: 1rem;
@@ -72,4 +81,10 @@
     color: white;
     border: none;
   }
+}
+
+.ChatAvatar {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: -0.4rem;
 }
