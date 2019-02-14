@@ -8,6 +8,12 @@
   width: 30rem;
   border-left: none;
   height: 82rem;
+  @include respond(tab-land) {
+    height: 76rem;
+  }
+  @include respond(tab-port) {
+    width: 25rem;
+  }
   &__header {
     font-size: 2rem;
     padding: 0.5rem;
@@ -42,6 +48,9 @@
       margin-bottom: 1rem;
       width: 280px;
       word-wrap: break-word;
+      @include respond(tab-port) {
+        width: 250px;
+      }
     }
   }
   &__welcome {

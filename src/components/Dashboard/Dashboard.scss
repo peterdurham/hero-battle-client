@@ -2,6 +2,10 @@
   height: 82rem;
   width: 90rem;
   border: 1px solid $color-black;
+  @include respond(tab-land) {
+    height: 76rem;
+    width: 72rem;
+  }
 
   &__title {
     font-size: 3.6rem;
@@ -87,6 +91,12 @@
   height: 82rem;
   border: 1px solid $color-black;
   overflow-y: scroll;
+  @include respond(tab-land) {
+    height: 76rem;
+    width: 72rem;
+  }
+  @include respond(tab-port) {
+  }
   &__result {
     font-size: 2rem;
     text-align: center;
@@ -134,6 +144,12 @@
   height: 82rem;
   border: 1px solid $color-black;
   overflow-y: scroll;
+  @include respond(tab-land) {
+    height: 76rem;
+    width: 72rem;
+  }
+  @include respond(tab-port) {
+  }
   &__form {
     width: 40rem;
     margin: 0 auto;
@@ -145,7 +161,11 @@
     color: $color-black;
     font-size: 2.4rem;
   }
-
+  &__message {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
   &__icon {
     height: 20px;
     font-size: 20px;
@@ -173,6 +193,12 @@
     margin: 0 1rem;
     margin-bottom: 1rem;
     align-items: center;
+    @include respond(tab-land) {
+      width: 17rem;
+    }
+    @include respond(tab-port) {
+      width: 14rem;
+    }
     &--upvote {
       height: 20px;
     }
@@ -197,10 +223,12 @@
     color: rgb(41, 122, 198);
   }
   &__submit {
+    background-color: $color-grey-6;
     padding: 0.7rem 1.4rem;
-    font-size: 2rem;
-    border-radius: 4px;
+    border: 1px solid $color-grey-3;
+    border-radius: 2px;
     margin: 1rem 0;
+    cursor: pointer;
   }
 }
 
@@ -208,6 +236,12 @@
   width: 90rem;
   height: 82rem;
   border: 1px solid $color-black;
+  @include respond(tab-land) {
+    height: 76rem;
+    width: 72rem;
+  }
+  @include respond(tab-port) {
+  }
   &__welcome {
     text-align: center;
     font-size: 2rem;

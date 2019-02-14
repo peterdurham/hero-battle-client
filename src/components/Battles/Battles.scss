@@ -1,25 +1,46 @@
 .Battles {
-  width: 900px;
+  width: 90rem;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
   height: 82rem;
   color: $color-black;
 
+  @include respond(tab-land) {
+    width: 70rem;
+    height: 76rem;
+  }
+  @include respond(tab-port) {
+    width: 50rem;
+  }
   &__votesection {
     text-align: center;
     height: 7.6rem;
   }
+
   &__votebutton {
     margin: 1.2rem 0;
     font-size: 2.4rem;
     border-radius: 4px;
     height: 5.2rem;
+    @include respond(tab-land) {
+      margin: 1.7rem 0;
+      font-size: 2rem;
+      height: 4.2rem;
+    }
+    @include respond(tab-port) {
+      margin: 1.7rem 0;
+      font-size: 2rem;
+      height: 4.2rem;
+    }
   }
   &__voted {
     text-align: center;
     font-size: 2.4rem;
     line-height: 7.4rem;
+    @include respond(tab-port) {
+      font-size: 1.6rem;
+    }
     &--text {
       font-size: 2rem;
       line-height: 7.4rem;
@@ -31,30 +52,60 @@
   width: 90rem;
   position: relative;
   display: flex;
+  align-items: center;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid $color-black;
+
+  @include respond(tab-land) {
+    width: 70rem;
+    height: 17rem;
+  }
+  @include respond(tab-port) {
+    width: 50rem;
+  }
   &__category {
     position: absolute;
     font-size: 2rem;
     top: 0.5rem;
     left: 1rem;
     font-weight: bold;
+    @include respond(tab-land) {
+      font-size: 1.6rem;
+    }
   }
   &__hero1 {
     display: flex;
     justify-content: space-around;
     width: 40rem;
+    @include respond(tab-land) {
+      width: 30rem;
+    }
+    @include respond(tab-port) {
+      width: 22rem;
+    }
   }
   &__hero2 {
     display: flex;
     justify-content: space-around;
     width: 40rem;
+    @include respond(tab-land) {
+      width: 30rem;
+    }
+    @include respond(tab-port) {
+      width: 22rem;
+    }
   }
   &__heroName {
     font-size: 2.4rem;
     margin-top: 0.5rem;
     color: $color-black;
+    @include respond(tab-land) {
+      font-size: 1.8rem;
+    }
+    @include respond(tab-port) {
+      font-size: 1.6rem;
+    }
   }
   &__hero {
     border: 1px solid $color-grey-5;
@@ -65,27 +116,70 @@
     width: 12.5rem;
     margin: 0.9rem 0.4rem;
     box-shadow: 1px 2px 4px $color-grey-5;
+
+    @include respond(tab-land) {
+      width: 11rem;
+    }
+    @include respond(tab-port) {
+      width: 9rem;
+      height: 12rem;
+      margin: 0.4rem;
+    }
   }
   &__hero1details {
     width: 26rem;
     text-align: center;
     padding-right: 1rem;
     padding-top: 3rem;
+    @include respond(tab-land) {
+      width: 17.5rem;
+      padding-right: 0;
+    }
+    @include respond(tab-port) {
+      width: 11rem;
+    }
   }
 
   &__hero1image {
     width: 13.5rem;
     height: 17.5rem;
+    @include respond(tab-land) {
+      width: 12rem;
+      height: 15rem;
+    }
+    @include respond(tab-port) {
+      width: 9rem;
+      height: 12rem;
+    }
   }
   &__hero2image {
     width: 13.5rem;
     height: 17.5rem;
+    @include respond(tab-land) {
+      width: 12rem;
+      height: 15rem;
+    }
+    @include respond(tab-port) {
+      width: 9rem;
+      height: 12rem;
+    }
   }
   &__versus {
     padding: 4rem 1rem;
-
+    @include respond(tab-land) {
+      padding: 1rem;
+    }
+    @include respond(tab-port) {
+      padding: 0.5rem;
+    }
     &--image {
       height: 8rem;
+      @include respond(tab-land) {
+        height: 7rem;
+      }
+      @include respond(tab-port) {
+        height: 5rem;
+      }
     }
   }
   &__hero2details {
@@ -93,11 +187,24 @@
     text-align: center;
     padding-left: 1rem;
     padding-top: 3rem;
+    @include respond(tab-land) {
+      width: 17.5rem;
+      padding-left: 0;
+    }
+    @include respond(tab-port) {
+      width: 11rem;
+    }
   }
 
   &__selected {
     border: 5px solid $color-material-indigo;
     margin: 0.4rem;
+    @include respond(tab-port) {
+      width: 9rem;
+      height: 12rem;
+      padding: 0.4rem;
+      margin: 0;
+    }
   }
 
   &__results {
@@ -111,11 +218,23 @@
     width: 20rem;
     margin: 0.5rem auto;
     font-size: 1.6rem;
+    @include respond(tab-land) {
+      width: 14rem;
+    }
+    @include respond(tab-port) {
+      width: 9rem;
+    }
   }
   &__hero2results {
     width: 20rem;
     margin: 0.5rem auto;
     font-size: 1.6rem;
+    @include respond(tab-land) {
+      width: 14rem;
+    }
+    @include respond(tab-port) {
+      width: 9rem;
+    }
   }
   &__votes {
     margin-top: 1rem;
@@ -140,7 +259,13 @@
   border-radius: 1.6rem;
   border: 1px solid #333;
   animation: expandWidth 0.7s ease-in-out;
-
+  @include respond(tab-land) {
+    width: 14rem;
+    height: 2.5rem;
+  }
+  @include respond(tab-port) {
+    width: 9rem;
+  }
   &__progress {
     height: 100%;
     border-radius: inherit;

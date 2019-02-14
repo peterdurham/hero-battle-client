@@ -15,44 +15,50 @@ import dateToTime from "../../utils/dateToTime";
 import CreateProfile from "../CreateProfile/CreateProfile";
 import ChatAvatar from "./ChatAvatar";
 
+const URL = "localhost:5000";
+// const URL = "https://safe-mesa-80973.herokuapp.com";
+
 class Chat extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: "",
-      message: "",
-      messages: []
-    };
-
-    this.socket = io("localhost:5000");
-
-    this.socket.on("RECEIVE_MESSAGE", function(data) {
-      addMessage(data);
-    });
-
-    const addMessage = data => {
-      this.props.addMessage(data);
-      var elem = document.getElementById("Commentbox");
-      elem.scrollTop = elem.scrollHeight;
-    };
-  }
+  state = {
+    username: "",
+    message: "",
+    messages: []
+  };
 
   componentDidMount() {
+    this.socket = io(URL);
+
+    // INCOMING WEBSOCKETS DATA
+    // this.socket.on("RECEIVE_MESSAGE", function(data) {
+
+    // });
+
     this.props.getCurrentProfile();
     this.props.getMessages();
   }
+  componentDidUpdate = (nextProps, prevProps) => {
+    if (
+      this.props.messages.length !== nextProps.messages.length &&
+      !isEmpty(this.props.profile.profile)
+    ) {
+      var elem = document.getElementById("Commentbox");
+      elem.scrollTop = elem.scrollHeight;
+    }
+  };
 
   sendMessage = ev => {
     ev.preventDefault();
+    const { message } = this.state;
+
     const newMessage = {
-      content: this.state.message,
+      content: message,
       author: this.props.profile.profile.handle,
       avatar: this.props.profile.profile.avatar,
       user: this.props.auth.user.id,
       date: new Date()
     };
-    if (this.state.message) {
+
+    if (message && message.length > 2) {
       this.socket.emit("SEND_MESSAGE", newMessage);
       this.props.sendMessage(newMessage);
       this.setState({ message: "" });
@@ -69,7 +75,7 @@ class Chat extends Component {
       <div>
         {!isEmpty(profile.profile) ? (
           <div className="Chat">
-            <div className="Chat__header">Global Chat</div>
+            <div className="Chat__header">Chat</div>
             <hr />
             <div id="Commentbox">
               <div className="Chat__welcome">

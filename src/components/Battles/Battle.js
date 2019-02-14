@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import PropTypes from "prop-types";
 
 import "../../assets/scss/main.scss";
@@ -45,7 +44,7 @@ const Battle = ({
     );
 
     const categoryFormatted = category.replace(/-|\s/g, "").toLowerCase();
-    const battleClass = `Battle__${categoryFormatted} + Battle`;
+    const battleClass = `Battle__${categoryFormatted} Battle`;
 
     battleContent = (
       <div className={battleClass}>
@@ -124,7 +123,8 @@ Battle.propTypes = {
   category: PropTypes.string.isRequired,
   selectHero: PropTypes.func.isRequired,
   heroSelected: PropTypes.number.isRequired,
-  dateVoted: PropTypes.string
+  auth: PropTypes.object.isRequired,
+  todaysBattles: PropTypes.array
 };
 const mapStateToProps = state => ({
   auth: state.auth,

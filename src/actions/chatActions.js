@@ -27,7 +27,8 @@ export const sendMessage = message => dispatch => {
     .post(`${URL}/api/chat`, message)
     .then(res =>
       dispatch({
-        type: SEND_MESSAGE
+        type: SEND_MESSAGE,
+        payload: message
       })
     )
     .catch(err =>

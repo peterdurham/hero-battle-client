@@ -1,6 +1,7 @@
 import React from "react";
 import "../../assets/scss/main.scss";
 import PropTypes from "prop-types";
+
 import Swordsman from "../../assets/images/avatars/Swordsman.png";
 import Assassin from "../../assets/images/avatars/Assassin.png";
 import Elf from "../../assets/images/avatars/Elf.png";

@@ -6,6 +6,14 @@
   width: 10.5rem;
   height: 14rem;
   border-radius: 1px;
+  @include respond(tab-land) {
+    width: 9rem;
+    height: 12rem;
+  }
+  @include respond(tab-port) {
+    width: 8rem;
+    height: 10.5rem;
+  }
 }
 
 .Profile {

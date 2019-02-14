@@ -3,6 +3,13 @@
   height: 82rem;
   border: 1px solid $color-black;
   border-left: none;
+  @include respond(tab-land) {
+    height: 76rem;
+  }
+  @include respond(tab-port) {
+    width: 25rem;
+  }
+
   &__welcome {
     padding: 0 2rem;
     width: 30rem;
@@ -52,7 +59,16 @@
   color: $color-black;
   height: 4.2rem;
   line-height: 4.2rem;
-  padding: 0 20rem;
+  padding: 0 25rem;
+  @include respond(tab-land) {
+    height: 4rem;
+    line-height: 3.6rem;
+    padding: 0 10rem;
+  }
+  @include respond(tab-port) {
+    line-height: 3.6rem;
+    padding: 0 4rem;
+  }
   &__left {
   }
   &__right {

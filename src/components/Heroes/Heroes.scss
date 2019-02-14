@@ -1,10 +1,16 @@
 .Heroes {
-  min-height: 100vh;
   &__container {
     display: flex;
     width: 90rem;
+    height: 82rem;
     min-height: 100vh;
     margin: 0 auto;
+    @include respond(tab-land) {
+      height: 76rem;
+      width: 72rem;
+    }
+    @include respond(tab-port) {
+    }
   }
 }
 
@@ -16,7 +22,12 @@
   height: 82rem;
   border: 1px solid $color-black;
   border-right: none;
-
+  @include respond(tab-land) {
+    height: 76rem;
+    width: 22rem;
+  }
+  @include respond(tab-port) {
+  }
   &__title {
     font-size: 3.6rem;
     text-align: center;
@@ -59,7 +70,7 @@
   }
   &__hero {
     &--selected {
-      background-color: rgb(240, 240, 240);
+      background-color: $color-grey-6;
       margin-left: 1rem;
       padding-left: -1rem;
     }
@@ -82,21 +93,18 @@
     padding: 1rem;
     border: 1px solid $color-black;
     height: 82rem;
+    @include respond(tab-land) {
+      height: 76rem;
+      width: 50rem;
+    }
+    @include respond(tab-port) {
+    }
   }
   &__label {
     font-size: 2.4rem;
     margin-bottom: 0.5rem;
   }
-  // &__all {
-  //   font-size: 2.4rem;
-  //   text-align: left;
-  //   margin-top: 2rem;
-  //   color: $color-black;
-  //   margin-bottom: -1rem;
-  //   border-bottom: 1px solid $color-black;
-  //   display: inline-block;
-  //   margin-left: 2rem;
-  // }
+
   &__heroes {
     display: flex;
     flex-wrap: wrap;
@@ -116,30 +124,70 @@
     font-size: 1.4rem;
     color: $color-black;
     box-shadow: 1px 2px 4px $color-grey-5;
+    @include respond(tab-land) {
+      width: 10.9rem;
+      height: 16.9rem;
+      margin: 0 0.5rem;
+      margin-bottom: 1rem;
+    }
+    @include respond(tab-port) {
+      width: 10.9rem;
+      height: 16.7rem;
+      margin: 0 0.5rem;
+      margin-bottom: 1rem;
+    }
   }
 }
 
 .HeroDetails {
   padding: 2rem 3rem;
-
   border: 1px solid $color-black;
   height: 82rem;
 
+  @include respond(tab-land) {
+    height: 76rem;
+  }
+  @include respond(tab-port) {
+  }
   &__name {
     font-size: 4rem;
     margin-bottom: 1rem;
+    @include respond(tab-land) {
+      font-size: 3.6rem;
+      margin-bottom: 0.5rem;
+    }
+    @include respond(tab-port) {
+      font-size: 2.8rem;
+    }
   }
   &__from {
     font-size: 2.4rem;
     margin-bottom: 1rem;
+    @include respond(tab-land) {
+      font-size: 2rem;
+    }
+    @include respond(tab-port) {
+      font-size: 1.6rem;
+    }
   }
   &__category {
     font-size: 2rem;
     margin: 1rem 0;
+    @include respond(tab-land) {
+      font-size: 1.8rem;
+    }
+    @include respond(tab-port) {
+      font-size: 1.4rem;
+    }
   }
   &__description {
     font-size: 1.6rem;
     margin-bottom: 2rem;
+    @include respond(tab-land) {
+      font-size: 1.5rem;
+    }
+    @include respond(tab-port) {
+    }
   }
   &__section {
   }
@@ -152,6 +200,12 @@
   padding: 2rem 2rem;
 
   text-align: center;
+
+  @include respond(tab-land) {
+    height: 76rem;
+  }
+  @include respond(tab-port) {
+  }
   &__header {
     font-size: 2.4rem;
     margin-bottom: 2rem;

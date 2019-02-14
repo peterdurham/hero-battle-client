@@ -44,18 +44,31 @@ class Suggestions extends Component {
     e.preventDefault();
     const date = new Date();
     const formatted = dateToString(date);
+
+    let suggestedToday = [];
+    if (Object.keys(this.props.profile).length > 0) {
+      suggestedToday = this.props.suggestions.filter(
+        item => item.date === formatted && item.user === this.props.auth.user.id
+      );
+    }
+
     const suggestionData = {
       category: this.state.category,
       heroName: this.state.heroName,
       user: this.props.auth.user.id,
-      date: formatted
+      date: formatted,
+      suggestedToday
     };
 
     if (this.state.category !== "0" && this.state.category) {
       this.props.suggestHero(suggestionData);
 
       setTimeout(() => {
-        if (!this.props.errors.heroName && !this.props.errors.category) {
+        if (
+          !this.props.errors.heroName &&
+          !this.props.errors.category &&
+          !this.props.errors.alreadySubmitted
+        ) {
           this.props.getSuggestions();
         }
       }, 775);
@@ -88,6 +101,9 @@ class Suggestions extends Component {
       if (Object.keys(profile).length > 0) {
         suggestionsContent = (
           <div className="Suggestions__content">
+            <div className="Suggestions__message">
+              (One hero suggestion allowed per day)
+            </div>
             <form onSubmit={this.onSubmit} className="Suggestions__form">
               <SelectListGroup
                 placeholder="Category"
