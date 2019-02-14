@@ -4,8 +4,7 @@ import jwt_decode from "jwt-decode";
 
 import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS } from "./types";
 
-// const URL = "https://safe-mesa-80973.herokuapp.com";
-const URL = "";
+const URL = "https://safe-mesa-80973.herokuapp.com";
 
 export const registerUser = userData => dispatch => {
   axios

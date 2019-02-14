@@ -2,8 +2,7 @@ import axios from "axios";
 
 import { GET_BATTLES, SUBMIT_VOTE, GET_TODAYS_BATTLES } from "./types";
 
-// const URL = "https://safe-mesa-80973.herokuapp.com";
-const URL = "";
+const URL = "https://safe-mesa-80973.herokuapp.com";
 
 export const getBattles = () => dispatch => {
   axios

@@ -15,8 +15,7 @@ import dateToTime from "../../utils/dateToTime";
 import CreateProfile from "../CreateProfile/CreateProfile";
 import ChatAvatar from "./ChatAvatar";
 
-const URL = "localhost:5000";
-// const URL = "https://safe-mesa-80973.herokuapp.com";
+const URL = "https://safe-mesa-80973.herokuapp.com";
 
 class Chat extends Component {
   state = {

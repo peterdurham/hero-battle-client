@@ -8,8 +8,7 @@ import {
   GET_PROFILES
 } from "./types";
 
-// const URL = "https://safe-mesa-80973.herokuapp.com";
-const URL = "";
+const URL = "https://safe-mesa-80973.herokuapp.com";
 
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());

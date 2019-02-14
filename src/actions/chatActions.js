@@ -2,8 +2,7 @@ import axios from "axios";
 
 import { SEND_MESSAGE, GET_MESSAGES, ADD_MESSAGE } from "./types";
 
-// const URL = "https://safe-mesa-80973.herokuapp.com";
-const URL = "";
+const URL = "https://safe-mesa-80973.herokuapp.com";
 
 export const getMessages = () => dispatch => {
   axios
