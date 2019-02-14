@@ -3,22 +3,16 @@ import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
 import Battle from "./Battle";
-import {
-  getBattles,
-  submitVote,
-  getTodaysBattles
-} from "../../actions/battleActions";
+import { submitVote, getTodaysBattles } from "../../actions/battleActions";
 
 import Modal from "../UI/Modal";
-import Backdrop from "../UI/Backdrop";
-import dateToString from "../../utils/dateToString";
+
 import "../../assets/scss/main.scss";
 
 class Battles extends Component {
   state = {
     heroSelected: [0, 0, 0, 0],
     battles: [],
-    dateVoted: null,
     showSignup: false,
     showLogin: false,
     showVoteModal: false
@@ -64,15 +58,12 @@ class Battles extends Component {
 
   voteClick = () => {
     let user;
-    if (this.props.auth.isAuthenticated) {
-      user = this.props.auth.user.id;
-    }
 
     let votes = [...this.state.heroSelected];
     let nullVotes = votes.filter(hero => hero === 0);
 
-    // add     && voted !== formatted      to the if below to enforce 1 vote per day in cache
     if (nullVotes.length === 0 && this.props.auth.isAuthenticated) {
+      user = this.props.auth.user.id;
       let updatedBattles = [...this.props.todaysBattles].map(battle => {
         if (battle.category === "Video Games") {
           if (votes[0] === 1) {
@@ -116,8 +107,6 @@ class Battles extends Component {
       }, 400);
     } else {
       this.toggleShowModal();
-
-      console.log("please select 4 heroes to vote");
     }
   };
 
@@ -132,10 +121,7 @@ class Battles extends Component {
   };
 
   render() {
-    const date = new Date();
-    const formatted = dateToString(date);
-    const { battles, auth } = this.props;
-    const { todaysBattles } = this.props;
+    const { auth, todaysBattles } = this.props;
 
     let votedToday;
 
@@ -182,7 +168,7 @@ class Battles extends Component {
           dateVoted={this.state.dateVoted}
         />
 
-        {todaysBattles && this.props.auth.isAuthenticated ? (
+        {todaysBattles && auth.isAuthenticated ? (
           <div className="Battles__votesection">
             {votedToday ? (
               <div className="Battles__voted">
@@ -210,19 +196,18 @@ class Battles extends Component {
 }
 
 Battles.propTypes = {
-  battles: PropTypes.array,
+  todaysBattles: PropTypes.array,
   auth: PropTypes.object.isRequired,
-  getBattles: PropTypes.func.isRequired,
+  getTodaysBattles: PropTypes.func.isRequired,
   submitVote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  battles: state.battle.battles,
   auth: state.auth,
   todaysBattles: state.battle.todaysBattles
 });
 
 export default connect(
   mapStateToProps,
-  { getBattles, submitVote, getTodaysBattles }
+  { submitVote, getTodaysBattles }
 )(Battles);

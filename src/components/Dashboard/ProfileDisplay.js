@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "../Profile/Avatar";
+import Avatar from "../CreateProfile/Avatar";
 
 import TrophyCount from "./TrophyCount";
 

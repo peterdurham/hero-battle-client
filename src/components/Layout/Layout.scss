@@ -62,7 +62,7 @@
     font-size: 2.4rem;
 
     padding: 0 2rem;
-    color: black;
+    color: $color-black;
   }
   &__dropdown {
     text-decoration: none;
@@ -103,7 +103,6 @@
 
 .dropbtn {
   color: white;
-
   border: none;
   cursor: pointer;
 }
@@ -136,9 +135,6 @@
 
 .Navbar__dropdown:hover .dropdown-content {
   display: block;
-}
-
-.Navbar__dropdown:hover .dropbtn {
 }
 
 .dropdown-selection {

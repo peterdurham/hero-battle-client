@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import "../../assets/scss/main.scss";
+import PropTypes from "prop-types";
 import dateToString from "../../utils/dateToString";
+
+import Emoji from "../common/Emoji";
 
 const PastBattle = ({ battleDetails, auth, battles }) => {
   const date = new Date();
@@ -43,41 +46,48 @@ const PastBattle = ({ battleDetails, auth, battles }) => {
 
   if (battleDetails.hero1votes.length > battleDetails.hero2votes.length) {
     if (battleDetails.category === "Video Games") {
-      hero1Class = " BattleHistory__videogames";
+      hero1Class = " PastBattle__videogames";
     } else if (battleDetails.category === "Movies") {
-      hero1Class = " BattleHistory__movies";
+      hero1Class = " PastBattle__movies";
     } else if (battleDetails.category === "Superheroes") {
-      hero1Class = " BattleHistory__superheroes";
+      hero1Class = " PastBattle__superheroes";
     } else if (battleDetails.category === "Mythology") {
-      hero1Class = " BattleHistory__mythology";
+      hero1Class = " PastBattle__mythology";
     }
   }
   if (battleDetails.hero2votes.length > battleDetails.hero1votes.length) {
     if (battleDetails.category === "Video Games") {
-      hero2Class = " BattleHistory__videogames";
+      hero2Class = " PastBattle__videogames";
     } else if (battleDetails.category === "Movies") {
-      hero2Class = " BattleHistory__movies";
+      hero2Class = " PastBattle__movies";
     } else if (battleDetails.category === "Superheroes") {
-      hero2Class = " BattleHistory__superheroes";
+      hero2Class = " PastBattle__superheroes";
     } else if (battleDetails.category === "Mythology") {
-      hero2Class = " BattleHistory__mythology";
+      hero2Class = " PastBattle__mythology";
     }
   }
 
   return (
-    <div key={battleDetails._id} className="BattleHistory__battle">
+    <div key={battleDetails._id} className="PastBattle__battle">
       {trophies.indexOf(battleDetails._id) > -1 && (
-        <div className="BattleHistory__emoji">🏆</div>
+        <div className="PastBattle__emoji">
+          <Emoji symbol="🏆" label="trophy" />
+        </div>
       )}
 
-      <div className={"BattleHistory__hero1" + hero1Class}>
+      <div className={"PastBattle__hero1" + hero1Class}>
         {battleDetails.hero1} {battleDetails.hero1votes.length}
       </div>
-      <div className={"BattleHistory__hero2" + hero2Class}>
+      <div className={"PastBattle__hero2" + hero2Class}>
         {battleDetails.hero2} {battleDetails.hero2votes.length}
       </div>
     </div>
   );
+};
+PastBattle.propTypes = {
+  battles: PropTypes.array.isRequired,
+  auth: PropTypes.object.isRequired,
+  battleDetails: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   battles: state.battle.battles,

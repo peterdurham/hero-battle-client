@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import PropTypes from "prop-types";
 import "../../assets/scss/main.scss";
-import isEmpty from "../../utils/is-empty";
 
 import { getCurrentProfile } from "../../actions/profileActions";
 
 import Chat from "../Chat/Chat";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
-import CreateProfile from "../Profile/CreateProfile";
 
 class Sidebar extends Component {
   state = {
@@ -38,7 +36,7 @@ class Sidebar extends Component {
     });
 
   render() {
-    const { auth, profile } = this.props;
+    const { auth } = this.props;
     const { showLogin, showRegister } = this.state;
 
     return (
@@ -79,14 +77,7 @@ class Sidebar extends Component {
                 back
               </button>
             )}
-            {showLogin && (
-              <Login
-                toggleShow={this.toggleShow}
-                clearToggles={this.clearToggles}
-                setLoading={this.setLoading}
-                loadLoginProfile={this.loadLoginProfile}
-              />
-            )}
+            {showLogin && <Login />}
             {showRegister && <Register toggleShow={this.toggleShow} />}
           </div>
         )}
@@ -94,6 +85,11 @@ class Sidebar extends Component {
     );
   }
 }
+Sidebar.propTypes = {
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired
+};
 const mapStateToProps = state => ({
   auth: state.auth,
   profile: state.profile

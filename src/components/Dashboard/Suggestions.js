@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../assets/scss/main.scss";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { getCurrentProfile } from "../../actions/profileActions";
 import { clearErrors } from "../../actions/authActions";
 import {
@@ -12,7 +13,6 @@ import {
 
 import dateToString from "../../utils/dateToString";
 import Spinner from "../common/Spinner";
-import ProfileDisplay from "./ProfileDisplay";
 import SelectListGroup from "../common/SelectListGroup";
 import TextFieldGroup from "../common/TextFieldGroup";
 
@@ -64,9 +64,6 @@ class Suggestions extends Component {
       newErrors.category = "Please select a category";
       this.setState({ errors: newErrors });
     }
-
-    // CALL API/SUGGESTIONS route action here
-    // this.props.createProfile(profileData, this.props.history);
   };
 
   render() {
@@ -84,11 +81,10 @@ class Suggestions extends Component {
     ];
 
     let suggestionsContent;
-    let profileContent;
+
     if (profile === null || loading) {
       suggestionsContent = <Spinner />;
     } else {
-      // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
         suggestionsContent = (
           <div className="Suggestions__content">
@@ -332,7 +328,6 @@ class Suggestions extends Component {
           </div>
         );
       } else {
-        // User is logged in but has no profile
         suggestionsContent = (
           <div className="Dashboard__noprofile">
             <p className="Dashboard__noprofile--welcome">Welcome {user.name}</p>
@@ -361,10 +356,20 @@ class Suggestions extends Component {
     );
   }
 }
+Suggestions.propTypes = {
+  profile: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  suggestions: PropTypes.array.isRequired,
+  errors: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  suggestHero: PropTypes.func.isRequired,
+  getSuggestions: PropTypes.func.isRequired,
+  voteOnSuggestion: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired
+};
 const mapStateToProps = state => ({
   profile: state.profile,
   auth: state.auth,
-  battles: state.battle.battles,
   suggestions: state.hero.suggestions,
   errors: state.errors
 });

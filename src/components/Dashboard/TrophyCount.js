@@ -1,7 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import "../../assets/scss/main.scss";
 
 import dateToString from "../../utils/dateToString";
+
+import Emoji from "../common/Emoji";
+
 const TrophyCount = props => {
   const { user } = props.auth;
 
@@ -42,18 +47,17 @@ const TrophyCount = props => {
   return (
     <div className="TrophyCount">
       {trophies.length}
-      {/* <span
-        className="Dashboard__emoji"
-        role="img"
-        aria-label={"trophy" ? "trophy" : ""}
-        aria-hidden={"trophy" ? "false" : "true"}
-      > */}
-      🏆
-      {/* </span> */}
+      <span className="TrophyCount__emoji">
+        <Emoji symbol="🏆" />
+      </span>
     </div>
   );
 };
-
+TrophyCount.propTypes = {
+  profile: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  battles: PropTypes.array
+};
 const mapStateToProps = state => ({
   profile: state.profile,
   auth: state.auth,

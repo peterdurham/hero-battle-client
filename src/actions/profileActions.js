@@ -10,7 +10,7 @@ import {
 
 // const URL = "https://safe-mesa-80973.herokuapp.com";
 const URL = "";
-// Get current profile
+
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -29,7 +29,6 @@ export const getCurrentProfile = () => dispatch => {
     );
 };
 
-// Get profile by handle
 export const getProfileByHandle = handle => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -48,7 +47,6 @@ export const getProfileByHandle = handle => dispatch => {
     );
 };
 
-// Create Profile
 export const createProfile = profileData => dispatch => {
   axios
     .post(`${URL}/api/profile`, profileData)
@@ -65,7 +63,6 @@ export const createProfile = profileData => dispatch => {
     );
 };
 
-// Get all profiles
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -84,14 +81,12 @@ export const getProfiles = () => dispatch => {
     );
 };
 
-// Profile loading
 export const setProfileLoading = () => {
   return {
     type: PROFILE_LOADING
   };
 };
 
-// Clear profile
 export const clearCurrentProfile = () => {
   return {
     type: CLEAR_CURRENT_PROFILE

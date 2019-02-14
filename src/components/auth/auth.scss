@@ -1,6 +1,5 @@
 .Register {
   text-align: center;
-  color: $color-black;
 
   &__header {
     font-size: 3rem;
@@ -22,7 +21,6 @@
 .Login {
   height: 30vh;
   text-align: center;
-  color: $color-black;
   width: 25rem;
   margin: 0 auto;
 
@@ -42,18 +40,4 @@
     margin: 1rem 0;
     cursor: pointer;
   }
-}
-.BattleRegister {
-  width: 37rem;
-  margin: 0 auto;
-
-  padding: 1rem 3rem;
-  border-radius: 2px;
-}
-.BattleLogin {
-  width: 37rem;
-  margin: 0 auto;
-
-  padding: 1rem 3rem;
-  border-radius: 2px;
 }

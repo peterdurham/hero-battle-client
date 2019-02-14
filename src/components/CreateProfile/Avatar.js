@@ -10,7 +10,7 @@ import Swordsman from "../../assets/images/avatars/Swordsman.png";
 import Thug from "../../assets/images/avatars/Thug.png";
 import Wizard from "../../assets/images/avatars/Wizard.png";
 
-const Avatar = ({ name, avatarSelected }) => {
+const Avatar = ({ name }) => {
   let image;
   if (name === "Elf") {
     image = <img src={Elf} alt="Elf" className={"Avatar"} />;

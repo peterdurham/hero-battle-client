@@ -4,7 +4,7 @@ import { GET_BATTLES, SUBMIT_VOTE, GET_TODAYS_BATTLES } from "./types";
 
 // const URL = "https://safe-mesa-80973.herokuapp.com";
 const URL = "";
-// Get ALL Battles
+
 export const getBattles = () => dispatch => {
   axios
     .get(`${URL}/api/battles`)
@@ -22,7 +22,6 @@ export const getBattles = () => dispatch => {
     );
 };
 
-// Get Todays Battles
 export const getTodaysBattles = () => dispatch => {
   axios
     .get(`${URL}/api/battles/today`)

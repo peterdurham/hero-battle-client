@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import "../../assets/scss/main.scss";
 import { connect } from "react-redux";
+import "../../assets/scss/main.scss";
+import PropTypes from "prop-types";
+
 import { getHeroes } from "../../actions/heroActions";
 import isEmpty from "../../utils/is-empty";
 
@@ -92,7 +94,10 @@ class HeroList extends Component {
     );
   }
 }
-
+HeroList.propTypes = {
+  heroes: PropTypes.array.isRequired,
+  getHeroes: PropTypes.func.isRequired
+};
 const mapStateToProps = state => ({
   heroes: state.hero.heroes
 });

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import "../../assets/scss/main.scss";
+import PropTypes from "prop-types";
+
 import { getCurrentProfile } from "../../actions/profileActions";
 import { getBattles } from "../../actions/battleActions";
 import Spinner from "../common/Spinner";
 
 import Emoji from "../common/Emoji";
 import dateToString from "../../utils/dateToString";
-import "../../assets/scss/main.scss";
 
 class Trophies extends Component {
   componentDidMount() {
@@ -63,22 +65,22 @@ class Trophies extends Component {
       if (Object.keys(profile).length > 0) {
         trophiesContent = (
           <div className="Trophies__content">
+            {trophies.length === 0 && (
+              <div>
+                <div className="Trophies__none">No trophies yet...</div>
+                <div className="Trophies__none">
+                  Vote on Battles to win up to 4 trophies per day!
+                </div>
+              </div>
+            )}
             <table className="Trophies__table">
               <tbody>
-                {trophies.length === 0 && (
-                  <div>
-                    <div className="Trophies__none">No trophies yet...</div>
-                    <div className="Trophies__none">
-                      Vote on Battles to win up to 4 trophies per day!
-                    </div>
-                  </div>
-                )}
                 {trophies.map((battle, index) => {
                   return (
                     <tr key={index} className="Trophies__result">
-                      <div className="Trophies__icon">
+                      <td className="Trophies__icon">
                         <Emoji symbol="🏆" />
-                      </div>
+                      </td>
                       <td className="Trophies__result--date">{battle.date}</td>
                       <td
                         className={
@@ -134,7 +136,6 @@ class Trophies extends Component {
           </div>
         );
       } else {
-        // User is logged in but has no profile
         trophiesContent = (
           <div className="Dashboard__noprofile">
             <p className="Dashboard__noprofile--welcome">Welcome {user.name}</p>
@@ -164,6 +165,13 @@ class Trophies extends Component {
     );
   }
 }
+Trophies.propTypes = {
+  profile: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  battles: PropTypes.array,
+  getBattles: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired
+};
 const mapStateToProps = state => ({
   profile: state.profile,
   auth: state.auth,

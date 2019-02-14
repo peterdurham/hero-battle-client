@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
 import PropTypes from "prop-types";
+import "../../assets/scss/main.scss";
 import { connect } from "react-redux";
+
 import { getCurrentProfile } from "../../actions/profileActions";
 import { getBattles } from "../../actions/battleActions";
-import Spinner from "../common/Spinner";
-import isEmpty from "../../utils/is-empty";
-import "../../assets/scss/main.scss";
 
+import Spinner from "../common/Spinner";
 import ProfileDisplay from "./ProfileDisplay";
 
 class Dashboard extends Component {
@@ -27,15 +26,9 @@ class Dashboard extends Component {
 
     let dashboardContent;
 
-    // .filter(battle => battle.date === formatted)
-    // .map(item => item.hero1votes.concat(item.hero2votes))
-    // .reduce((votes, battle) => votes.concat(battle))
-    // .indexOf(auth.user.id) > -1;
-
     if (profile === null || loading) {
       dashboardContent = <Spinner />;
     } else {
-      // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <div className="Dashboard__display">
@@ -46,7 +39,6 @@ class Dashboard extends Component {
           </div>
         );
       } else {
-        // User is logged in but has no profile
         dashboardContent = (
           <div className="Dashboard__noprofile">
             <p className="Dashboard__noprofile--welcome">Welcome {user.name}</p>
@@ -89,7 +81,8 @@ Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   getBattles: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  battles: PropTypes.array
 };
 
 const mapStateToProps = state => ({

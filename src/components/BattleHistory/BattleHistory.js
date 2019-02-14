@@ -19,95 +19,23 @@ class BattleHistory extends Component {
   }
 
   render() {
-    let battle1 = [];
-    let battle2 = [];
-    let battle3 = [];
-    let battle4 = [];
-    let battle5 = [];
-    let battle6 = [];
-    let battle7 = [];
-
+    let battleResults = [[], [], [], [], [], [], []];
     if (this.props.battles) {
-      battle1 = this.props.battles.filter(
-        battle => battle.date === this.state.pastDates[0]
-      );
-      battle2 = this.props.battles.filter(
-        battle => battle.date === this.state.pastDates[1]
-      );
-      battle3 = this.props.battles.filter(
-        battle => battle.date === this.state.pastDates[2]
-      );
-      battle4 = this.props.battles.filter(
-        battle => battle.date === this.state.pastDates[3]
-      );
-      battle5 = this.props.battles.filter(
-        battle => battle.date === this.state.pastDates[4]
-      );
-      battle6 = this.props.battles.filter(
-        battle => battle.date === this.state.pastDates[5]
-      );
-      battle7 = this.props.battles.filter(
-        battle => battle.date === this.state.pastDates[6]
-      );
+      battleResults = this.state.pastDates.map((date, index) => {
+        return this.props.battles.filter(battle => battle.date === date);
+      });
     }
 
     return (
       <div className="BattleHistory">
-        {/* <div className="BattleHistory__title">Battle History</div> */}
         <div className="BattleHistory__label">Yesterday's Battles: </div>
-        <div className="BattleHistory__day">
-          {battle1.map(battle => (
-            <PastBattle battleDetails={battle} key={battle._id} />
-          ))}
-        </div>
-        <div className="BattleHistory__label">
-          {this.state.pastDates[1]} Battles
-        </div>
-        <div className="BattleHistory__day">
-          {battle2.map(battle => (
-            <PastBattle battleDetails={battle} key={battle._id} />
-          ))}
-        </div>
-        <div className="BattleHistory__label">
-          {this.state.pastDates[2]} Battles
-        </div>
-        <div className="BattleHistory__day">
-          {battle3.map(battle => (
-            <PastBattle battleDetails={battle} key={battle._id} />
-          ))}
-        </div>
-        <div className="BattleHistory__label">
-          {this.state.pastDates[3]} Battles
-        </div>
-        <div className="BattleHistory__day">
-          {battle4.map(battle => (
-            <PastBattle battleDetails={battle} key={battle._id} />
-          ))}
-        </div>
-        <div className="BattleHistory__label">
-          {this.state.pastDates[4]} Battles
-        </div>
-        <div className="BattleHistory__day">
-          {battle5.map(battle => (
-            <PastBattle battleDetails={battle} key={battle._id} />
-          ))}
-        </div>
-        <div className="BattleHistory__label">
-          {this.state.pastDates[5]} Battles
-        </div>
-        <div className="BattleHistory__day">
-          {battle6.map(battle => (
-            <PastBattle battleDetails={battle} key={battle._id} />
-          ))}
-        </div>
-        <div className="BattleHistory__label">
-          {this.state.pastDates[6]} Battles
-        </div>
-        <div className="BattleHistory__day">
-          {battle7.map(battle => (
-            <PastBattle battleDetails={battle} key={battle._id} />
-          ))}
-        </div>
+        {battleResults.map((day, index) => (
+          <div className="BattleHistory__day" key={index}>
+            {day.map(battle => (
+              <PastBattle battleDetails={battle} key={battle._id} />
+            ))}
+          </div>
+        ))}
       </div>
     );
   }

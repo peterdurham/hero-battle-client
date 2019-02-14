@@ -7,7 +7,7 @@ import TextFieldGroup from "../common/TextFieldGroup";
 
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
 import { clearErrors } from "../../actions/authActions";
-import Avatar from "../Profile/Avatar";
+import Avatar from "./Avatar";
 import "../../assets/scss/main.scss";
 class CreateProfile extends Component {
   state = {
@@ -47,14 +47,6 @@ class CreateProfile extends Component {
       }
     }, 1000);
   };
-
-  // if (profileData.avatar ) {
-  //   this.props.createProfile(profileData);
-
-  //   setTimeout(() => {
-  //     this.props.getCurrentProfile();
-  //   }, 350);
-  // }
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -126,7 +118,9 @@ class CreateProfile extends Component {
 CreateProfile.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  createProfile: PropTypes.func.isRequired
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   profile: state.profile,

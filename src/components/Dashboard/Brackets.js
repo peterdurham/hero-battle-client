@@ -20,7 +20,6 @@ class Brackets extends Component {
     if (profile === null || loading) {
       bracketsContent = <Spinner />;
     } else {
-      // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
         bracketsContent = (
           <div className="Brackets__content">
@@ -30,7 +29,6 @@ class Brackets extends Component {
           </div>
         );
       } else {
-        // User is logged in but has no profile
         bracketsContent = (
           <div className="Dashboard__noprofile">
             <p className="Dashboard__noprofile--welcome">Welcome {user.name}</p>

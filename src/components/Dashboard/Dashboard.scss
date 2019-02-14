@@ -11,17 +11,14 @@
   }
   &__profile {
     margin: 0 auto;
-    width: 600px;
-    max-width: 600px;
+    width: 60rem;
+
     color: $color-black;
     overflow: hidden;
     border: 1px solid $color-black;
     border-radius: 4px;
     display: flex;
     margin-top: 2rem;
-
-    &--content {
-    }
     &--message {
       font-size: 2rem;
       margin-top: 1rem;
@@ -80,6 +77,9 @@
 .TrophyCount {
   margin-left: 4rem;
   line-height: 6.4rem;
+  &__emoji {
+    margin-left: 0.8rem;
+  }
 }
 
 .Trophies {
@@ -97,10 +97,6 @@
     }
     &--hero {
       padding: 0 1rem;
-    }
-    &--hero1 {
-    }
-    &--hero2 {
     }
   }
   &__icon {
@@ -150,16 +146,6 @@
     font-size: 2.4rem;
   }
 
-  &__videogames {
-  }
-  &__movies {
-  }
-  &__superheroes {
-  }
-  &__mythology {
-  }
-  &__options {
-  }
   &__icon {
     height: 20px;
     font-size: 20px;
@@ -200,10 +186,7 @@
     }
     &--name {
       font-size: 2rem;
-
       margin-left: 2rem;
-      // overflow-wrap: normal;
-      // overflow: hidden;
       word-wrap: break-word;
     }
   }

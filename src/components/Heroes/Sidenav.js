@@ -31,30 +31,6 @@ class Sidenav extends Component {
       mythologyHeroes = heroes.filter(hero => hero.category === "Mythology");
     }
 
-    // if (heroes.length > 0 && sidebarCategory === "All") {
-    //   allHeroesLinks = (
-    //     <div>
-    //       {formattedHeroes.map(hero => {
-    //         const formatted = hero.name.replace(/-|\s/g, "").toLowerCase();
-    //         return (
-    //           <div
-    //             key={hero.name}
-    //             onClick={() => selectView(hero.name)}
-    //             className="Sidebar__label"
-    //           >
-    //             <Link
-    //               to={`/heroes/${formatted}`}
-    //               className="Sidebar__hero--link"
-    //             >
-    //               {hero.name}
-    //             </Link>
-    //           </div>
-    //         );
-    //       })}
-    //     </div>
-    //   );
-    // }
-
     if (heroes.length > 0 && sidenavCategory === "Video Games") {
       vgLinks = (
         <div className="Sidenav__heroes">
@@ -248,7 +224,12 @@ class Sidenav extends Component {
   }
 }
 Sidenav.propTypes = {
-  heroes: PropTypes.array.isRequired
+  heroes: PropTypes.array.isRequired,
+  selectCategory: PropTypes.func.isRequired,
+  sidenavCategory: PropTypes.string,
+  formattedHeroes: PropTypes.array.isRequired,
+  selectView: PropTypes.func.isRequired,
+  viewSelected: PropTypes.string
 };
 
 export default Sidenav;

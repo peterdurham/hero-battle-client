@@ -15,7 +15,7 @@ import Battles from "./components/Battles/Battles";
 import Heroes from "./components/Heroes/Heroes";
 import BattleHistory from "./components/BattleHistory/BattleHistory";
 import Dashboard from "./components/Dashboard/Dashboard";
-import CreateProfile from "./components/Profile/CreateProfile";
+import CreateProfile from "./components/CreateProfile/CreateProfile";
 import Trophies from "./components/Dashboard/Trophies";
 import Suggestions from "./components/Dashboard/Suggestions";
 import Brackets from "./components/Dashboard/Brackets";

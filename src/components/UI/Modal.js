@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "../../assets/scss/main.scss";
 
 import Backdrop from "./Backdrop";
@@ -23,5 +24,9 @@ class Modal extends Component {
     );
   }
 }
+Modal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  ModalClosed: PropTypes.func
+};
 
 export default Modal;
