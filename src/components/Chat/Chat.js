@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import KeyboardEventHandler from "react-keyboard-event-handler";
 import io from "socket.io-client";
 import "../../assets/scss/main.scss";
 import PropTypes from "prop-types";
@@ -11,12 +12,11 @@ import {
   getMessages,
   addMessage
 } from "../../actions/chatActions";
-import dateToTime from "../../utils/dateToTime";
 import CreateProfile from "../CreateProfile/CreateProfile";
 import ChatAvatar from "./ChatAvatar";
 
 const URL = "https://safe-mesa-80973.herokuapp.com";
-
+// const URL = "";
 class Chat extends Component {
   state = {
     username: "",
@@ -49,12 +49,15 @@ class Chat extends Component {
     ev.preventDefault();
     const { message } = this.state;
 
+    const date = new Date();
+    const localDate = date.toLocaleString();
+
     const newMessage = {
       content: message,
       author: this.props.profile.profile.handle,
       avatar: this.props.profile.profile.avatar,
       user: this.props.auth.user.id,
-      date: new Date()
+      date: localDate
     };
 
     if (message && message.length > 2) {
@@ -66,9 +69,14 @@ class Chat extends Component {
   toggleCreatingProfile = () =>
     this.setState({ creatingProfile: !this.state.creatingProfile });
 
+  keyPress = key => {
+    if (document.activeElement.nodeName === "TEXTAREA") {
+      this.sendMessage();
+    }
+  };
+
   render() {
     const { profile, toggleShow } = this.props;
-    const time = dateToTime(new Date());
 
     return (
       <div>
@@ -92,7 +100,9 @@ class Chat extends Component {
                           <ChatAvatar avatar={message.avatar} />
                           {message.author}
                         </span>{" "}
-                        <span className="Chat__message--time">({time})</span>
+                        <span className="Chat__message--time">
+                          ({message.date})
+                        </span>
                       </div>
                       :
                       <div className="Chat__message--content">
@@ -105,14 +115,19 @@ class Chat extends Component {
             </div>
 
             <div className="Chat__inputs">
-              <textarea
-                type="text"
-                placeholder="Message"
-                value={this.state.message}
-                onChange={ev => this.setState({ message: ev.target.value })}
-                className="Chat__input"
-                rows="2"
-              />
+              <KeyboardEventHandler
+                handleKeys={["enter"]}
+                onKeyEvent={(key, e) => this.keyPress(key)}
+              >
+                <textarea
+                  type="text"
+                  placeholder="Message"
+                  value={this.state.message}
+                  onChange={ev => this.setState({ message: ev.target.value })}
+                  className="Chat__input"
+                  rows="2"
+                />
+              </KeyboardEventHandler>
               <br />
               <button className="Chat__submit" onClick={this.sendMessage}>
                 Send

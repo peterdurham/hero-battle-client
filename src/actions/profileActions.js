@@ -9,7 +9,7 @@ import {
 } from "./types";
 
 const URL = "https://safe-mesa-80973.herokuapp.com";
-
+// const URL = "";
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios

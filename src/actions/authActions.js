@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS } from "./types";
 
 const URL = "https://safe-mesa-80973.herokuapp.com";
-
+// const URL = "";
 export const registerUser = userData => dispatch => {
   axios
     .post(`${URL}/api/users/register`, userData)

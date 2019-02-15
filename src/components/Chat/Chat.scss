@@ -15,8 +15,8 @@
     width: 25rem;
   }
   &__header {
-    font-size: 2rem;
-    padding: 0.5rem;
+    font-size: 1.8rem;
+    padding: 0.45rem;
   }
   &__profile {
     text-align: center;
@@ -29,8 +29,13 @@
   }
   &__message {
     margin-bottom: 1rem;
-    width: 280px;
-
+    width: 250px;
+    @include respond(tab-land) {
+      width: 230px;
+    }
+    @include respond(tab-port) {
+      width: 160px;
+    }
     &--info {
       font-size: 1.4rem;
       color: $color-material-red;
@@ -46,10 +51,14 @@
     &--content {
       font-size: 1.4rem;
       margin-bottom: 1rem;
-      width: 280px;
+      width: 250px;
       word-wrap: break-word;
+
+      @include respond(tab-land) {
+        width: 230px;
+      }
       @include respond(tab-port) {
-        width: 250px;
+        width: 160px;
       }
     }
   }
@@ -71,7 +80,7 @@
   }
   &__input {
     padding-left: 1rem;
-    width: 23.3rem;
+    width: 22.6rem;
     border: none;
     resize: none;
     margin: 0 0.5rem;
