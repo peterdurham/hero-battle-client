@@ -8,7 +8,10 @@ import Emoji from "../common/Emoji";
 
 const PastBattle = ({ battleDetails, auth, battles }) => {
   const date = new Date();
-  const formatted = dateToString(date);
+  const utcDate = new Date(date.toUTCString());
+  utcDate.setHours(utcDate.getHours() - 8);
+  const pacificDate = new Date(utcDate);
+  const formatted = dateToString(pacificDate);
 
   let trophies = [];
   if (battles !== null) {

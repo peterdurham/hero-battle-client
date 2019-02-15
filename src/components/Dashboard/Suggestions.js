@@ -43,7 +43,10 @@ class Suggestions extends Component {
   onSubmit = e => {
     e.preventDefault();
     const date = new Date();
-    const formatted = dateToString(date);
+    const utcDate = new Date(date.toUTCString());
+    utcDate.setHours(utcDate.getHours() - 8);
+    const pacificDate = new Date(utcDate);
+    const formatted = dateToString(pacificDate);
 
     let suggestedToday = [];
     if (Object.keys(this.props.profile).length > 0) {

@@ -104,7 +104,7 @@ class Battles extends Component {
 
       setTimeout(() => {
         this.props.getTodaysBattles();
-      }, 400);
+      }, 625);
     } else {
       this.toggleShowModal();
     }

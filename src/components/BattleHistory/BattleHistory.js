@@ -14,7 +14,11 @@ class BattleHistory extends Component {
   componentDidMount() {
     this.props.getBattles();
     const date = new Date();
-    let pastDates = lastSevenDays(date);
+    const utcDate = new Date(date.toUTCString());
+    utcDate.setHours(utcDate.getHours() - 8);
+    const pacificDate = new Date(utcDate);
+
+    let pastDates = lastSevenDays(pacificDate);
     this.setState({ pastDates });
   }
 
