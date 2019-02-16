@@ -1,0 +1,53 @@
+.Leaderboard {
+  border: 1px solid $color-black;
+  width: 90rem;
+  height: 82rem;
+  overflow-y: scroll;
+  text-align: center;
+  @include respond(tab-land) {
+    height: 76rem;
+    width: 72rem;
+  }
+  @include respond(tab-port) {
+  }
+  &__label {
+    font-size: 2.4rem;
+    margin: 1rem 0;
+  }
+
+  &__display {
+  }
+  &__entry {
+    display: flex;
+    width: 24rem;
+    margin: 0 auto;
+    border: 1px solid $color-black;
+    border-radius: 2px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+  &__rank {
+    font-size: 2.2rem;
+  }
+  &__trophies {
+    display: flex;
+
+    &--text {
+      font-size: 2.2rem;
+      margin-right: 0.5rem;
+    }
+  }
+  &__handle {
+    font-size: 2.2rem;
+    margin-left: 2rem;
+    width: 15rem;
+    text-align: left;
+  }
+  &__icon {
+    font-size: 2rem;
+  }
+  &__text {
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+  }
+}

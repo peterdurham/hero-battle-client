@@ -151,6 +151,9 @@ class Chat extends Component {
               <div className="Chat__profile">
                 {!profile.loading && (
                   <div className="Chat__profile--buttons">
+                    <div className="Chat__profile--signup">
+                      You can now vote on 4 hero battles per day!
+                    </div>
                     <div className="Chat__profile--message">
                       Create a profile to join chat, collect trophies, and
                       suggest new heroes

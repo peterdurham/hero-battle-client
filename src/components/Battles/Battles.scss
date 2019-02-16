@@ -23,6 +23,10 @@
     font-size: 2.4rem;
     border-radius: 4px;
     height: 5.2rem;
+    background-color: $color-grey-6;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid $color-grey-3;
+
     @include respond(tab-land) {
       margin: 1.7rem 0;
       font-size: 2rem;
@@ -45,6 +49,13 @@
       font-size: 2rem;
       line-height: 7.4rem;
     }
+    &--message {
+    }
+  }
+  &__link {
+    padding: 0 1rem;
+    color: $color-material-indigo;
+    margin-left: 4rem;
   }
 }
 

@@ -24,9 +24,16 @@
 
     &--message {
       font-size: 1.6rem;
-      margin: 0rem 2rem;
+      margin: 0rem 3rem;
+      margin-bottom: 1rem;
+    }
+    &--signup {
+      font-size: 2.4rem;
+      margin: 0 3rem;
+      margin-bottom: 2rem;
     }
   }
+
   &__message {
     margin-bottom: 1rem;
     width: 250px;
@@ -86,6 +93,12 @@
     margin: 0 0.5rem;
     border-radius: 2px;
     padding: 0.5rem;
+    @include respond(tab-land) {
+      width: 22.2rem;
+    }
+    @include respond(tab-port) {
+      width: 16.9rem;
+    }
   }
   &__input:focus {
     outline: none !important;

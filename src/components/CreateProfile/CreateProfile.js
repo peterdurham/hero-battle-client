@@ -75,13 +75,13 @@ class CreateProfile extends Component {
       <div className="CreateProfile">
         <h1 className="CreateProfile__header">Create Your Profile</h1>
         <p className="CreateProfile__text">
-          Select a unique handle and avatar for access to chat, trophies, new
-          heroes and more
+          Select a unique profile name and avatar for access to chat, trophies,
+          new heroes and more
         </p>
 
         <form onSubmit={this.onSubmit}>
           <TextFieldGroup
-            placeholder="* Profile Handle"
+            placeholder="* profile name"
             name="handle"
             value={this.state.handle}
             onChange={this.onChange}

@@ -43,6 +43,13 @@ class Navbar extends Component {
           >
             Battle History
           </NavLink>
+          {/* <NavLink
+            to="/leaderboard"
+            className="Navbar__link"
+            activeClassName="Navbar__selected"
+          >
+            Leaderboard
+          </NavLink> */}
         </div>
         <div className="Navbar__right">
           {auth.isAuthenticated && !isEmpty(profile.profile) ? (

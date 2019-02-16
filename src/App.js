@@ -14,6 +14,7 @@ import Navbar from "./components/Layout/Navbar";
 import Battles from "./components/Battles/Battles";
 import Heroes from "./components/Heroes/Heroes";
 import BattleHistory from "./components/BattleHistory/BattleHistory";
+import Leaderboard from "./components/Leaderboard/Leaderboard";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateProfile from "./components/CreateProfile/CreateProfile";
 import Trophies from "./components/Dashboard/Trophies";
@@ -44,6 +45,7 @@ class App extends Component {
               <Route exact path="/" render={props => <Battles />} />
               <Route path="/heroes" render={props => <Heroes {...props} />} />
               <Route path="/history" render={props => <BattleHistory />} />
+              <Route path="/leaderboard" render={props => <Leaderboard />} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>

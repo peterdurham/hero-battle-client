@@ -24,6 +24,7 @@ class BattleHistory extends Component {
 
   render() {
     let battleResults = [[], [], [], [], [], [], []];
+
     if (this.props.battles) {
       battleResults = this.state.pastDates.map((date, index) => {
         return this.props.battles.filter(battle => battle.date === date);
@@ -35,6 +36,9 @@ class BattleHistory extends Component {
         <div className="BattleHistory__label">Yesterday's Battles: </div>
         {battleResults.map((day, index) => (
           <div className="BattleHistory__day" key={index}>
+            {day.date && (
+              <div className="BattleHistory__label">{day.date} Battles</div>
+            )}
             {day.map(battle => (
               <PastBattle battleDetails={battle} key={battle._id} />
             ))}

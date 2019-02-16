@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import Battle from "./Battle";
 import { submitVote, getTodaysBattles } from "../../actions/battleActions";
@@ -172,7 +172,16 @@ class Battles extends Component {
           <div className="Battles__votesection">
             {votedToday ? (
               <div className="Battles__voted">
-                Thanks for voting! Come back tomorrow for new battles
+                <div className="Battles__voted--message">
+                  Thanks for voting!
+                  <NavLink
+                    to="/history"
+                    className="Battles__link"
+                    activeClassName="Battles__selected"
+                  >
+                    Yesterday's Results
+                  </NavLink>
+                </div>
               </div>
             ) : (
               <button onClick={this.voteClick} className="Battles__votebutton">
