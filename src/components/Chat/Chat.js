@@ -115,19 +115,19 @@ class Chat extends Component {
             </div>
 
             <div className="Chat__inputs">
-              <KeyboardEventHandler
+              {/* <KeyboardEventHandler
                 handleKeys={["enter"]}
                 onKeyEvent={(key, e) => this.keyPress(key)}
-              >
-                <textarea
-                  type="text"
-                  placeholder="Message"
-                  value={this.state.message}
-                  onChange={ev => this.setState({ message: ev.target.value })}
-                  className="Chat__input"
-                  rows="2"
-                />
-              </KeyboardEventHandler>
+              > */}
+              <textarea
+                type="text"
+                placeholder="Message"
+                value={this.state.message}
+                onChange={ev => this.setState({ message: ev.target.value })}
+                className="Chat__input"
+                rows="2"
+              />
+              {/* </KeyboardEventHandler> */}
               <br />
               <button className="Chat__submit" onClick={this.sendMessage}>
                 Send
