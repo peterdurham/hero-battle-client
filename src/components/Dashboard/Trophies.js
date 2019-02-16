@@ -23,10 +23,10 @@ class Trophies extends Component {
     const { battles } = this.props;
 
     const date = new Date();
-    const utcDate = new Date(date.toUTCString());
-    utcDate.setHours(utcDate.getHours() - 8);
-    const pacificDate = new Date(utcDate);
-    let formatted = dateToString(pacificDate);
+    // const utcDate = new Date(date.toUTCString());
+    // utcDate.setHours(utcDate.getHours() - 8);
+    // const pacificDate = new Date(utcDate);
+    let formatted = dateToString(date);
 
     let trophies = [];
     if (battles !== null) {

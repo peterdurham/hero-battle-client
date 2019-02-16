@@ -20,10 +20,10 @@ class Leaderboard extends Component {
     const { battles, profiles } = this.props;
 
     const date = new Date();
-    const utcDate = new Date(date.toUTCString());
-    utcDate.setHours(utcDate.getHours() - 8);
-    const pacificDate = new Date(utcDate);
-    let formatted = dateToString(pacificDate);
+    // const utcDate = new Date(date.toUTCString());
+    // utcDate.setHours(utcDate.getHours() - 8);
+    // const pacificDate = new Date(utcDate);
+    let formatted = dateToString(date);
 
     let trophiesData;
     let trophiesDisplay;

@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import "../../assets/scss/main.scss";
 import { getBattles } from "../../actions/battleActions";
 import lastSevenDays from "../../utils/lastSevenDays";
+
 import PastBattle from "./PastBattle";
+
+import isEmpty from "../../utils/is-empty";
 
 class BattleHistory extends Component {
   state = {
@@ -14,11 +17,12 @@ class BattleHistory extends Component {
   componentDidMount() {
     this.props.getBattles();
     const date = new Date();
-    const utcDate = new Date(date.toUTCString());
-    utcDate.setHours(utcDate.getHours() - 8);
-    const pacificDate = new Date(utcDate);
+    // const utcDate = new Date(date.toUTCString());
+    // utcDate.setHours(utcDate.getHours() - 8);
+    // const pacificDate = new Date(utcDate);
 
-    let pastDates = lastSevenDays(pacificDate);
+    let pastDates = lastSevenDays(date);
+
     this.setState({ pastDates });
   }
 
@@ -33,17 +37,29 @@ class BattleHistory extends Component {
 
     return (
       <div className="BattleHistory">
-        <div className="BattleHistory__label">Yesterday's Battles: </div>
-        {battleResults.map((day, index) => (
-          <div className="BattleHistory__day" key={index}>
-            {day.date && (
-              <div className="BattleHistory__label">{day.date} Battles</div>
-            )}
-            {day.map(battle => (
-              <PastBattle battleDetails={battle} key={battle._id} />
-            ))}
+        {!isEmpty(battleResults[0]) && (
+          <div>
+            {battleResults.map((day, index) => {
+              return (
+                <div className="BattleHistory__day" key={index}>
+                  {index === 0 && (
+                    <div className="BattleHistory__label">
+                      Yesterday's Battles:{" "}
+                    </div>
+                  )}
+                  {index > 0 && (
+                    <div className="BattleHistory__label">
+                      {this.state.pastDates[index]} Battles
+                    </div>
+                  )}
+                  {day.map(battle => (
+                    <PastBattle battleDetails={battle} key={battle._id} />
+                  ))}
+                </div>
+              );
+            })}
           </div>
-        ))}
+        )}
       </div>
     );
   }
