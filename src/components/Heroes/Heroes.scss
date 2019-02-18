@@ -3,13 +3,18 @@
     display: flex;
     width: 90rem;
     height: 82rem;
-    min-height: 100vh;
+
     margin: 0 auto;
     @include respond(tab-land) {
       height: 76rem;
       width: 72rem;
     }
     @include respond(tab-port) {
+    }
+    @include respond(phone) {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
     }
   }
 }
@@ -22,11 +27,20 @@
   height: 82rem;
   border: 1px solid $color-black;
   border-right: none;
+
   @include respond(tab-land) {
     height: 76rem;
     width: 22rem;
   }
   @include respond(tab-port) {
+  }
+  @include respond(phone) {
+    flex-direction: row;
+    width: 60rem;
+    height: 6rem;
+    border-right: 1px solid $color-black;
+    align-items: center;
+    margin-bottom: 1rem;
   }
   &__title {
     font-size: 3.6rem;
@@ -34,7 +48,11 @@
     color: $color-black;
     text-decoration: none;
     padding: 1rem 0;
+    @include respond(phone) {
+      display: none;
+    }
   }
+
   &__link {
     text-decoration: none;
     color: $color-black;
@@ -46,7 +64,9 @@
     border-radius: 4px;
     padding: 0.8rem 1.4rem;
     display: block;
-
+    @include respond(phone) {
+      font-size: 1.4rem;
+    }
     &--selected {
       color: white;
 
@@ -81,10 +101,16 @@
 
       padding: 0.4rem 2rem;
       display: block;
+      @include respond(phone) {
+        display: none;
+      }
     }
   }
 
   &__label {
+    @include respond(phone) {
+      height: 3.6rem;
+    }
   }
 }
 
@@ -98,6 +124,9 @@
       width: 50rem;
     }
     @include respond(tab-port) {
+    }
+    @include respond(phone) {
+      height: 67rem;
     }
   }
   &__label {
@@ -135,6 +164,10 @@
       height: 16.7rem;
       margin: 0 0.5rem;
       margin-bottom: 1rem;
+    }
+    @include respond(phone) {
+      height: 14.4rem;
+      font-size: 1.2rem;
     }
   }
 }
@@ -205,6 +238,9 @@
     height: 76rem;
   }
   @include respond(tab-port) {
+  }
+  @include respond(phone) {
+    width: 60rem;
   }
   &__header {
     font-size: 2.4rem;

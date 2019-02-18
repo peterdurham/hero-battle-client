@@ -1,15 +1,17 @@
 import React from "react";
-import { render } from "react-testing-library";
-import { Battle } from "../Battles/Battle";
+import { render, cleanup, fireEvent } from "react-testing-library";
+import Battles from "../Battles/Battles";
 
-test("<Battle />", () => {
-  const { debug, getByTestId } = render(<Battle />);
+afterEach(cleanup);
 
-  // renders 2 character tags
-  const hero1 = getByTestId("hero1");
-  expect(hero1.tagName).toBe("DIV");
+test("<Battles />", () => {
+  const { debug, getByText } = render(<Battles />);
 
-  // renders 2 character images
+  // debug();
+  const voteButton = getByText("SubmitVote");
 
-  // clicking div selects character
+  //asserts counter-button is a buttonw
+  expect(voteButton.tagName).toBe("BUTTON");
+  //assert counter-button starts at 0
+  expect(voteButton.textContent).toBe("Submit Vote");
 });

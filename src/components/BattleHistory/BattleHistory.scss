@@ -10,6 +10,9 @@
   }
   @include respond(tab-port) {
   }
+  @include respond(phone) {
+    margin-bottom: 1rem;
+  }
   &__label {
     font-size: 2.4rem;
     margin: 1rem 0;

@@ -173,7 +173,9 @@ class Battles extends Component {
             {votedToday ? (
               <div className="Battles__voted">
                 <div className="Battles__voted--message">
-                  Thanks for voting!
+                  <div className="Battles__voted--header">
+                    Thanks for voting!
+                  </div>
                   <NavLink
                     to="/history"
                     className="Battles__link"
@@ -184,7 +186,11 @@ class Battles extends Component {
                 </div>
               </div>
             ) : (
-              <button onClick={this.voteClick} className="Battles__votebutton">
+              <button
+                onClick={this.voteClick}
+                className="Battles__votebutton"
+                data-testid="vote-button"
+              >
                 Submit Vote
               </button>
             )}

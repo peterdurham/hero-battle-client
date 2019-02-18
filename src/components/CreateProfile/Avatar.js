@@ -9,6 +9,7 @@ import Superhero from "../../assets/images/avatars/Superhero.png";
 import Swordsman from "../../assets/images/avatars/Swordsman.png";
 import Thug from "../../assets/images/avatars/Thug.png";
 import Wizard from "../../assets/images/avatars/Wizard.png";
+import Versus from "../../assets/images/Versus.png";
 
 const Avatar = ({ name }) => {
   let image;
@@ -26,6 +27,8 @@ const Avatar = ({ name }) => {
     image = <img src={Thug} alt="Thug" className="Avatar" />;
   } else if (name === "Wizard") {
     image = <img src={Wizard} alt="Wizard" className="Avatar" />;
+  } else if (name === "Versys") {
+    image = <img src={Versus} alt="Versus" className="Avatar" />;
   }
 
   return <div>{image}</div>;

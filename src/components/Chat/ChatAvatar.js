@@ -9,6 +9,8 @@ import Princess from "../../assets/images/avatars/Princess.png";
 import Superhero from "../../assets/images/avatars/Superhero.png";
 import Thug from "../../assets/images/avatars/Thug.png";
 import Wizard from "../../assets/images/avatars/Wizard.png";
+import Versus from "../../assets/images/Versus.png";
+
 const ChatAvatar = ({ avatar }) => {
   let image;
 
@@ -33,6 +35,9 @@ const ChatAvatar = ({ avatar }) => {
       break;
     case "Wizard":
       image = <img src={Wizard} alt="avatar" className="ChatAvatar" />;
+      break;
+    case "Versus":
+      image = <img src={Versus} alt="versus" className="ChatAvatar" />;
       break;
     default:
       break;

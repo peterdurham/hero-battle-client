@@ -14,8 +14,8 @@ import isEmpty from "../../utils/is-empty";
 
 class Heroes extends Component {
   state = {
-    sidenavCategory: null,
-    viewSelected: null,
+    sidenavCategory: "Video Games",
+    viewSelected: "",
     heroes: []
   };
 
@@ -76,7 +76,7 @@ class Heroes extends Component {
             )}
           </div>
           <Switch>
-            <Redirect exact from="/heroes" to="/heroes/all" />
+            <Redirect exact from="/heroes/all" to="/heroes/videogames" />
 
             <Route
               path="/heroes/all"

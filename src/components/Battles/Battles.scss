@@ -13,9 +13,14 @@
   @include respond(tab-port) {
     width: 50rem;
   }
+  @include respond(phone) {
+    width: 50rem;
+    margin-bottom: 2rem;
+  }
   &__votesection {
     text-align: center;
     height: 7.6rem;
+    width: 60rem;
   }
 
   &__votebutton {
@@ -48,8 +53,28 @@
     &--text {
       font-size: 2rem;
       line-height: 7.4rem;
+      @include respond(tab-port) {
+        font-size: 1.4rem;
+      }
     }
     &--message {
+      width: 60rem;
+      display: flex;
+      justify-content: space-around;
+
+      text-align: center;
+      margin: 0 15rem;
+
+      @include respond(tab-land) {
+        width: 50rem;
+        margin: 0 10rem;
+        font-size: 2rem;
+      }
+      @include respond(tab-port) {
+        width: 40rem;
+        margin: 0 5rem;
+        font-size: 1.6rem;
+      }
     }
   }
   &__link {
@@ -74,6 +99,10 @@
   }
   @include respond(tab-port) {
     width: 50rem;
+  }
+  @include respond(phone) {
+    width: 50rem;
+    margin: 0 auto;
   }
   &__category {
     position: absolute;
@@ -117,6 +146,9 @@
     @include respond(tab-port) {
       font-size: 1.6rem;
     }
+    @include respond(phone) {
+      font-size: 1.4rem;
+    }
   }
   &__hero {
     border: 1px solid $color-grey-5;
@@ -147,7 +179,7 @@
       padding-right: 0;
     }
     @include respond(tab-port) {
-      width: 11rem;
+      width: 14rem;
     }
   }
 
@@ -203,7 +235,7 @@
       padding-left: 0;
     }
     @include respond(tab-port) {
-      width: 11rem;
+      width: 14rem;
     }
   }
 
@@ -267,7 +299,7 @@
   position: relative;
   height: 2.5rem;
   width: 20rem;
-  border-radius: 1.6rem;
+  border-radius: 1rem;
   border: 1px solid #333;
   animation: expandWidth 0.7s ease-in-out;
   @include respond(tab-land) {
@@ -277,11 +309,17 @@
   @include respond(tab-port) {
     width: 9rem;
   }
+  @include respond(phone) {
+    height: 2rem;
+  }
   &__progress {
     height: 100%;
     border-radius: inherit;
     color: white;
     font-size: 2rem;
+    @include respond(phone) {
+      font-size: 1.6rem;
+    }
   }
 
   &__videogames {
