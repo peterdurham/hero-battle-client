@@ -9,7 +9,7 @@
   @include respond(tab-port) {
   }
   @include respond(phone) {
-    width: 50rem;
+    width: 40rem;
     margin: 0 auto;
     border-left: 1px solid $color-black;
   }
@@ -97,7 +97,8 @@
     padding: 0 2rem;
     color: $color-black;
     @include respond(phone) {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
+      padding: 0 1rem;
     }
   }
   &__dropdown {
@@ -130,6 +131,10 @@
     display: flex;
     align-content: center;
     &--text {
+      @include respond(phone) {
+        font-size: 1.4rem;
+        width: 7rem;
+      }
     }
     &--image {
       height: 3rem;

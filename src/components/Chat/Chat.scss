@@ -15,7 +15,7 @@
     width: 25rem;
   }
   @include respond(phone) {
-    width: 50rem;
+    width: 40rem;
   }
   &__header {
     font-size: 1.8rem;
@@ -47,7 +47,7 @@
       width: 160px;
     }
     @include respond(phone) {
-      width: 50rem;
+      width: 40rem;
     }
 
     &--info {
@@ -75,7 +75,7 @@
         width: 160px;
       }
       @include respond(phone) {
-        width: 48rem;
+        width: 34rem;
       }
     }
   }
@@ -111,7 +111,7 @@
       width: 16.9rem;
     }
     @include respond(phone) {
-      width: 41.6rem;
+      width: 31.6rem;
     }
   }
 

@@ -8,6 +8,7 @@
   }
   @include respond(phone) {
     margin-bottom: 1rem;
+    width: 40rem;
   }
 
   &__title {
@@ -18,7 +19,7 @@
   }
   &__profile {
     margin: 0 auto;
-    width: 60rem;
+    width: 55rem;
 
     color: $color-black;
     overflow: hidden;
@@ -26,9 +27,15 @@
     border-radius: 4px;
     display: flex;
     margin-top: 2rem;
+    @include respond(phone) {
+      width: 30rem;
+    }
     &--message {
       font-size: 2rem;
       margin-top: 1rem;
+      @include respond(phone) {
+        font-size: 1.6rem;
+      }
     }
     &--info {
       display: flex;
@@ -36,6 +43,9 @@
     &--handle {
       font-size: 4.8rem;
       margin-left: 2rem;
+      @include respond(phone) {
+        font-size: 2.4rem;
+      }
     }
   }
   &__nav {
@@ -102,17 +112,27 @@
   }
   @include respond(phone) {
     margin-bottom: 1rem;
+    width: 40rem;
   }
   &__result {
     font-size: 2rem;
     text-align: center;
+    @include respond(phone) {
+      font-size: 1.6rem;
+    }
 
     &--date {
       width: 12rem;
       padding: 1rem;
+      @include respond(phone) {
+        padding: 0.4rem;
+      }
     }
     &--hero {
       padding: 0 1rem;
+      @include respond(phone) {
+        padding: 0 0.4rem;
+      }
     }
   }
   &__icon {
@@ -158,11 +178,15 @@
   }
   @include respond(phone) {
     margin-bottom: 1rem;
+    width: 40rem;
   }
   &__form {
     width: 40rem;
     margin: 0 auto;
     text-align: center;
+    @include respond(phone) {
+      width: 35rem;
+    }
   }
   &__display {
     display: flex;
@@ -189,6 +213,9 @@
   &__label {
     text-align: center;
     margin-bottom: 2rem;
+    @include respond(phone) {
+      font-size: 1.4rem;
+    }
   }
 
   &__hero {
@@ -208,6 +235,11 @@
     @include respond(tab-port) {
       width: 14rem;
     }
+    @include respond(phone) {
+      width: 8rem;
+      padding: 0 0.4rem;
+      margin: 0;
+    }
     &--upvote {
       height: 20px;
     }
@@ -215,6 +247,9 @@
       font-size: 1.6rem;
       height: 2rem;
       text-align: center;
+      @include respond(phone) {
+        font-size: 1.2rem;
+      }
     }
     &--downvote {
       height: 20px;
@@ -223,6 +258,10 @@
       font-size: 2rem;
       margin-left: 2rem;
       word-wrap: break-word;
+      @include respond(phone) {
+        font-size: 1.2rem;
+        margin: 0;
+      }
     }
   }
   &__upvote--selected {
@@ -253,6 +292,7 @@
   }
   @include respond(phone) {
     margin-bottom: 1rem;
+    width: 40rem;
   }
   &__welcome {
     text-align: center;
