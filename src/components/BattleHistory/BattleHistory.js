@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import "../../assets/scss/main.scss";
 import { getBattles } from "../../actions/battleActions";
 import lastSevenDays from "../../utils/lastSevenDays";
-
 import PastBattle from "./PastBattle";
 
 import isEmpty from "../../utils/is-empty";
