@@ -35,7 +35,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-react": "^7.12.4",

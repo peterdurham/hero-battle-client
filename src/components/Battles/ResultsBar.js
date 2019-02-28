@@ -8,10 +8,11 @@ class ResultsBar extends Component {
     return (
       <div className="ResultsBar">
         <div
+          data-testid="resultsbar"
           className={resultsClass}
           style={{ width: `${this.props.percentage}%` }}
         >
-          {Math.floor(this.props.percentage)}%
+          {Math.floor(this.props.percentage)} %
         </div>
       </div>
     );

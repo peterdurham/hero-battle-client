@@ -1,17 +1,19 @@
 import React from "react";
-import { render, cleanup, fireEvent } from "react-testing-library";
+import { render, cleanup } from "react-testing-library";
 import ResultsBar from "../Battles/ResultsBar";
-
+import { MemoryRouter as Router } from "react-router-dom";
 afterEach(cleanup);
 
 test("<ResultsBar />", () => {
-  const { debug, getByText } = render(<ResultsBar />);
+  const { debug, getByTestId } = render(
+    <Router>
+      <ResultsBar />
+    </Router>
+  );
 
-  // debug();
-  const resultsLabel = getByText("%");
+  const resultsLabel = getByTestId("resultsbar");
 
-  //asserts counter-button is a buttonw
   expect(resultsLabel.tagName).toBe("DIV");
-  //assert counter-button starts at 0
-  expect(resultsLabel.textContent).toBe("%");
+
+  expect(resultsLabel.textContent).toMatch("%");
 });

@@ -659,7 +659,8 @@ const HeroThumbnail = ({ hero, size }) => {
   return <div>{image}</div>;
 };
 HeroThumbnail.propTypes = {
-  hero: PropTypes.string.isRequired
+  hero: PropTypes.string.isRequired,
+  size: PropTypes.string
 };
 
 export default HeroThumbnail;
